@@ -1,0 +1,268 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using UnityEditor;
+using UnityEngine;
+using UnityTest;
+
+namespace UnityTestToolsExtensionGWT
+{
+    [CustomEditor(typeof(UnityTestToolsExtensionGWTRunner), true)]
+    class UnityIntegrationTestBaseEditor : Editor
+    {
+
+        private readonly List<UnityIntegrationTestDropDownControl<string>> m_ThisDropDownGiven = new List<UnityIntegrationTestDropDownControl<string>>();
+        private readonly List<UnityIntegrationTestDropDownControl<string>> m_ThisDropDownWhen = new List<UnityIntegrationTestDropDownControl<string>>();
+        private readonly List<UnityIntegrationTestDropDownControl<string>> m_ThisDropDownThen = new List<UnityIntegrationTestDropDownControl<string>>();
+
+        private readonly float labelWidthAbsolute = 40;
+        private readonly float textWidthPercent = 0.40f;
+        private readonly float buttonsWidthAbsolute = 60;
+
+
+        public override void OnInspectorGUI()
+        {
+            var script = (UnityTestToolsExtensionGWTRunner)target;
+
+            DrawComboBox(script, typeof(Given), script.given, ref script.givenCount, m_ThisDropDownGiven);
+            DrawComboBox(script, typeof(When), script.when, ref script.whenCount, m_ThisDropDownWhen);
+            DrawComboBox(script, typeof(Then), script.then, ref script.thenCount, m_ThisDropDownThen);
+
+
+        }
+
+        private void DrawComboBox(UnityTestToolsExtensionGWTRunner script, Type stepType, string[] stepMethodsList, ref int stepMethodsCount, List<UnityIntegrationTestDropDownControl<string>> comboBoxesList)
+        {
+            
+            for (int index = 0; index < stepMethodsCount; index++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                float rowWitdh = EditorGUIUtility.currentViewWidth - labelWidthAbsolute - buttonsWidthAbsolute;
+
+
+                string label = stepType.Name; 
+                if (index > 0)
+                {
+                    label = "and";
+                }
+
+                comboBoxesList.Add(new UnityIntegrationTestDropDownControl<string>());
+                UnityIntegrationTestDropDownControl<string> dropdown;
+
+                dropdown = comboBoxesList[index];
+
+
+                Draw(dropdown, script,
+                        script.Go,
+
+                                               stepMethodsList[index], stepType,
+
+                                               s =>
+                                               {
+                                                   stepMethodsList[index] = s;
+                                                   AssertionExplorerWindow.Reload();
+                                               },
+                                               label, rowWitdh);
+
+
+                if (GUILayout.Button("+", EditorStyles.miniButton, GUILayout.Width(20)))
+                {
+
+                    addElement(stepMethodsList, stepMethodsCount, "", index + 1);
+                    stepMethodsCount++;
+                    comboBoxesList.Insert(index + 1, new UnityIntegrationTestDropDownControl<string>());
+
+                    EditorUtility.SetDirty(this);
+                }
+                if (GUILayout.Button("-", EditorStyles.miniButton, GUILayout.Width(20)))
+                {
+                    if (stepMethodsCount > 1)
+                    {
+                        removeElement(stepMethodsList, stepMethodsCount, index);
+                        stepMethodsCount--;
+                        comboBoxesList.RemoveAt(index);
+                        EditorUtility.SetDirty(this);
+                    }
+                }
+                EditorGUILayout.EndHorizontal();
+
+
+            }
+        }
+
+
+        private void addElement(string[] array, int count, string element, int indexToInsert)
+        {
+            for(int index=count; index>indexToInsert; index--)
+            {
+                array[index + 1] = array[index];
+                if (index == indexToInsert)
+                {
+                    array[index] = element;
+                }
+            }
+        }
+
+        private void removeElement(string[] array, int count, int indexToRemove)
+        {
+            for (int index = indexToRemove; index < count-1; index++)
+            {
+                array[index] = array[index+1];
+            }
+        }
+
+
+
+
+
+
+        /*-------------------------------------------------------------------------------------*/
+
+
+
+
+        public void Draw(UnityIntegrationTestDropDownControl<string> dropDown, UnityTestToolsExtensionGWTRunner script, GameObject go, string propertPath, Type typeOfMethods, Action<string> onSelectedPath, string label, float rowWidth)
+        {
+            if (go != null)
+            {
+                var newPath = DrawListOfMethods(script, go, propertPath, typeOfMethods, dropDown, label, rowWidth);
+
+                if (newPath != propertPath)
+                    onSelectedPath(newPath);
+            }
+        }
+
+        private string DrawListOfMethods(UnityTestToolsExtensionGWTRunner script, GameObject go, string propertPath, Type typeOfMethods, UnityIntegrationTestDropDownControl<string> dropDown, string label, float rowWidth)
+        {
+            string result = propertPath;
+            List<UnityTestToolsExtensionGWTMethodDescription> methodsList = UnityTestToolsExtensionGWTMethodsFinder.GetMethodsFromGameObjectComponents(go, typeOfMethods);
+            List<string> options = UnityTestToolsExtensionGWTMethodsFinder.GetMethodsNamesList(methodsList);
+            Dictionary<string, UnityTestToolsExtensionGWTMethodDescription> methodsDictionary = UnityTestToolsExtensionGWTMethodsFinder.GetMethodsDictionary(methodsList);
+            bool isPropertyOrFieldFound = options.Any();
+            if (isPropertyOrFieldFound)
+            {
+                GUILayout.Label(label, EditorStyles.label, GUILayout.Width(labelWidthAbsolute));
+
+               //GUILayout.Label(label);
+                string text = "";
+
+                if (result != null && !result.Equals(""))
+                {
+                    UnityTestToolsExtensionGWTMethodDescription methodDescription;
+                    methodsDictionary.TryGetValue(result, out methodDescription);
+                    //MethodInfo method = givenWhenThenMethod.method;
+                    //Component component = (Component)UnityTestToolsExtensionGWTMethodsFinder.GetComponent(go, givenWhenThenMethod.type.Name);
+                    //object[] parameters = null;
+                    //if (typeOfMethods.Equals("Given"))
+                    //{
+                    //    parameters = new object[1];
+                    //    parameters[0] = ActionType.GetDescription;
+                    //}
+                    //else if(typeOfMethods.Equals("When"))
+                    //{
+                    //    parameters = new object[1];
+                    //    parameters[0] = ActionType.GetDescription;
+
+                    //}
+                    //else if (typeOfMethods.Equals("Then"))
+                    //{
+                    //    parameters = new object[1];
+                    //    parameters[0] = ActionType.GetDescription;
+                    //}
+                    //AssertionResultGWTText assertionResultGWTText = (AssertionResultGWTText)method.Invoke(component, parameters);
+                    text = methodDescription.text;
+
+
+                }
+
+                dropDown.Draw(text, rowWidth* textWidthPercent, result,
+                              () =>
+                              {
+                                  try
+                                  {
+                                      return options.ToArray();
+                                  }
+                                  catch (Exception)
+                                  {
+                                      Debug.LogWarning("An exception was thrown while resolving a property list. Resetting property path.");
+                                      result = "";
+                                      return new string[0];
+                                  }
+                              }, s => result = s);
+
+            }
+            else
+            {
+                //EditorGUILayout.BeginHorizontal();
+                GUILayout.Label(label);
+                GUILayout.Label("No component found extensions\n of IUnityIntegrationTestBaseAction.\n Please, add one.");
+                //EditorGUILayout.EndHorizontal();
+                result = "";
+            }
+            return result;
+        }
+
+       
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*-------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+}
