@@ -176,7 +176,7 @@ namespace HudDimension.UnityTestBDD
 
         private void ForceRebuildParametersButton(BDDExtensionRunner script, Component[] components)
         {
-            if (GUILayout.Button("Rebuild settigs.", EditorStyles.miniButton, GUILayout.Width(100)))
+            if (GUILayout.Button("Rebuild settings.", EditorStyles.miniButton, GUILayout.Width(100)))
             {
                 GenericMenu menu = new GenericMenu();
                 GUIContent optionNotRebuild = new GUIContent("I am not sure. I will try to fix the errors instead.");
