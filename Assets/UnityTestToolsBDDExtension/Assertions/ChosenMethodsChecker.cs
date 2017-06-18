@@ -117,7 +117,6 @@ namespace HudDimension.UnityTestBDD
                 foreach (string parametersIndex in parametersIndexList)
                 {
                     string parameterType = parametersIndexUtilities.GetParameterType(parametersIndex);
-                    string parameterFullName = parametersIndexUtilities.GetParameterFullName(parametersIndex);
                     string parameterName = parametersIndexUtilities.GetParameterName(parametersIndex);
                     string methodFullName = parametersIndexUtilities.GetMethodFullName(parametersIndex);
                     Component component = this.GetComponent(methodFullName, components);

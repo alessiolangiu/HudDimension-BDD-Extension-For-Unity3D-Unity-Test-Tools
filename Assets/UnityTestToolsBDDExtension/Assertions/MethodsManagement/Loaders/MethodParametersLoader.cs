@@ -38,7 +38,6 @@ namespace HudDimension.UnityTestBDD
                     if (!parameterIndex.Equals(string.Empty))
                     {
                         string parameterFullName = parametersIndexUtilities.GetParameterFullName(parameterIndex);
-                        string parameterLocation = parametersIndexUtilities.GetParameterValueStorageLocation(parameterIndex);
                         if (parameterFullName.Equals(expectedParameterFullName))
                         {
                             string arrayName = parametersIndexUtilities.GetParameterValueStorageName(parameterIndex);
@@ -74,7 +73,6 @@ namespace HudDimension.UnityTestBDD
                     if (!parameterIndex.Equals(string.Empty))
                     {
                         string parameterFullName = parametersIndexUtilities.GetParameterFullName(parameterIndex);
-                        string parameterLocation = parametersIndexUtilities.GetParameterValueStorageLocation(parameterIndex);
                         if (parameterFullName.Equals(expectedParameterFullName))
                         {
                             string arrayName = parametersIndexUtilities.GetParameterValueStorageName(parameterIndex);
