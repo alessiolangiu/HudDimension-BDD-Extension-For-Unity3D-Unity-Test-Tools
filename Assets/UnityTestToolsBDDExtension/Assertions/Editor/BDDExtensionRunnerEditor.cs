@@ -12,6 +12,7 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -109,10 +110,10 @@ namespace HudDimension.UnityTestBDD
             bool isStaticScenario = methodsManagementUtilities.IsStaticBDDScenario(bddComponents);
             if (!this.RunnerInspectorIsLockedOnErrors(errors))
             {
+                this.DrawOptions(this.runnerBusinessLogicData, isStaticScenario, script, this.unityIntefaceWrapper, bddComponents);
+
                 if (!isStaticScenario)
                 {
-                    this.ForceRebuildParametersButton(script, bddComponents);
-
                     if (!this.BuildParametersIsLocked(errors))
                     {
                         bool isParametersRebuildNeeded = this.businessLogicParametersRebuild.IsParametersRebuildNeeded(this.unityIntefaceWrapper, this.runnerBusinessLogicData, bddComponents, bddComponentsFilter);
@@ -161,6 +162,33 @@ namespace HudDimension.UnityTestBDD
             }
         }
 
+        private void DrawOptions(RunnerEditorBusinessLogicData businessLogicData, bool isStaticScenario, BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface, Component[] bddComponents)
+        {
+            Rect rect = unityInterface.EditorGUILayoutGetControlRect();
+            businessLogicData.OptionsFoldout = unityInterface.EditorGUIFoldout(rect, businessLogicData.OptionsFoldout, "Options");
+            if (businessLogicData.OptionsFoldout)
+            {
+                if (!isStaticScenario)
+                {
+                    this.ForceRebuildParametersButton(script, bddComponents);
+                }
+
+                unityInterface.EditorGUILayoutSeparator();
+                this.ChooseBetweenUpdateAndFixedUpdate(script, this.unityIntefaceWrapper);
+                float width = unityInterface.EditorGUIUtilityCurrentViewWidth();
+                int numberOfSeparatorChars = (int)width / 7;
+                string text = string.Empty.PadLeft(numberOfSeparatorChars, '_');
+                
+                unityInterface.EditorGUILayoutLabelFieldTruncate(text, width);
+            }
+        }
+
+        private void ChooseBetweenUpdateAndFixedUpdate(BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface)
+        {
+            GUIContent label = unityInterface.GUIContent("Run under Fixed Update");
+            script.UseFixedUpdate = GUILayout.Toggle(script.UseFixedUpdate, label, GUILayout.ExpandWidth(false));
+        }
+
         private bool LockParametersRows(List<UnityTestBDDError> errors)
         {
             foreach (UnityTestBDDError error in errors)
@@ -180,7 +208,7 @@ namespace HudDimension.UnityTestBDD
             {
                 GenericMenu menu = new GenericMenu();
                 GUIContent optionNotRebuild = new GUIContent("I am not sure. I will try to fix the errors instead.");
-                GUIContent optionRebuild = new GUIContent("Rebuild! Every parameter with errors will be reset and their values will be lost.");
+                GUIContent optionRebuild = new GUIContent("Rebuild! Every parameter with errors could be resetted and the values could be lost.");
                 bool on = false;
                 menu.AddItem(
                     optionNotRebuild,

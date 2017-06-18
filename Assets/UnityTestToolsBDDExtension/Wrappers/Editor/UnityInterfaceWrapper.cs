@@ -81,6 +81,11 @@ namespace HudDimension.UnityTestBDD
             return EditorGUILayout.PropertyField(property.GetProperty(), label, GUILayout.ExpandWidth(true));
         }
 
+        public bool EditorGUILayoutPropertyFieldCustomizable(ISerializedPropertyWrapper property, GUIContent label, GUILayoutOption[] options)
+        {
+            return EditorGUILayout.PropertyField(property.GetProperty(), label, options);
+        }
+
         public void EditorGUILayoutSeparator()
         {
             EditorGUILayout.Separator();

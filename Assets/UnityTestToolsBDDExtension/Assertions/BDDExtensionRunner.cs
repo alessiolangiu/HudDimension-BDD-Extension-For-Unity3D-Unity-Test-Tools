@@ -19,6 +19,8 @@ namespace HudDimension.UnityTestBDD
     public class BDDExtensionRunner : MonoBehaviour
     {
         [SerializeField]
+        private bool useFixedUpdate = false;
+        [SerializeField]
         private string[] given = new string[] { string.Empty };
         [SerializeField]
         private string[] when = new string[] { string.Empty };
@@ -111,6 +113,19 @@ namespace HudDimension.UnityTestBDD
 
         public ExtensionRunnerBusinessLogic BusinessLogic { get; private set; }
 
+        public bool UseFixedUpdate
+        {
+            get
+            {
+                return this.useFixedUpdate;
+            }
+
+            set
+            {
+                this.useFixedUpdate = value;
+            }
+        }
+
         private void Start()
         {
             this.BusinessLogic = new ExtensionRunnerBusinessLogic(gameObject);
@@ -123,7 +138,15 @@ namespace HudDimension.UnityTestBDD
 
         private void Update()
         {
-            if (!this.BusinessLogic.AreThereErrors)
+            if (!this.BusinessLogic.AreThereErrors && !this.useFixedUpdate)
+            {
+                this.BusinessLogic.IndexToRun = this.BusinessLogic.RunCycle(this.BusinessLogic, this.BusinessLogic.MethodsDescription, this.BusinessLogic.IndexToRun);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (!this.BusinessLogic.AreThereErrors && this.useFixedUpdate)
             {
                 this.BusinessLogic.IndexToRun = this.BusinessLogic.RunCycle(this.BusinessLogic, this.BusinessLogic.MethodsDescription, this.BusinessLogic.IndexToRun);
             }

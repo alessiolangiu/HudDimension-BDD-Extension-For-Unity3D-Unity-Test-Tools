@@ -27,6 +27,8 @@ namespace HudDimension.UnityTestBDD
 
         bool EditorGUILayoutPropertyField(ISerializedPropertyWrapper property, GUIContent label);
 
+        bool EditorGUILayoutPropertyFieldCustomizable(ISerializedPropertyWrapper property, GUIContent label, GUILayoutOption[] options);
+
         void EditorGUILayoutLabelField(string text, float labelWidth);
 
         void EditorGUILayoutLabelFieldTruncate(string text, float labelWidth);

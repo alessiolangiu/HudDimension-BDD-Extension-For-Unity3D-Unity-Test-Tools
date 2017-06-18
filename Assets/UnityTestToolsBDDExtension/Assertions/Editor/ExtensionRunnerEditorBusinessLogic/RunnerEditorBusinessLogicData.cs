@@ -39,5 +39,6 @@ namespace HudDimension.UnityTestBDD
         internal bool[] GivenFoldouts = new bool[50];
         internal bool[] WhenFoldouts = new bool[50];
         internal bool[] ThenFoldouts = new bool[50];
+        internal bool OptionsFoldout = false;
     }
 }
