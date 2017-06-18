@@ -1,18 +1,4 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="ChosenMethodsChecker.cs" company="Hud Dimesion">
-//     Copyright (c) Hud Dimension. All rights reserved.
-// </copyright>
-//
-// <disclaimer>
-// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-// </disclaimer>
-//
-// <author>Alessio Langiu</author>
-// <email>alessio.langiu@huddimension.co.uk</email>
-//-----------------------------------------------------------------------
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -124,15 +110,16 @@ namespace HudDimension.UnityTestBDD
         public List<UnityTestBDDError> CheckForNotMatchingParametersIndex<T>(string[] chosenMethods, string[] parametersIndexes, Component[] components) where T : IGivenWhenThenDeclaration
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
+            ParametersIndexUtilities parametersIndexUtilities = new ParametersIndexUtilities();
             for (int index = 0; index < chosenMethods.Length; index++)
             {
-                string[] parametersIndexList = this.GetParametersIndexList(parametersIndexes[index]);
+                string[] parametersIndexList = parametersIndexUtilities.GetParametersIndexList(parametersIndexes[index]);
                 foreach (string parametersIndex in parametersIndexList)
                 {
-                    string parameterType = parametersIndex.Split(',')[0];
-                    string parameterFullName = parametersIndex.Split(',')[1];
-                    string parameterName = parameterFullName.Split('.')[2];
-                    string methodFullName = parameterFullName.Split('.')[0] + "." + parameterFullName.Split('.')[1];
+                    string parameterType = parametersIndexUtilities.GetParameterType(parametersIndex);
+                    string parameterFullName = parametersIndexUtilities.GetParameterFullName(parametersIndex);
+                    string parameterName = parametersIndexUtilities.GetParameterName(parametersIndex);
+                    string methodFullName = parametersIndexUtilities.GetMethodFullName(parametersIndex);
                     Component component = this.GetComponent(methodFullName, components);
                     MethodInfo methodInfo = this.GetMethodInfo(methodFullName, component);
                     List<UnityTestBDDError> partialResult = this.CheckForNotMatchingParametersIndex<T>(component, methodInfo, parameterType, parameterName, index);
@@ -226,19 +213,20 @@ namespace HudDimension.UnityTestBDD
         public List<UnityTestBDDError> CheckForNotMatchingPVS<T>(string[] chosenMethods, string[] parametersIndexes, Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
+            ParametersIndexUtilities parametersIndexUtilities = new ParametersIndexUtilities();
             for (int index = 0; index < chosenMethods.Length; index++)
             {
                 Component component = this.GetComponent(chosenMethods[index], components);
-                string[] parametersIndexList = this.GetParametersIndexList(parametersIndexes[index]);
+                string[] parametersIndexList = parametersIndexUtilities.GetParametersIndexList(parametersIndexes[index]);
                 foreach (string parameterIndex in parametersIndexList)
                 {
-                    string arrayPVSName = parameterIndex.Split(',')[2].Split('.')[0];
+                    string arrayPVSName = parametersIndexUtilities.GetParameterValueStorageName(parameterIndex);
                     FieldInfo arrayPVS = component.GetType().GetField(arrayPVSName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
                     if (arrayPVS == null)
                     {
                         IGivenWhenThenDeclaration genericComponentInteface = (IGivenWhenThenDeclaration)Activator.CreateInstance(typeof(T), string.Empty);
                         UnityTestBDDError error = new UnityTestBDDError();
-                        error.Message = "The ParametersValuesStorage array " + arrayPVSName + " for the parameter " + parameterIndex.Split(',')[1] + " is not found in " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
+                        error.Message = "The ParametersValuesStorage array " + arrayPVSName + " for the parameter " + parametersIndexUtilities.GetParameterFullName(parameterIndex) + " is not found in " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
                         error.Component = component;
                         error.MethodMethodInfo = this.GetMethodInfo(chosenMethods[index], component);
                         error.StepType = typeof(T);
@@ -306,31 +294,6 @@ namespace HudDimension.UnityTestBDD
                         }
                     }
                 }
-            }
-
-            return result;
-        }
-
-        private string[] GetParametersIndexList(string parametersIndex)
-        {
-            string[] result = null;
-            List<string> resultList = new List<string>();
-            if (parametersIndex == null || parametersIndex.Equals(string.Empty))
-            {
-                result = new string[0];
-            }
-            else
-            {
-                string[] stringSplitted = parametersIndex.Split(';');
-                foreach (string element in stringSplitted)
-                {
-                    if (!element.Equals(string.Empty))
-                    {
-                        resultList.Add(element);
-                    }
-                }
-
-                result = resultList.ToArray();
             }
 
             return result;

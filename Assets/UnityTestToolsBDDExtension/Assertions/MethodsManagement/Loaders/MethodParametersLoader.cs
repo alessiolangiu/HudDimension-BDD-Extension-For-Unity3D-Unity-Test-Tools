@@ -1,18 +1,4 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="MethodParametersLoader.cs" company="Hud Dimesion">
-//     Copyright (c) Hud Dimension. All rights reserved.
-// </copyright>
-//
-// <disclaimer>
-// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-// </disclaimer>
-//
-// <author>Alessio Langiu</author>
-// <email>alessio.langiu@huddimension.co.uk</email>
-//-----------------------------------------------------------------------
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -41,23 +27,23 @@ namespace HudDimension.UnityTestBDD
         private static ParameterLocation LoadParameterLocation(object obj, MethodInfo method, ParameterInfo parameter, string id, string parametersIndex)
         {
             // parametersIndex Format: ;paramtype,className.methodName.paramName.fullId,arrayName.Array.data[index];
+            ParametersIndexUtilities parametersIndexUtilities = new ParametersIndexUtilities();
             ParameterLocation result = null;
             if (parametersIndex != null)
             {
-                string parameterFullName = method.DeclaringType.Name + "." + method.Name + "." + parameter.Name + "." + id;
-                string[] parameterIndexes = parametersIndex.Split(';');
-                foreach (string pi in parameterIndexes)
+                string expectedParameterFullName = parametersIndexUtilities.GetParameterFullName(method.DeclaringType.Name, method.Name, parameter.Name, id);
+                string[] parameterIndexes = parametersIndexUtilities.GetParametersIndexList(parametersIndex);
+                foreach (string parameterIndex in parameterIndexes)
                 {
-                    if (!pi.Equals(string.Empty))
+                    if (!parameterIndex.Equals(string.Empty))
                     {
-                        string[] parameterDeclarations = pi.Split(',');
-                        string parameterName = parameterDeclarations[1];
-                        string parameterLocation = parameterDeclarations[2];
-                        if (parameterName.Equals(parameterFullName))
+                        string parameterFullName = parametersIndexUtilities.GetParameterFullName(parameterIndex);
+                        string parameterLocation = parametersIndexUtilities.GetParameterValueStorageLocation(parameterIndex);
+                        if (parameterFullName.Equals(expectedParameterFullName))
                         {
-                            string arrayName = parameterLocation.Split('.')[0];
-                            string arrayIndex = parameterLocation.Split('[')[1].Split(']')[0];
-                            int index = int.Parse(arrayIndex);
+                            string arrayName = parametersIndexUtilities.GetParameterValueStorageName(parameterIndex);
+
+                            int index = parametersIndexUtilities.GetParameterValueStorageLocationIndex(parameterIndex);
                             result = new ParameterLocation();
                             ArrayStorageUtilities arrayStorageUtilities = new ArrayStorageUtilities();
                             FieldInfo field = arrayStorageUtilities.GetArrayStorageFieldInfoByName(obj, arrayName);
@@ -74,26 +60,26 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
-        private static object LoadParameterValue(object obj, MethodInfo method, ParameterInfo parameter, string id, string parametersIndex)
+        private static object LoadParameterValue(object obj, MethodInfo method, ParameterInfo parameter, string id, string parametersIndexes)
         {
             // parametersIndex Format: ;paramtype,className.methodName.paramName.fullId,arrayName.Array.data[index];
             object result = null;
-            if (parametersIndex != null)
+            ParametersIndexUtilities parametersIndexUtilities = new ParametersIndexUtilities();
+            if (parametersIndexes != null)
             {
-                string parameterFullName = method.DeclaringType.Name + "." + method.Name + "." + parameter.Name + "." + id;
-                string[] parameterIndexes = parametersIndex.Split(';');
-                foreach (string parameterIndex in parameterIndexes)
+                string expectedParameterFullName = parametersIndexUtilities.GetParameterFullName(method.DeclaringType.Name, method.Name, parameter.Name, id);
+                string[] parametersIndexesList = parametersIndexUtilities.GetParametersIndexList(parametersIndexes);
+                foreach (string parameterIndex in parametersIndexesList)
                 {
                     if (!parameterIndex.Equals(string.Empty))
                     {
-                        string[] parameterDeclarations = parameterIndex.Split(',');
-                        string parameterName = parameterDeclarations[1];
-                        string parameterLocation = parameterDeclarations[2];
-                        if (parameterName.Equals(parameterFullName))
+                        string parameterFullName = parametersIndexUtilities.GetParameterFullName(parameterIndex);
+                        string parameterLocation = parametersIndexUtilities.GetParameterValueStorageLocation(parameterIndex);
+                        if (parameterFullName.Equals(expectedParameterFullName))
                         {
-                            string arrayName = parameterLocation.Split('.')[0];
-                            string arrayIndex = parameterLocation.Split('[')[1].Split(']')[0];
-                            int index = int.Parse(arrayIndex);
+                            string arrayName = parametersIndexUtilities.GetParameterValueStorageName(parameterIndex);
+
+                            int index = parametersIndexUtilities.GetParameterValueStorageLocationIndex(parameterIndex);
                             result = GetValue(obj, arrayName, index);
                         }
                     }
