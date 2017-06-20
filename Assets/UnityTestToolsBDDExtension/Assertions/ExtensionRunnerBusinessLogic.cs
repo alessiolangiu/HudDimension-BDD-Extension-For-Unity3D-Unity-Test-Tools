@@ -252,53 +252,17 @@ namespace HudDimension.UnityTestBDD
             string[] thenMethods,
             string[] thenParameters)
         {
-            Component[] bddComponents = null;
             List<UnityTestBDDError> errors = new List<UnityTestBDDError>();
             ComponentsFilter bddComponentsFilter = new ComponentsFilter();
-            try
-            {
-                bddComponents = bddComponentsFilter.Filter(allComponents);
-                if (bddComponents.Length == 0)
-                {
-                    UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "No BDD Component found.";
-                    error.MethodMethodInfo = null;
-                    error.Component = null;
-                    error.LockRunnerInpectorOnErrors = true;
-                    error.ShowButton = false;
-                    errors.Add(error);
-                }
-            }
-            catch (DuplicateBDDComponentException ex)
-            {
-                UnityTestBDDError error = new UnityTestBDDError();
-                error.Message = ex.Message;
-                error.MethodMethodInfo = null;
-                error.Component = null;
-                error.LockRunnerInpectorOnErrors = true;
-                error.ShowButton = false;
-                errors.Add(error);
-                bddComponents = new Component[0];
-            }
-            catch (StaticBDDException ex)
-            {
-                UnityTestBDDError error = new UnityTestBDDError();
-                error.Message = ex.Message;
-                error.MethodMethodInfo = null;
-                error.Component = null;
-                error.LockRunnerInpectorOnErrors = true;
-                error.ShowButton = false;
-                errors.Add(error);
-                bddComponents = new Component[0];
-            }
+            Component[] bddComponents = bddComponentsFilter.Filter(allComponents);
+            ComponentsChecker checkForComponentsErrors = new ComponentsChecker();
+            errors.AddRange(checkForComponentsErrors.Check(bddComponents));
 
             if (bddComponents.Length > 0)
             {
                 bool isStaticScenario = false;
-                ComponentsChecker checkForComponentsErrors = new ComponentsChecker();
                 foreach (Component component in bddComponents)
                 {
-                    errors.AddRange(checkForComponentsErrors.Check(component));
                     if (typeof(StaticBDDComponent).IsAssignableFrom(component.GetType()))
                     {
                         isStaticScenario = true;

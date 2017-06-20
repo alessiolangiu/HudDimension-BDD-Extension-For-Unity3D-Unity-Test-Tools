@@ -12,7 +12,10 @@ namespace HudDimension.UnityTestBDD
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
 
-            List<UnityTestBDDError> partialResult = this.CheckDuplicateComponents(components);
+            List<UnityTestBDDError> partialResult = this.CheckEnoughAttachedComponents(components);
+            result.AddRange(partialResult);
+
+            partialResult = this.CheckDuplicateComponents(components);
             result.AddRange(partialResult);
 
             partialResult = this.CheckDuplicateStaticComponents(components);
@@ -39,8 +42,14 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "There are more than one Static BDD Component. Only one is allowed";
                     error.Component = null;
                     error.MethodMethodInfo = null;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = false;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
+                    
                     result.Add(error);
                     return result;
                 }
@@ -116,8 +125,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The component " + component.GetType().Name + " is duplicated.";
                     error.Component = component;
                     error.MethodMethodInfo = null;
-                    error.LockRunnerInpectorOnErrors = true;
-                    error.ShowButton = true;
+                    error.LockRunnerInspectorOnErrors = true;
+                    error.ShowButton = false;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
                 else
@@ -256,8 +270,14 @@ namespace HudDimension.UnityTestBDD
                 error.Message = "The component " + component.GetType().Name + " has not Given components";
                 error.Component = component;
                 error.MethodMethodInfo = null;
-                error.LockRunnerInpectorOnErrors = true;
+                error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = true;
+                error.ShowRedEsclamationMark = true;
+                error.StepType = null;
+                error.Index = 0;
+                error.LockBuildParameters = true;
+                error.LockParametersRows = true;
+
                 result.Add(error);
             }
 
@@ -267,8 +287,14 @@ namespace HudDimension.UnityTestBDD
                 error.Message = "The component " + component.GetType().Name + " has not When components";
                 error.Component = component;
                 error.MethodMethodInfo = null;
-                error.LockRunnerInpectorOnErrors = true;
+                error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = true;
+                error.ShowRedEsclamationMark = true;
+                error.StepType = null;
+                error.Index = 0;
+                error.LockBuildParameters = true;
+                error.LockParametersRows = true;
+
                 result.Add(error);
             }
 
@@ -278,8 +304,13 @@ namespace HudDimension.UnityTestBDD
                 error.Message = "The component " + component.GetType().Name + " has not Then components";
                 error.Component = component;
                 error.MethodMethodInfo = null;
-                error.LockRunnerInpectorOnErrors = true;
+                error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = true;
+                error.ShowRedEsclamationMark = true;
+                error.StepType = null;
+                error.Index = 0;
+                error.LockBuildParameters = true;
+                error.LockParametersRows = true;
                 result.Add(error);
             }
 
@@ -325,8 +356,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The method " + method.DeclaringType.Name + "." + method.Name + " is not allowed to have parameters";
                     error.Component = null;
                     error.MethodMethodInfo = method;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -381,11 +417,13 @@ namespace HudDimension.UnityTestBDD
 
                         error.Component = null;
                         error.MethodMethodInfo = fullMethodDescriptionList.Last().Method;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
                         error.LockBuildParameters = true;
                         error.ShowRedEsclamationMark = true;
-
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
                     else
@@ -425,6 +463,28 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
+        public List<UnityTestBDDError> CheckEnoughAttachedComponents(Component[] components)
+        {
+            List<UnityTestBDDError> result = new List<UnityTestBDDError>();
+            if (components!=null && components.Length == 0)
+            {
+                UnityTestBDDError error = new UnityTestBDDError();
+                error.Message = "Please, add your BDD Components and enjoy BDD.";
+                error.Component = null;
+                error.MethodMethodInfo = null;
+                error.LockRunnerInspectorOnErrors = true;
+                error.ShowButton = false;
+                error.LockBuildParameters = true;
+                error.ShowRedEsclamationMark = false;
+                error.StepType = null;
+                error.Index = 0;
+                error.LockParametersRows = true;
+                result.Add(error);
+            }
+
+            return result;
+        }
+
         private List<UnityTestBDDError> CheckStepMethodReturnValue(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -451,8 +511,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " doesn't return an IAssertionResult value.";
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -489,8 +554,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "Method " + methodInfo.DeclaringType.Name + "." + method + " not found. It is referenced in a CallBefore attribute for the method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name;
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -526,8 +596,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has a CallBefore attribute but it is not a BDD Step Method.";
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -577,8 +652,13 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The Given declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a wrong ExecutionOrder value: it must be >0";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
 
@@ -593,8 +673,13 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The Given declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value. Check the others Given methods.";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
                     else
@@ -613,8 +698,13 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The When declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a wrong ExecutionOrder value: it must be >0";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
 
@@ -629,8 +719,13 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The When declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value. Check the others When methods.";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
                     else
@@ -649,8 +744,14 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The Then declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a wrong ExecutionOrder value: it must be >0";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
+
                         result.Add(error);
                     }
 
@@ -665,8 +766,13 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The Then declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value. Check the others Then methods.";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
                     else
@@ -684,8 +790,14 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The component " + component.GetType().Name + " has a missing Given.ExecutionOrder: " + givenIndex;
                     error.Component = component;
                     error.MethodMethodInfo = null;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
+
                     result.Add(error);
                 }
             }
@@ -698,8 +810,14 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The component " + component.GetType().Name + " has a missing When.ExecutionOrder: " + whenIndex;
                     error.Component = component;
                     error.MethodMethodInfo = null;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
+
                     result.Add(error);
                 }
             }
@@ -712,8 +830,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The component " + component.GetType().Name + " has a missing Then.ExecutionOrder: " + thenIndex;
                     error.Component = component;
                     error.MethodMethodInfo = null;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -737,8 +860,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has a wrong value for CallBefore.ExecutionOrder: " + callBefore.ExecutionOrder + "\n It must be >0";
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
 
@@ -753,8 +881,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has duplicate CallBefore.ExecutionOrder: " + callBefore.ExecutionOrder;
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
                 else
@@ -771,8 +904,13 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has a missing CallBefore.ExecutionOrder: " + index;
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -789,10 +927,6 @@ namespace HudDimension.UnityTestBDD
             {
                 List<UnityTestBDDError> partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(BDDMethodBaseAttribute));
                 result.AddRange(partialResult);
-                //partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(WhenBaseAttribute));
-                //result.AddRange(partialResult);
-                //partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(ThenBaseAttribute));
-                //result.AddRange(partialResult);
             }
 
             return result;
@@ -811,14 +945,17 @@ namespace HudDimension.UnityTestBDD
                 }
                 else
                 {
-                    //IGivenWhenThenDeclaration genericComponentInteface = (IGivenWhenThenDeclaration)Activator.CreateInstance(stepType, string.Empty);
                     UnityTestBDDError error = new UnityTestBDDError();
                     error.Message = "There are more than one step method with the name " + component.GetType().Name + "." + method.Name + " You can have only one method with the same name.";
                     error.Component = component;
                     error.MethodMethodInfo = method;
-                    error.LockRunnerInpectorOnErrors = true;
+                    error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-
+                    error.ShowRedEsclamationMark = true;
+                    error.StepType = null;
+                    error.Index = 0;
+                    error.LockBuildParameters = true;
+                    error.LockParametersRows = true;
                     result.Add(error);
                 }
             }
@@ -842,8 +979,14 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " has more than one ValuesArrayStorage definition.";
                         error.Component = component;
                         error.MethodMethodInfo = null;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
+
                         result.Add(error);
                     }
 
@@ -855,8 +998,13 @@ namespace HudDimension.UnityTestBDD
                             error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " is not an array.";
                             error.Component = component;
                             error.MethodMethodInfo = null;
-                            error.LockRunnerInpectorOnErrors = true;
+                            error.LockRunnerInspectorOnErrors = true;
                             error.ShowButton = true;
+                            error.ShowRedEsclamationMark = true;
+                            error.StepType = null;
+                            error.Index = 0;
+                            error.LockBuildParameters = true;
+                            error.LockParametersRows = true;
                             result.Add(error);
                         }
                         else
@@ -867,8 +1015,14 @@ namespace HudDimension.UnityTestBDD
                                 error.Message = "The component " + component.GetType().Name + " has more than one ValuesArrayStorage for the type " + fieldInfo.FieldType.GetElementType();
                                 error.Component = component;
                                 error.MethodMethodInfo = null;
-                                error.LockRunnerInpectorOnErrors = true;
+                                error.LockRunnerInspectorOnErrors = true;
                                 error.ShowButton = true;
+                                error.ShowRedEsclamationMark = true;
+                                error.StepType = null;
+                                error.Index = 0;
+                                error.LockBuildParameters = true;
+                                error.LockParametersRows = true;
+
                                 result.Add(error);
                             }
                             else
@@ -885,8 +1039,13 @@ namespace HudDimension.UnityTestBDD
                                     error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " is private but it hasn't the [SerializedField] attribute. The inspector will not see it.";
                                     error.Component = component;
                                     error.MethodMethodInfo = null;
-                                    error.LockRunnerInpectorOnErrors = true;
+                                    error.LockRunnerInspectorOnErrors = true;
                                     error.ShowButton = true;
+                                    error.ShowRedEsclamationMark = true;
+                                    error.StepType = null;
+                                    error.Index = 0;
+                                    error.LockBuildParameters = true;
+                                    error.LockParametersRows = true;
                                     result.Add(error);
                                 }
                             }
@@ -909,8 +1068,13 @@ namespace HudDimension.UnityTestBDD
                                 error.Message = "There is not ValuesArrayStorage for the type " + parameter.ParameterType.Name + " for the parameter " + parameter.Name + " for the method " + component.GetType().Name + "." + method.Name;
                                 error.Component = component;
                                 error.MethodMethodInfo = null;
-                                error.LockRunnerInpectorOnErrors = true;
+                                error.LockRunnerInspectorOnErrors = true;
                                 error.ShowButton = true;
+                                error.ShowRedEsclamationMark = true;
+                                error.StepType = null;
+                                error.Index = 0;
+                                error.LockBuildParameters = true;
+                                error.LockParametersRows = true;
                                 result.Add(error);
                             }
                         }
@@ -941,11 +1105,14 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "The method " + callBeforeMethod.Name + " has a recursive call. Recursive calls are not allowed.\n Call chain:\n" + newCallChain.GetCallChainText();
                         error.Component = null;
                         error.MethodMethodInfo = callBeforeMethod;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
                         error.LockBuildParameters = true;
                         error.ShowRedEsclamationMark = true;
-
+                        error.StepType = null;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
                         result.Add(error);
                     }
                     else

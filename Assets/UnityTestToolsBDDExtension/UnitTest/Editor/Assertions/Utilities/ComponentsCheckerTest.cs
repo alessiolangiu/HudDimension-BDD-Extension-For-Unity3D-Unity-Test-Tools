@@ -904,5 +904,32 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckParametersUniqueness(component);
             Assert.AreEqual(0, result.Count, "The method CheckParametersUniqueness doesn't check properly");
         }
+
+        [Test(Author = "AlessioLangiu")]
+        [Description("CheckEnoughAttachedComponents method should return the expected list of UnityTestBDDError objects given a non empty list of components")]
+        public void CheckEnoughAttachedComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ANonEmptyListOfComponents()
+        {
+            Component component = UnitTestUtility.CreateComponent<ComponentsCheckerTestFirstDynamicComponent>();
+            Component[] components = new Component[1] { component };
+            ComponentsChecker checkForErrors = new ComponentsChecker();
+
+            List<UnityTestBDDError> result = checkForErrors.CheckEnoughAttachedComponents(components);
+            Assert.AreEqual(0, result.Count, "The method CheckEnoughAttachedComponents doesn't check properly");
+        }
+
+        [Test(Author = "AlessioLangiu")]
+        [Description("CheckEnoughAttachedComponents method should return the expected list of UnityTestBDDError objects given an empty list of components")]
+        public void CheckEnoughAttachedComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AnEmptyListOfComponents()
+        {
+            Component[] components = new Component[0];
+            ComponentsChecker checkForErrors = new ComponentsChecker();
+
+            List<UnityTestBDDError> result = checkForErrors.CheckEnoughAttachedComponents(components);
+            Assert.AreEqual(1, result.Count, "The method CheckEnoughAttachedComponents doesn't check properly");
+            string expectedMessage = "Please, add your BDD Components and enjoy BDD.";
+            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckEnoughAttachedComponents doesn't resturn the right message");
+            Assert.IsNull(result[0].Component, "The method CheckEnoughAttachedComponents doesn't resturn the right Component");
+            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckParametersUniqueness doesn't resturn the right MethodInfo");
+        }
     }
 }

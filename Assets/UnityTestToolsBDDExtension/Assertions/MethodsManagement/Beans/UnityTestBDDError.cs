@@ -20,7 +20,7 @@ namespace HudDimension.UnityTestBDD
 
         public bool ShowButton { get; set; }
 
-        public bool LockRunnerInpectorOnErrors { get; set; }
+        public bool LockRunnerInspectorOnErrors { get; set; }
 
         public bool LockBuildParameters { get; set; }
 

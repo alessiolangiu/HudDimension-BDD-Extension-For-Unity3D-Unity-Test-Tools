@@ -71,7 +71,7 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "Incomplete settings detected on " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
                     error.StepType = typeof(T);
                     error.Index = index;
-                    error.LockRunnerInpectorOnErrors = false;
+                    error.LockRunnerInspectorOnErrors = false;
                     error.ShowButton = false;
                     error.LockBuildParameters = false;
                     error.LockParametersRows = false;
@@ -95,7 +95,7 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "Method " + chosenMethods[index] + " not found on " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
                     error.StepType = typeof(T);
                     error.Index = index;
-                    error.LockRunnerInpectorOnErrors = false;
+                    error.LockRunnerInspectorOnErrors = false;
                     error.ShowButton = false;
                     error.LockBuildParameters = true;
                     error.LockParametersRows = false;
@@ -159,7 +159,7 @@ namespace HudDimension.UnityTestBDD
                 error.MethodMethodInfo = methodInfo;
                 error.StepType = typeof(T);
                 error.Index = chosenMethodIndex;
-                error.LockRunnerInpectorOnErrors = false;
+                error.LockRunnerInspectorOnErrors = false;
                 error.ShowButton = true;
                 error.LockBuildParameters = true;
                 error.LockParametersRows = true;
@@ -174,7 +174,7 @@ namespace HudDimension.UnityTestBDD
                 error.MethodMethodInfo = methodInfo;
                 error.StepType = typeof(T);
                 error.Index = chosenMethodIndex;
-                error.LockRunnerInpectorOnErrors = false;
+                error.LockRunnerInspectorOnErrors = false;
                 error.ShowButton = true;
                 error.LockBuildParameters = true;
                 error.LockParametersRows = true;
@@ -197,7 +197,7 @@ namespace HudDimension.UnityTestBDD
                     error.Message = "The component for the method " + chosenMethods[index] + " is not found  in " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
                     error.StepType = typeof(T);
                     error.Index = index;
-                    error.LockRunnerInpectorOnErrors = false;
+                    error.LockRunnerInspectorOnErrors = false;
                     error.ShowButton = false;
                     error.LockBuildParameters = true;
                     error.LockParametersRows = true;
@@ -230,7 +230,7 @@ namespace HudDimension.UnityTestBDD
                         error.MethodMethodInfo = this.GetMethodInfo(chosenMethods[index], component);
                         error.StepType = typeof(T);
                         error.Index = index;
-                        error.LockRunnerInpectorOnErrors = false;
+                        error.LockRunnerInspectorOnErrors = false;
                         error.ShowButton = true;
                         error.LockBuildParameters = true;
                         error.LockParametersRows = true;

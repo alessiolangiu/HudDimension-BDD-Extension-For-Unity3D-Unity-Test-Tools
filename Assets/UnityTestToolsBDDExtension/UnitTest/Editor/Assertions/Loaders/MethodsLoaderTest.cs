@@ -142,27 +142,29 @@ namespace HudDimension.UnityTestBDD
         }
 
         [Test(Author = "AlessioLangiu")]
-        [Description("LoadStepMethods method should throw an exception given a Static component with a missing ExecutionOrder value")]
-        public void LoadStepMethods_Should_ThrowAndException_Given_AStaticComponentWithAMissingExecutionOrderValue()
+        [Description("LoadStepMethods method should return an empty list given a Static component with a missing ExecutionOrder value")]
+        public void LoadStepMethods_Should_ReturnAnEmptyList_Given_AStaticComponentWithAMissingExecutionOrderValue()
         {
             Component[] components = new Component[1] { UnitTestUtility.CreateComponent<MethodsLoaderTestSecondStaticComponent>() };
 
             BaseMethodDescriptionBuilder baseMethodDescriptionBuilder = new BaseMethodDescriptionBuilder();
             MethodsFilterByStepType methodsFilterByStepType = new MethodsFilterByStepType();
             MethodsLoader bddStepMethodsLoader = new MethodsLoader(baseMethodDescriptionBuilder, methodsFilterByStepType);
-            Assert.Throws<StaticBDDException>(() => { bddStepMethodsLoader.LoadStepMethods<GivenBaseAttribute>(components); });
+            List<BaseMethodDescription> result= bddStepMethodsLoader.LoadStepMethods<GivenBaseAttribute>(components);
+            Assert.AreEqual(0, result.Count, "The method LoadStepMethods does not return the right list.");
         }
 
         [Test(Author = "AlessioLangiu")]
-        [Description("LoadStepMethods method should throw an exception given a Static component with a repeted ExecutionOrder value")]
-        public void LoadStepMethods_Should_ThroeAnException_Given_AStaticComponentWithARepetedExecutionOrderValue()
+        [Description("LoadStepMethods method should return an empty list given a Static component with a repeted ExecutionOrder value")]
+        public void LoadStepMethods_Should_ReturnAnEmptyList_Given_AStaticComponentWithARepetedExecutionOrderValue()
         {
             Component[] components = new Component[1] { UnitTestUtility.CreateComponent<MethodsLoaderTestThirdStaticComponent>() };
 
             BaseMethodDescriptionBuilder baseMethodDescriptionBuilder = new BaseMethodDescriptionBuilder();
             MethodsFilterByStepType methodsFilterByStepType = new MethodsFilterByStepType();
             MethodsLoader bddStepMethodsLoader = new MethodsLoader(baseMethodDescriptionBuilder, methodsFilterByStepType);
-            Assert.Throws<StaticBDDException>(() => { bddStepMethodsLoader.LoadStepMethods<GivenBaseAttribute>(components); });
+            List<BaseMethodDescription> result = bddStepMethodsLoader.LoadStepMethods<GivenBaseAttribute>(components);
+            Assert.AreEqual(0, result.Count, "The method LoadStepMethods does not return the right list.");
         }
     }
 }

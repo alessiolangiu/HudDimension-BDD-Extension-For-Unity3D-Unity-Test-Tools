@@ -104,7 +104,9 @@ namespace HudDimension.UnityTestBDD
             {
                 if (methodsArray[method.ExecutionOrder - 1] != null)
                 {
-                    throw new StaticBDDException("Found more than one method with ExecutionOrder = " + method.ExecutionOrder);
+                    // throw new StaticBDDException("Found more than one method with ExecutionOrder = " + method.ExecutionOrder);
+                    return new List<BaseMethodDescription>();
+                    
                 }
 
                 methodsArray[method.ExecutionOrder - 1] = method;
@@ -118,7 +120,8 @@ namespace HudDimension.UnityTestBDD
                 }
                 else
                 {
-                    throw new StaticBDDException("The ExecutionOrder " + (index + 1) + " is missing");
+                    // throw new StaticBDDException("The ExecutionOrder " + (index + 1) + " is missing");
+                    return new List<BaseMethodDescription>();
                 }
             }
 

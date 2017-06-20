@@ -27,43 +27,9 @@ namespace HudDimension.UnityTestBDD
             Component[] components = script.gameObject.GetComponents<Component>();
             List<UnityTestBDDError> errors = new List<UnityTestBDDError>();
             ComponentsFilter bddComponentsFilter = new ComponentsFilter();
-            Component[] bddComponents = new Component[0];
-
-            try
-            {
-                bddComponents = bddComponentsFilter.Filter(components);
-                if (bddComponents.Length == 0)
-                {
-                    UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "Please, add your BDD Components and enjoy BDD.";
-                    error.MethodMethodInfo = null;
-                    error.Component = null;
-                    error.LockRunnerInpectorOnErrors = true;
-                    error.ShowButton = false;
-                    error.ShowRedEsclamationMark = false;
-                    errors.Add(error);
-                }
-            }
-            catch (DuplicateBDDComponentException ex)
-            {
-                UnityTestBDDError error = new UnityTestBDDError();
-                error.Message = ex.Message;
-                error.MethodMethodInfo = null;
-                error.Component = null;
-                error.LockRunnerInpectorOnErrors = true;
-                error.ShowButton = false;
-                errors.Add(error);
-            }
-            catch (StaticBDDException ex)
-            {
-                UnityTestBDDError error = new UnityTestBDDError();
-                error.Message = ex.Message;
-                error.MethodMethodInfo = null;
-                error.Component = null;
-                error.LockRunnerInpectorOnErrors = true;
-                error.ShowButton = false;
-                errors.Add(error);
-            }
+            Component[] bddComponents = bddComponentsFilter.Filter(components);
+            ComponentsChecker checkForComponentsErrors = new ComponentsChecker();
+            errors.AddRange(checkForComponentsErrors.Check(bddComponents));
 
             if (!this.RunnerInspectorIsLockedOnErrors(errors) && bddComponents.Length > 0)
             {
@@ -75,8 +41,13 @@ namespace HudDimension.UnityTestBDD
                         error.Message = "There are some errors in the BDDComponents. Please, check and resolve them before continue.";
                         error.MethodMethodInfo = null;
                         error.Component = null;
-                        error.LockRunnerInpectorOnErrors = true;
+                        error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = false;
+                        error.Index = 0;
+                        error.LockBuildParameters = true;
+                        error.LockParametersRows = true;
+                        error.ShowRedEsclamationMark = true;
+                        error.StepType = null;
                         errors.Add(error);
                         break;
                     }
@@ -164,7 +135,7 @@ namespace HudDimension.UnityTestBDD
                 float width = unityInterface.EditorGUIUtilityCurrentViewWidth();
                 int numberOfSeparatorChars = (int)width / 7;
                 string text = string.Empty.PadLeft(numberOfSeparatorChars, '_');
-                
+
                 unityInterface.EditorGUILayoutLabelFieldTruncate(text, width);
             }
         }
@@ -252,7 +223,7 @@ namespace HudDimension.UnityTestBDD
         {
             foreach (UnityTestBDDError error in errors)
             {
-                if (error.LockRunnerInpectorOnErrors)
+                if (error.LockRunnerInspectorOnErrors)
                 {
                     return true;
                 }
