@@ -1,4 +1,19 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="RunnerEditorBusinessLogicErrorsManagementTest.cs" company="Hud Dimension">
+//     Copyright (c) Hud Dimension. All rights reserved.
+//     http://www.HudDimension.co.uk
+// </copyright>
+//
+// <disclaimer>
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+// </disclaimer>
+//
+// <author>Alessio Langiu</author>
+// <email>alessio.langiu@huddimension.co.uk</email>
+//-----------------------------------------------------------------------
+using System.Collections.Generic;
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
@@ -14,7 +29,7 @@ namespace HudDimension.UnityTestBDD
         [Description("Errors method should call the expected Unity Editor statements given a list containing one UnityTestBDDError object")]
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingOneUnityTestBDDErrorObject()
         {
-            unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
+            UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
 
             RunnerEditorBusinessLogicErrorsManagement runnerEditorBusinessLogicErrorsManagement = new RunnerEditorBusinessLogicErrorsManagement();
             string expectedMessage = "Message";
@@ -73,7 +88,7 @@ namespace HudDimension.UnityTestBDD
         [Description("Errors method should call the expected Unity Editor statements given a list containing two UnityTestBDDError object")]
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingTwoUnityTestBDDErrorObject()
         {
-            unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
+            UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
             RunnerEditorBusinessLogicErrorsManagement runnerEditorBusinessLogicErrorsManagement = new RunnerEditorBusinessLogicErrorsManagement();
             string expectedFirstMessage = "FirstMessage";
             string expectedSecondMessage = "SecondMessage";

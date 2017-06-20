@@ -1,4 +1,19 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MethodsLoaderTest.cs" company="Hud Dimension">
+//     Copyright (c) Hud Dimension. All rights reserved.
+//     http://www.HudDimension.co.uk
+// </copyright>
+//
+// <disclaimer>
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+// </disclaimer>
+//
+// <author>Alessio Langiu</author>
+// <email>alessio.langiu@huddimension.co.uk</email>
+//-----------------------------------------------------------------------
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -150,7 +165,7 @@ namespace HudDimension.UnityTestBDD
             BaseMethodDescriptionBuilder baseMethodDescriptionBuilder = new BaseMethodDescriptionBuilder();
             MethodsFilterByStepType methodsFilterByStepType = new MethodsFilterByStepType();
             MethodsLoader bddStepMethodsLoader = new MethodsLoader(baseMethodDescriptionBuilder, methodsFilterByStepType);
-            List<BaseMethodDescription> result= bddStepMethodsLoader.LoadStepMethods<GivenBaseAttribute>(components);
+            List<BaseMethodDescription> result = bddStepMethodsLoader.LoadStepMethods<GivenBaseAttribute>(components);
             Assert.AreEqual(0, result.Count, "The method LoadStepMethods does not return the right list.");
         }
 

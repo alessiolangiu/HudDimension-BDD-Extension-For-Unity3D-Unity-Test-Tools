@@ -1,4 +1,19 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ComponentsChecker.cs" company="Hud Dimension">
+//     Copyright (c) Hud Dimension. All rights reserved.
+//     http://www.HudDimension.co.uk
+// </copyright>
+//
+// <disclaimer>
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+// </disclaimer>
+//
+// <author>Alessio Langiu</author>
+// <email>alessio.langiu@huddimension.co.uk</email>
+//-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -49,7 +64,7 @@ namespace HudDimension.UnityTestBDD
                     error.Index = 0;
                     error.LockBuildParameters = true;
                     error.LockParametersRows = true;
-                    
+
                     result.Add(error);
                     return result;
                 }
@@ -466,7 +481,7 @@ namespace HudDimension.UnityTestBDD
         public List<UnityTestBDDError> CheckEnoughAttachedComponents(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
-            if (components!=null && components.Length == 0)
+            if (components != null && components.Length == 0)
             {
                 UnityTestBDDError error = new UnityTestBDDError();
                 error.Message = "Please, add your BDD Components and enjoy BDD.";

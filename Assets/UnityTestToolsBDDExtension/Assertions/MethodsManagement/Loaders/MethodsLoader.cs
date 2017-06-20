@@ -1,4 +1,19 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MethodsLoader.cs" company="Hud Dimension">
+//     Copyright (c) Hud Dimension. All rights reserved.
+//     http://www.HudDimension.co.uk
+// </copyright>
+//
+// <disclaimer>
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+// </disclaimer>
+//
+// <author>Alessio Langiu</author>
+// <email>alessio.langiu@huddimension.co.uk</email>
+//-----------------------------------------------------------------------
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -104,9 +119,7 @@ namespace HudDimension.UnityTestBDD
             {
                 if (methodsArray[method.ExecutionOrder - 1] != null)
                 {
-                    // throw new StaticBDDException("Found more than one method with ExecutionOrder = " + method.ExecutionOrder);
                     return new List<BaseMethodDescription>();
-                    
                 }
 
                 methodsArray[method.ExecutionOrder - 1] = method;
@@ -120,7 +133,6 @@ namespace HudDimension.UnityTestBDD
                 }
                 else
                 {
-                    // throw new StaticBDDException("The ExecutionOrder " + (index + 1) + " is missing");
                     return new List<BaseMethodDescription>();
                 }
             }

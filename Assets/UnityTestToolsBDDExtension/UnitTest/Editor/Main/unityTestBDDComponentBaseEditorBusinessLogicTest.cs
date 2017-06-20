@@ -1,4 +1,19 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="unityTestBDDComponentBaseEditorBusinessLogicTest.cs" company="Hud Dimension">
+//     Copyright (c) Hud Dimension. All rights reserved.
+//     http://www.HudDimension.co.uk
+// </copyright>
+//
+// <disclaimer>
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+// </disclaimer>
+//
+// <author>Alessio Langiu</author>
+// <email>alessio.langiu@huddimension.co.uk</email>
+//-----------------------------------------------------------------------
+using System.Collections.Generic;
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
@@ -8,13 +23,13 @@ using UnityEngine;
 namespace HudDimension.UnityTestBDD
 {
     [TestFixture]
-    public class unityTestBDDComponentBaseEditorBusinessLogicTest
+    public class UnityTestBDDComponentBaseEditorBusinessLogicTest
     {
         [Test(Author = "AlessioLangiu")]
         [Description("Errors method should call the expected Unity Editor statements given one error on a component")]
         public void Errors_Should_CallTheExpectedUnityEditorStatements_Given_OneErrorOnAComponent()
         {
-            unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
+            UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
             BaseBDDComponentEditorBusinessLogic unityTestBDDComponentBaseEditorBusinessLogic = new BaseBDDComponentEditorBusinessLogic(component);
             string expectedMessage = "Message";
             List<UnityTestBDDError> errors = new List<UnityTestBDDError>();
@@ -70,7 +85,7 @@ namespace HudDimension.UnityTestBDD
         [Description("Errors method should call the expected Unity Editor statements given two errors on a component")]
         public void Errors_Should_CallTheExpectedUnityEditorStatements_Given_TwoErrorsOnAComponent()
         {
-            unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<unityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
+            UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
             BaseBDDComponentEditorBusinessLogic unityTestBDDComponentBaseEditorBusinessLogic = new BaseBDDComponentEditorBusinessLogic(component);
             string expectedFirstMessage = "FirstMessage";
             string expectedSecondMessage = "SecondMessage";
