@@ -5,7 +5,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class GerarchicOrderTest
     {
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return 1 when the first Gerarchic Order is greater than the second one")]
         public void CompareTo_Should_ReturnOne_When_TheFirstGOIsGreaterThanTheSecondOne()
         {
@@ -22,7 +22,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return 0 When The two Gerarchic Orders have the same value")]
         public void CompareTo_Should_ReturnZero_When_TheTwoGOHaveTheSameValue()
         {
@@ -32,7 +32,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return -1 when the first Gerarchic Order is lower than the second one")]
         public void CompareTo_Should_ReturnOneMinus_When_TheFirstGOIsLowerThanTheSecondOne()
         {
@@ -42,7 +42,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(-1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return 1 when the top value of the first Gerarchic Order is greather than the top value of the second Gerarchic Order and the nested values are equals")]
         public void CompareTo_Should_ReturnOne_When_TheFirstGOGreaterThanTheSecondOne_And_TheNestedOnesHaveSameValues()
         {
@@ -58,7 +58,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return 0 when the top values and the nested values of the two Gerarchic Orders are equals")]
         public void CompareTo_Should_ReturnZero_When_GOrdersAreEqualInTheMainValuesAndInTheNestedValues()
         {
@@ -74,7 +74,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return -1 when the top value of the first Gerarchic Order is lower than the top value of the second Gerarchic Order and the nested values are equals")]
         public void CompareTo_Should_ReturnOneMinus_When_FirstGOHaveALowerMainValueThanTheOtherOneAndAnEqualNestedValue()
         {
@@ -90,7 +90,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(-1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
+        [Test(Author = "AlessioLangiu")]
         [Description("CompareTo method should return 1 when the top values of the two Gerarchic Orders are equals and the nested value of the first one is greater than the nested value of the second one")]
         public void CompareTo_Should_ReturnOne_When_TheMainValuesAreEqualsAndTheFirstNestedValueIsGreaterThanTheSecondOne()
         {
@@ -122,8 +122,8 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(-1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return 1 when the main value of the first Gerarchic Order is greater and the nested values are lower than the second one")]
         public void CompareTo_Should_ReturnOne_When_TheMainValueOfTheFirstGOIsGreater_And_TheNestedValuesAreLowerThanTheSecondOne()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);
@@ -142,8 +142,8 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return 0 when the main and the nested values of the first Gerarchic Order are all equal than the second one")]
         public void CompareTo_Should_ReturnZero_When_TheMainAndTheNestedValuesOfTheFirstGOAreAllEqualThanTheSecondOne()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);
@@ -162,9 +162,9 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
-        public void CompareTo_Should_ReturnOneMinus_When_TheDeeperNestedValueOfTheFirstGOIsLowerThanTheSecondOneAndTheOthersAreEqualaaaaaaaaaaaa()
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return -1 when the deeper nested value of the first Gerarchic Order is lower than the second one and the others are equal")]
+        public void CompareTo_Should_ReturnOneMinus_When_TheDeeperNestedValueOfTheFirstGOIsLowerThanTheSecondOneAndTheOthersAreEqual()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);
             GerarchicOrder mainNested = new GerarchicOrder(1);
@@ -182,8 +182,8 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(-1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return 1 when the values are equal in the first level and the first nested value is greater than the second nested one")]
         public void CompareTo_Should_ReturnOne_When_TheValuesAreEqualInTheFirstLevelAndTheFirstNestedIsGreaterThanTheSecondNested()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);
@@ -202,8 +202,8 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return -1 when the values are equal in the first level and the first nested value is lower than the second nested value")]
         public void CompareTo_Should_ReturnOneMinus_When_TheValuesAreEqualInTheFirstLevelAndTheFirstNestedIsLowerThanTheSecondNested()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);
@@ -222,8 +222,8 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(-1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return 1 when the first Gerarchic Order have not a third nested Gerarchic Order and the second one have it with the other values equals")]
         public void CompareTo_Should_ReturnOne_When_TheFirstGOHaveNotAThirdNestedGOAndTheSecondHaveItWithTheOtherValuesEqual()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);
@@ -240,8 +240,8 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, result, "The comparison between the two GerarchicOrder objects returns a wrong answer");
         }
 
-        [Test]
-        [Description("CompareTo method should return  when ")]
+        [Test(Author = "AlessioLangiu")]
+        [Description("CompareTo method should return -1 when the first Gerarchic Order have a third nested Gerarchic Order and the second one have not it with the other values equal")]
         public void CompareTo_Should_ReturnOneMinus_When_TheFirstGOHaveAThirdNestedGOAndTheSecondHaventItWithTheOtherValuesEqual()
         {
             GerarchicOrder mainGerarchicOrder = new GerarchicOrder(2);

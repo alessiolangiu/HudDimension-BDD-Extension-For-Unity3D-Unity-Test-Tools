@@ -787,12 +787,12 @@ namespace HudDimension.UnityTestBDD
             MethodInfo[] methods = component.GetType().GetMethods();
             foreach (MethodInfo method in methods)
             {
-                List<UnityTestBDDError> partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(GivenBaseAttribute));
+                List<UnityTestBDDError> partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(BDDMethodBaseAttribute));
                 result.AddRange(partialResult);
-                partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(WhenBaseAttribute));
-                result.AddRange(partialResult);
-                partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(ThenBaseAttribute));
-                result.AddRange(partialResult);
+                //partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(WhenBaseAttribute));
+                //result.AddRange(partialResult);
+                //partialResult = this.CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(component, dictionary, method, typeof(ThenBaseAttribute));
+                //result.AddRange(partialResult);
             }
 
             return result;
@@ -811,9 +811,9 @@ namespace HudDimension.UnityTestBDD
                 }
                 else
                 {
-                    IGivenWhenThenDeclaration genericComponentInteface = (IGivenWhenThenDeclaration)Activator.CreateInstance(stepType, string.Empty);
+                    //IGivenWhenThenDeclaration genericComponentInteface = (IGivenWhenThenDeclaration)Activator.CreateInstance(stepType, string.Empty);
                     UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "There are more than one step method with the name " + component.GetType().Name + "." + method.Name + " and the same " + genericComponentInteface.GetStepName() + " BDD declaration.You can have only one method with the same name.";
+                    error.Message = "There are more than one step method with the name " + component.GetType().Name + "." + method.Name + " You can have only one method with the same name.";
                     error.Component = component;
                     error.MethodMethodInfo = method;
                     error.LockRunnerInpectorOnErrors = true;
