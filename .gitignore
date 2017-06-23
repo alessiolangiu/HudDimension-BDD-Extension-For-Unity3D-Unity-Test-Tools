@@ -8,10 +8,11 @@
 # =============== #
 # Unity Assets    #
 # =============== #
-Assets/UIWidgets/
+
 Assets/UnityTestTools/
-Assets/FORGE3D/
-Assets/BaseMale/
+Assets/UnityTestToolsBDDExtension/DevelopmentScene.unity
+Assets/UnityTestToolsBDDExtension/Examples/Scenes/BDDLogo.unity
+
 
 # Visual Studio 2015 cache directory
 /.vs/
