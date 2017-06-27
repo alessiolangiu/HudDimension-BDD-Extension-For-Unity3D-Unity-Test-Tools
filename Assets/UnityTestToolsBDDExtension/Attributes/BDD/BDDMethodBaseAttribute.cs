@@ -20,7 +20,7 @@ namespace HudDimension.UnityTestBDD
     [AttributeUsage(System.AttributeTargets.Method)]
     public abstract class BDDMethodBaseAttribute : Attribute, IGivenWhenThenDeclaration
     {
-        public abstract float GetDelay();
+        public abstract uint GetDelay();
 
         public abstract uint GetExecutionOrder();
 
@@ -28,6 +28,6 @@ namespace HudDimension.UnityTestBDD
 
         public abstract string GetStepScenarioText();
 
-        public abstract float GetTimeout();
+        public abstract uint GetTimeout();
     }
 }

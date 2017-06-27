@@ -23,7 +23,9 @@ public class CreationOfGameObjectBDDStaticFirstScenario : StaticBDDComponent
 
     private const string CubeTag = "CUBE";
 
-    [Given(1, "the program is just started and waiting for an input", Delay = 1000f)]
+    private const string CubeName = "object for test";
+
+    [Given(1, "the software is just started and it is waiting for an input")]
     public IAssertionResult StartedAndWaitingForInput()
     {
         IAssertionResult result = null;
@@ -60,9 +62,9 @@ public class CreationOfGameObjectBDDStaticFirstScenario : StaticBDDComponent
     {
         IAssertionResult result = null;
         GameObject cube = GameObject.FindWithTag(CubeTag);
-        if (cube == null)
+        if (cube == null || !cube.name.Equals(CubeName))
         {
-            result = new AssertionResultRetry("\"object for test\" not found");
+            result = new AssertionResultRetry("\"" + CubeName + "\" not found");
         }
         else if (cube != null && cube.activeSelf)
         {

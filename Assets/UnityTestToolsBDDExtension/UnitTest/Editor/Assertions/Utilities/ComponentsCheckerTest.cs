@@ -61,7 +61,7 @@ namespace HudDimension.UnityTestBDD
             ComponentsChecker checkForErrors = new ComponentsChecker();
             List<UnityTestBDDError> result = checkForErrors.CheckDuplicateStepMethods(components);
             Assert.AreEqual(1, result.Count, "The method CheckForBlankMethods doesn't check properly");
-            string expectedMessage = "There are more than one step method with the name ComponentsCheckerTestSecondDynamicComponent.WhenMethod You can have only one method with the same name.";
+            string expectedMessage = "There are more than one BDD Methods with the name ComponentsCheckerTestSecondDynamicComponent.WhenMethod You can have only one method with the same name.";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckDuplicateStepMethods doesn't resturn the right message");
             Assert.That(component.Equals(result[0].Component), "The method CheckDuplicateStepMethods doesn't resturn the right Component");
             Assert.That(methodInfo1.Equals(result[0].MethodMethodInfo) || methodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckDuplicateStepMethods doesn't resturn the right MethodInfo");
@@ -94,7 +94,7 @@ namespace HudDimension.UnityTestBDD
             ComponentsChecker checkForErrors = new ComponentsChecker();
             List<UnityTestBDDError> result = checkForErrors.CheckDuplicateStepMethods(components);
             Assert.AreEqual(1, result.Count, "The method CheckForBlankMethods doesn't check properly");
-            string expectedMessage = "There are more than one step method with the name ComponentsCheckerTestThirdDynamicComponent.GivenMethod You can have only one method with the same name.";
+            string expectedMessage = "There are more than one BDD Methods with the name ComponentsCheckerTestThirdDynamicComponent.GivenMethod You can have only one method with the same name.";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckDuplicateStepMethods doesn't resturn the right message");
             Assert.That(component.Equals(result[0].Component), "The method CheckDuplicateStepMethods doesn't resturn the right Component");
             Assert.That(methodInfo1.Equals(result[0].MethodMethodInfo) || methodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckDuplicateStepMethods doesn't resturn the right MethodInfo");
@@ -168,7 +168,7 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckValuesParametersStorage(components);
 
             Assert.AreEqual(1, result.Count, "The method CheckValuesParametersStorage doesn't check properly");
-            string expectedMessage = "The component ComponentsCheckerTestFiftDynamicComponent has more than one ValuesArrayStorage for the type System.String";
+            string expectedMessage = "The component ComponentsCheckerTestFiftDynamicComponent has more than one ParametersValuesStorage for the type System.String";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckValuesParametersStorage doesn't resturn the right message");
             Assert.That(component.Equals(result[0].Component), "The method CheckValuesParametersStorage doesn't resturn the right Component");
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
@@ -185,7 +185,7 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckValuesParametersStorage(components);
 
             Assert.AreEqual(1, result.Count, "The method CheckValuesParametersStorage doesn't check properly");
-            string expectedMessage = "The field ComponentsCheckerTestSixthDynamicComponent.buttonPVS is private but it hasn't the [SerializedField] attribute. The inspector will not see it.";
+            string expectedMessage = "The field ComponentsCheckerTestSixthDynamicComponent.buttonPVS is private but it hasn't the [SerializedField] attribute. The inspector is not going to manage it.";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckValuesParametersStorage doesn't resturn the right message");
             Assert.That(component.Equals(result[0].Component), "The method CheckValuesParametersStorage doesn't resturn the right Component");
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
@@ -202,7 +202,7 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckValuesParametersStorage(components);
 
             Assert.AreEqual(1, result.Count, "The method CheckValuesParametersStorage doesn't check properly");
-            string expectedMessage = "There is not ValuesArrayStorage for the type Button for the parameter stringParam for the method ComponentsCheckerTestSeventhDynamicComponent.GivenMethod";
+            string expectedMessage = "There is not ParametersValuesStorage for the type Button for the parameter stringParam for the method ComponentsCheckerTestSeventhDynamicComponent.GivenMethod";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckValuesParametersStorage doesn't resturn the right message");
             Assert.That(component.Equals(result[0].Component), "The method CheckValuesParametersStorage doesn't resturn the right Component");
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
@@ -239,7 +239,7 @@ namespace HudDimension.UnityTestBDD
             ComponentsChecker checkForErrors = new ComponentsChecker();
             List<UnityTestBDDError> result = checkForErrors.CheckStepMethodReturnValue(components);
             Assert.AreEqual(1, result.Count, "The method CheckValuesParametersStorage doesn't check properly");
-            string expectedMessage = "The method ComponentsCheckerTestEighthDynamicComponent.WhenMethod doesn't return an IAssertionResult value.";
+            string expectedMessage = "The method ComponentsCheckerTestEighthDynamicComponent.WhenMethod does not return an IAssertionResult value.";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodReturnValue doesn't resturn the right message");
             Assert.IsNull(result[0].Component, "The method CheckStepMethodReturnValue doesn't resturn the right Component");
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodReturnValue doesn't resturn the right MethodInfo");
@@ -340,7 +340,7 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckCallBeforeOnStepDeclaration(components);
 
             Assert.AreEqual(1, result.Count, "The method CheckCallBeforeOnStepDeclaration doesn't check properly");
-            string expectedMessage = "The method ComponentsCheckerTestEleventhDynamicComponent.SecondWhenMethod has a CallBefore attribute but it is not a BDD Step Method.";
+            string expectedMessage = "The method ComponentsCheckerTestEleventhDynamicComponent.SecondWhenMethod has a CallBefore attribute but it is not a BDD Method.";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckCallBeforeOnStepDeclaration doesn't resturn the right message");
             Assert.IsNull(result[0].Component, "The method CheckCallBeforeOnStepDeclaration doesn't resturn the right Component");
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckCallBeforeOnStepDeclaration doesn't resturn the right MethodInfo");
@@ -405,7 +405,7 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckCallBeforeExecutionOrders(components);
 
             Assert.AreEqual(1, result.Count, "The method CheckCallBeforeExecutionOrders doesn't check properly");
-            string expectedMessage = "The method ComponentsCheckerTestThirteenthDynamicComponent.WhenMethod has duplicate CallBefore.ExecutionOrder: 2";
+            string expectedMessage = "The method ComponentsCheckerTestThirteenthDynamicComponent.WhenMethod has duplicated CallBefore.ExecutionOrder: 2";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckCallBeforeExecutionOrders doesn't resturn the right message");
             Assert.IsNull(result[0].Component, "The method CheckCallBeforeExecutionOrders doesn't resturn the right Component");
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckCallBeforeExecutionOrders doesn't resturn the right MethodInfo");
@@ -568,8 +568,8 @@ namespace HudDimension.UnityTestBDD
             List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExecutionOrders(components);
 
             Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExecutionOrders doesn't check properly");
-            string expectedMessage1 = "The Given declaration for the method ComponentsCheckerTestFifthStaticComponent.GivenMethod has a duplicate ExecutionOrder value. Check the others Given methods.";
-            string expectedMessage2 = "The Given declaration for the method ComponentsCheckerTestFifthStaticComponent.SecondGivenMethod has a duplicate ExecutionOrder value. Check the others Given methods.";
+            string expectedMessage1 = "The Given declaration for the method ComponentsCheckerTestFifthStaticComponent.GivenMethod has a duplicate ExecutionOrder value: 1. Check the others Given methods.";
+            string expectedMessage2 = "The Given declaration for the method ComponentsCheckerTestFifthStaticComponent.SecondGivenMethod has a duplicate ExecutionOrder value: 1. Check the others Given methods.";
             Assert.That(expectedMessage1.Equals(result[0].Message) || expectedMessage2.Equals(result[0].Message), "The method CheckStepMethodsExecutionOrders doesn't resturn the right message");
             Assert.IsNull(result[0].Component, "The method CheckStepMethodsExecutionOrders doesn't resturn the right Component");
             Assert.That(expectedMethodInfo1.Equals(result[0].MethodMethodInfo) || expectedMethodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
@@ -832,7 +832,7 @@ namespace HudDimension.UnityTestBDD
 
             List<UnityTestBDDError> result = checkForErrors.CheckRecursiveCalls(component);
             Assert.AreEqual(2, result.Count, "The method CheckRecursiveCalls doesn't check properly");
-            string expectedMessage = "The method GivenMethod has a recursive call. Recursive calls are not allowed.\n Call chain:\n\nGivenMethod [CallBefore( 1 \"WhenMethod\")]\nWhenMethod [CallBefore( 1 \"GivenMethod\")]";
+            string expectedMessage = "The method GivenMethod has a recursive call. Recursive calls are not allowed.\n Call chain:\n\nGivenMethod [CallBefore( 1 \"WhenMethod\" Timeout =3000)]\nWhenMethod [CallBefore( 1 \"GivenMethod\" Timeout =3000)]";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckRecursiveCalls doesn't resturn the right message");
             Assert.IsNull(result[0].Component, "The method CheckRecursiveCalls doesn't resturn the right Component");
             Assert.IsNull(result[1].Component, "The method CheckRecursiveCalls doesn't resturn the right Component");

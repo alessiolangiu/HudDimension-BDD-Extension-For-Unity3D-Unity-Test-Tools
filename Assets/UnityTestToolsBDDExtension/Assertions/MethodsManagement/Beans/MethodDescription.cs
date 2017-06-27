@@ -4,6 +4,11 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// The information of a Step Method.
+// </summary>
+// <seealso cref="HudDimension.UnityTestBDD.BaseMethodDescription" />
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -15,12 +20,32 @@
 //-----------------------------------------------------------------------
 namespace HudDimension.UnityTestBDD
 {
+    /// <summary>
+    /// The information of a Step Method.
+    /// </summary>
+    /// <seealso cref="HudDimension.UnityTestBDD.BaseMethodDescription" />
     public class MethodDescription : BaseMethodDescription
     {
+        /// <summary>
+        /// Gets or sets the index of the parameters.
+        /// </summary>
+        /// <value>
+        /// The well formatted string representing the list of the the parameters and the location of their values.
+        /// </value>
         public string ParametersIndex { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parameters.
+        /// </summary>
+        /// <value>
+        /// The parameters of the method.
+        /// </value>
         public MethodParameters Parameters { get; set; }
 
+        /// <summary>
+        /// Gets the test of the step method replacing the codes %parameterName% with the values of the parameter.
+        /// </summary>
+        /// <returns>The string of the step method.</returns>
         public string GetDecodifiedText()
         {
             string result = this.Text;
@@ -32,6 +57,12 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// </returns>
         public override int GetHashCode()
         {
             int result =
@@ -51,6 +82,13 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             if (obj == null)

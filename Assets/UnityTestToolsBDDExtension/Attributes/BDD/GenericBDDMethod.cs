@@ -35,14 +35,14 @@ namespace HudDimension.UnityTestBDD
             return 0;
         }
 
-        public override float GetDelay()
+        public override uint GetDelay()
         {
-            return 0f;
+            return 0;
         }
 
-        public override float GetTimeout()
+        public override uint GetTimeout()
         {
-            return 0f;
+            return 3000;
         }
     }
 }

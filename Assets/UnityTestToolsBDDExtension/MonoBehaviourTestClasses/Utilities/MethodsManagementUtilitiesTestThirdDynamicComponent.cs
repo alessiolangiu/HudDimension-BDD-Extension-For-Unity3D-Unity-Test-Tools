@@ -30,7 +30,7 @@ namespace HudDimension.UnityTestBDD
             return new AssertionResultSuccessful();
         }
 
-        [When("When method", Delay = 21F, Timeout = 34)]
+        [When("When method", Delay = 21, Timeout = 34)]
         public IAssertionResult WhenMethod(string whenStringParam, int whenIntParam)
         {
             return new AssertionResultSuccessful();
@@ -42,7 +42,7 @@ namespace HudDimension.UnityTestBDD
             return new AssertionResultSuccessful();
         }
 
-        [Then("Second Then method", Delay = 11F, Timeout = 33F)]
+        [Then("Second Then method", Delay = 11, Timeout = 33)]
         public IAssertionResult SecondThenMethod(int intParam, float floatParam)
         {
             return new AssertionResultSuccessful();

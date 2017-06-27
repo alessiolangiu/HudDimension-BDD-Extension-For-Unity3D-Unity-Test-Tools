@@ -5,7 +5,7 @@
 // </copyright>
 //
 // <summary>
-// The base informations of a Step Method.
+// The base information of a Step Method.
 // </summary>
 //
 // <disclaimer>
@@ -32,7 +32,7 @@ namespace HudDimension.UnityTestBDD
         /// Gets or sets the component object.
         /// </summary>
         /// <value>
-        /// The instance of the component containing the Step Method.
+        /// The <see cref="Component"/> containing the Step Method.
         /// </value>
         public Component ComponentObject { get; set; }
 
@@ -40,7 +40,7 @@ namespace HudDimension.UnityTestBDD
         /// Gets or sets the method.
         /// </summary>
         /// <value>
-        /// The MethodInfo object for the Step Method.
+        /// The <see cref="MethodInfo"/> for the Step Method.
         /// </value>
         public MethodInfo Method { get; set; }
 
@@ -48,7 +48,7 @@ namespace HudDimension.UnityTestBDD
         /// Gets or sets the text.
         /// </summary>
         /// <value>
-        /// The text of the Step Method. It has to be in the form Given-When_Then, omitting the beginning words "Given", "When", "Then", "and".
+        /// The text <see cref="string"/> of the Step Method. It has to be in the form Given-When-Then, omitting the beginning words "Given", "When", "Then", "and".
         /// </value>
         public string Text { get; set; }
 
@@ -56,7 +56,7 @@ namespace HudDimension.UnityTestBDD
         /// Gets or sets the type of the step.
         /// </summary>
         /// <value>
-        /// The Step Method Type. It can be <see cref="GivenBaseAttribute"/> <see cref="WhenBaseAttribute"/> <see cref="ThenBaseAttribute"/>
+        /// The Step Method Type. It can be <see cref="GivenBaseAttribute"/>, <see cref="WhenBaseAttribute"/> or <see cref="ThenBaseAttribute"/>
         /// </value>
         public Type StepType { get; set; }
 
@@ -64,15 +64,15 @@ namespace HudDimension.UnityTestBDD
         /// Gets or sets the execution order.
         /// </summary>
         /// <value>
-        /// A integer value >0 that marks the order of the execution of the Step Methods for a Static scenario.
+        /// An integer value >0 that marks the order of the execution of the Step Methods for a Static scenario.
         /// </value>
         public uint ExecutionOrder { get; set; }
 
         /// <summary>
-        /// Gets the full name of the a step method in the form "ComponentName.MethodName".
+        /// Gets the full name of the step method in the form "ComponentName.MethodName".
         /// </summary>
-        /// <param name="type">The <see cref="Type"/> of the BDD Component containing the method.</param>
-        /// <param name="method">The MethodInfo of the Method.</param>
+        /// <param name="type">The <see cref="Type"/> object of the BDD Component containing the method.</param>
+        /// <param name="method">The <see cref="MethodInfo"/> of the Method.</param>
         /// <returns><see cref="string"/> "ComponentName.MethodName".</returns>
         public static string GetFullName(Type type, MethodInfo method)
         {
@@ -91,7 +91,7 @@ namespace HudDimension.UnityTestBDD
         }
 
         /// <summary>
-        /// Gets the full name of the the step method in the form "ComponentName.MethodName".
+        /// Gets the full name of the Step Method in the form "ComponentName.MethodName".
         /// </summary>
         /// <returns><see cref="string"/> "ComponentName.MethodName".</returns>
         public virtual string GetFullName()

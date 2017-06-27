@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// The builder of a <see cref="BaseMethodDescription"/> object/
+// </summary>
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -18,8 +22,18 @@ using UnityEngine;
 
 namespace HudDimension.UnityTestBDD
 {
+    /// <summary>
+    /// The builder of a <see cref="BaseMethodDescription"/> object.
+    /// </summary>
     public class BaseMethodDescriptionBuilder
     {
+        /// <summary>
+        /// Builds the <see cref="BaseMethodDescription"/> object for the method described by the <paramref name="methodInfo"/> parameter.
+        /// </summary>
+        /// <typeparam name="T">One of the following types: <see cref="GivenBaseAttribute"/>, <see cref="WhenBaseAttribute"/>, <see cref="ThenBaseAttribute"/>.</typeparam>
+        /// <param name="component">The component containing the method.</param>
+        /// <param name="methodInfo">The <see cref="MethodInfo"/> object.</param>
+        /// <returns>The <see cref="BaseMethodDescription"/> object for the method described by the <paramref name="methodInfo"/> parameter.</returns>
         public virtual BaseMethodDescription Build<T>(Component component, MethodInfo methodInfo) where T : IGivenWhenThenDeclaration
         {
             BaseMethodDescription result = new BaseMethodDescription();

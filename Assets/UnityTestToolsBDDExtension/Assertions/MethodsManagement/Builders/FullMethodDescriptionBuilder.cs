@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+//  The builder of a <see cref="FullMethodDescription"/> object.
+// </summary>
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -20,8 +24,17 @@ using UnityEngine;
 
 namespace HudDimension.UnityTestBDD
 {
+    /// <summary>
+    ///  The builder of a <see cref="FullMethodDescription"/> object.
+    /// </summary>
     public class FullMethodDescriptionBuilder
     {
+        /// <summary>
+        /// Builds the list of <see cref="FullMethodDescription"/> objects based on the information contained into a <see cref="BaseMethodDescription"/> object.
+        /// </summary>
+        /// <param name="baseMethodDescription">The <see cref="BaseMethodDescription"/> object.</param>
+        /// <param name="stepNumber">The index of the Step Method inside a chosenMethod list.</param>
+        /// <returns>A <see cref="List"/> of <see cref="FullMethodDescription"/> object. Each element represent one of the element in the call chain defined by the <see cref="CallBefore"/> attributes. The last one is the main method described by the <paramref name="baseMethodDescription"/> parameter.</returns>
         public virtual List<FullMethodDescription> BuildFromBaseMethodDescription(BaseMethodDescription baseMethodDescription, uint stepNumber)
         {
             MethodDescriptionBuilder methodDescriptionBuilder = new MethodDescriptionBuilder();
@@ -31,6 +44,12 @@ namespace HudDimension.UnityTestBDD
             return this.Build(methodDescription, stepNumber);
         }
 
+        /// <summary>
+        /// Builds the list of <see cref="FullMethodDescription"/> objects based on the information contained into a <see cref="MethodDescription"/> object.
+        /// </summary>
+        /// <param name="methodDescription">The method description.</param>
+        /// <param name="stepNumber">The step number.</param>
+        /// <returns>A <see cref="List"/> of <see cref="FullMethodDescription"/> object. Each element represent one of the element in the call chain defined by the <see cref="CallBefore"/> attributes. The last one is the main method described by the <paramref name="methodDescription"/> parameter.</returns>
         public virtual List<FullMethodDescription> Build(MethodDescription methodDescription, uint stepNumber)
         {
             List<FullMethodDescription> result = new List<FullMethodDescription>();
@@ -45,6 +64,10 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
+        /// <summary>
+        /// Adds the delay and timeout information to the Main method.
+        /// </summary>
+        /// <param name="mainFullMethodDescription">The main full method description.</param>
         private void AddDelayAndTimeoutToMainFullMethodDescription(FullMethodDescription mainFullMethodDescription)
         {
             object[] customCallBeforeAttributes = mainFullMethodDescription.Method.GetCustomAttributes(mainFullMethodDescription.StepType, true);
@@ -53,6 +76,12 @@ namespace HudDimension.UnityTestBDD
             mainFullMethodDescription.TimeOut = bddBethodBaseAttribute.GetTimeout();
         }
 
+        /// <summary>
+        /// Gets the call chain defined by the <see cref="CallBefore"/> attributes.
+        /// </summary>
+        /// <param name="mainMethodDescription">The main method description.</param>
+        /// <param name="parametersIndex">Index of the parameters.</param>
+        /// <returns>A <see cref="List"/> of <see cref="FullMethodDescription"/> object. Each element represent one of the element in the call chain defined by the <see cref="CallBefore"/> attributes.</returns>
         private List<FullMethodDescription> GetCallBeforeListFullMethodsDescriptions(FullMethodDescription mainMethodDescription, string parametersIndex)
         {
             List<FullMethodDescription> result = new List<FullMethodDescription>();
@@ -73,6 +102,13 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
+        /// <summary>
+        /// Gets the <see cref="FullMethodDescription"/> for the method declared by the <see cref="CallBefore"/> attribute.
+        /// </summary>
+        /// <param name="callBefore">The call before.</param>
+        /// <param name="mainMethod">The main method.</param>
+        /// <param name="parametersIndex">Index of the parameters.</param>
+        /// <returns>The <see cref="FullMethodDescription"/> for the method declared by the <see cref="CallBefore"/> attribute.</returns>
         private FullMethodDescription GetCallBeforeFullMethodDescription(CallBefore callBefore, FullMethodDescription mainMethod, string parametersIndex)
         {
             MethodInfo methodInfo = mainMethod.ComponentObject.GetType().GetMethod(callBefore.Method);
@@ -85,7 +121,23 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
-        private FullMethodDescription GetFullMethodDescription(Component componentObject, MethodInfo method, Type stepType, string text, MethodParameters parameters, string parametersIndex, uint executionOrder, float delay, float timeOut, uint callBeforeExecutionOrder, string id, FullMethodDescription mainMethod)
+        /// <summary>
+        /// Gets the full method description.
+        /// </summary>
+        /// <param name="componentObject">The <see cref="Component"/> object containing the method.</param>
+        /// <param name="method">The <see cref="MethodInfo"/> object for the method.</param>
+        /// <param name="stepType">The Step Type.</param>
+        /// <param name="text">The BDD text for the method. Can be empty. Cannot be null.</param>
+        /// <param name="parameters">The <see cref="MethodParameters"/> object.</param>
+        /// <param name="parametersIndex">The string indicating the ParametersIndex for the values of the parameters.</param>
+        /// <param name="executionOrder">The relative order of the execution of the method in the call chain.</param>
+        /// <param name="delay">The value of the delay.</param>
+        /// <param name="timeOut">The value of the timeout.</param>
+        /// <param name="callBeforeExecutionOrder">The relative order of the execution of the method in the call chain of the CallBefore methods.</param>
+        /// <param name="id">The string that can make the parameter identifier unique.</param>
+        /// <param name="mainMethod">The <see cref="FullMethodDescription"/> object if the parent method in the call chain.</param>
+        /// <returns>THe <see cref="FullMethodDescription"/> object describing the information passed by the parameters.</returns>
+        private FullMethodDescription GetFullMethodDescription(Component componentObject, MethodInfo method, Type stepType, string text, MethodParameters parameters, string parametersIndex, uint executionOrder, uint delay, uint timeOut, uint callBeforeExecutionOrder, string id, FullMethodDescription mainMethod)
         {
             FullMethodDescription result = new FullMethodDescription();
             result.ComponentObject = componentObject;

@@ -25,8 +25,8 @@ namespace HudDimension.UnityTestBDD
 
         uint GetExecutionOrder();
 
-        float GetDelay();
+        uint GetDelay();
 
-        float GetTimeout();
+        uint GetTimeout();
     }
 }

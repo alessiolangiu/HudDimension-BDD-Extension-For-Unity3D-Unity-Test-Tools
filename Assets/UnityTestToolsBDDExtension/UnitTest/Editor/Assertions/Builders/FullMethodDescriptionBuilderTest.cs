@@ -45,8 +45,8 @@ namespace HudDimension.UnityTestBDD
             expectedFullMethodDescription.ExecutionOrder = methodDescription.ExecutionOrder;
             expectedFullMethodDescription.Parameters = methodDescription.Parameters;
             expectedFullMethodDescription.ParametersIndex = methodDescription.ParametersIndex;
-            expectedFullMethodDescription.Delay = 0F;
-            expectedFullMethodDescription.TimeOut = 0F;
+            expectedFullMethodDescription.Delay = 0;
+            expectedFullMethodDescription.TimeOut = 3000;
             expectedFullMethodDescription.SuccessionOrder = 1;
             expectedFullMethodDescription.MainMethod = null;
 
@@ -82,8 +82,8 @@ namespace HudDimension.UnityTestBDD
             expectedFullMethodDescription.ExecutionOrder = methodDescription.ExecutionOrder;
             expectedFullMethodDescription.Parameters = methodDescription.Parameters;
             expectedFullMethodDescription.ParametersIndex = methodDescription.ParametersIndex;
-            expectedFullMethodDescription.Delay = 21F;
-            expectedFullMethodDescription.TimeOut = 34F;
+            expectedFullMethodDescription.Delay = 21;
+            expectedFullMethodDescription.TimeOut = 34;
             expectedFullMethodDescription.SuccessionOrder = 1;
             expectedFullMethodDescription.MainMethod = null;
 
@@ -119,8 +119,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 0F;
-            expectedMainFullMethodDescription.TimeOut = 0F;
+            expectedMainFullMethodDescription.Delay = 0;
+            expectedMainFullMethodDescription.TimeOut = 3000;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -136,8 +136,8 @@ namespace HudDimension.UnityTestBDD
             expectedCallBeforeFullMethodDescription.ExecutionOrder = callBeforeMethodDescription.ExecutionOrder;
             expectedCallBeforeFullMethodDescription.Parameters = callBeforeMethodDescription.Parameters;
             expectedCallBeforeFullMethodDescription.ParametersIndex = callBeforeMethodDescription.ParametersIndex;
-            expectedCallBeforeFullMethodDescription.Delay = 32F;
-            expectedCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedCallBeforeFullMethodDescription.Delay = 32;
+            expectedCallBeforeFullMethodDescription.TimeOut = 54;
             expectedCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -174,8 +174,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 21F;
-            expectedMainFullMethodDescription.TimeOut = 34F;
+            expectedMainFullMethodDescription.Delay = 21;
+            expectedMainFullMethodDescription.TimeOut = 34;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -192,7 +192,7 @@ namespace HudDimension.UnityTestBDD
             expectedFirstCallBeforeFullMethodDescription.Parameters = firstCallBeforeMethodDescription.Parameters;
             expectedFirstCallBeforeFullMethodDescription.ParametersIndex = firstCallBeforeMethodDescription.ParametersIndex;
             expectedFirstCallBeforeFullMethodDescription.Delay = 0;
-            expectedFirstCallBeforeFullMethodDescription.TimeOut = 0;
+            expectedFirstCallBeforeFullMethodDescription.TimeOut = 3000;
             expectedFirstCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -208,8 +208,8 @@ namespace HudDimension.UnityTestBDD
             expectedSecondCallBeforeFullMethodDescription.ExecutionOrder = 0;
             expectedSecondCallBeforeFullMethodDescription.Parameters = secondCallBeforeMethodDescription.Parameters;
             expectedSecondCallBeforeFullMethodDescription.ParametersIndex = secondCallBeforeMethodDescription.ParametersIndex;
-            expectedSecondCallBeforeFullMethodDescription.Delay = 32F;
-            expectedSecondCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedSecondCallBeforeFullMethodDescription.Delay = 32;
+            expectedSecondCallBeforeFullMethodDescription.TimeOut = 54;
             expectedSecondCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedSecondCallBeforeFullMethodDescription.MainMethod = expectedFirstCallBeforeFullMethodDescription;
 
@@ -247,8 +247,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 11F;
-            expectedMainFullMethodDescription.TimeOut = 33F;
+            expectedMainFullMethodDescription.Delay = 11;
+            expectedMainFullMethodDescription.TimeOut = 33;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -264,8 +264,8 @@ namespace HudDimension.UnityTestBDD
             expectedSecondCallBeforeFullMethodDescription.ExecutionOrder = secondCallBeforeMethodDescription.ExecutionOrder;
             expectedSecondCallBeforeFullMethodDescription.Parameters = secondCallBeforeMethodDescription.Parameters;
             expectedSecondCallBeforeFullMethodDescription.ParametersIndex = secondCallBeforeMethodDescription.ParametersIndex;
-            expectedSecondCallBeforeFullMethodDescription.Delay = 65F;
-            expectedSecondCallBeforeFullMethodDescription.TimeOut = 64F;
+            expectedSecondCallBeforeFullMethodDescription.Delay = 65;
+            expectedSecondCallBeforeFullMethodDescription.TimeOut = 64;
             expectedSecondCallBeforeFullMethodDescription.SuccessionOrder = 2;
             expectedSecondCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -281,8 +281,8 @@ namespace HudDimension.UnityTestBDD
             expectedFirstCallBeforeFullMethodDescription.ExecutionOrder = firstCallBeforeMethodDescription.ExecutionOrder;
             expectedFirstCallBeforeFullMethodDescription.Parameters = firstCallBeforeMethodDescription.Parameters;
             expectedFirstCallBeforeFullMethodDescription.ParametersIndex = firstCallBeforeMethodDescription.ParametersIndex;
-            expectedFirstCallBeforeFullMethodDescription.Delay = 56F;
-            expectedFirstCallBeforeFullMethodDescription.TimeOut = 65F;
+            expectedFirstCallBeforeFullMethodDescription.Delay = 56;
+            expectedFirstCallBeforeFullMethodDescription.TimeOut = 65;
             expectedFirstCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -294,8 +294,8 @@ namespace HudDimension.UnityTestBDD
             expectedFirstNestedCallBeforeFullMethodDescription.ExecutionOrder = secondCallBeforeMethodDescription.ExecutionOrder;
             expectedFirstNestedCallBeforeFullMethodDescription.Parameters = secondCallBeforeMethodDescription.Parameters;
             expectedFirstNestedCallBeforeFullMethodDescription.ParametersIndex = secondCallBeforeMethodDescription.ParametersIndex;
-            expectedFirstNestedCallBeforeFullMethodDescription.Delay = 32F;
-            expectedFirstNestedCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedFirstNestedCallBeforeFullMethodDescription.Delay = 32;
+            expectedFirstNestedCallBeforeFullMethodDescription.TimeOut = 54;
             expectedFirstNestedCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstNestedCallBeforeFullMethodDescription.MainMethod = expectedFirstCallBeforeFullMethodDescription;
 
@@ -334,8 +334,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 11F;
-            expectedMainFullMethodDescription.TimeOut = 33F;
+            expectedMainFullMethodDescription.Delay = 11;
+            expectedMainFullMethodDescription.TimeOut = 33;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -351,8 +351,8 @@ namespace HudDimension.UnityTestBDD
             expectedSecondCallBeforeFullMethodDescription.ExecutionOrder = secondCallBeforeMethodDescription.ExecutionOrder;
             expectedSecondCallBeforeFullMethodDescription.Parameters = secondCallBeforeMethodDescription.Parameters;
             expectedSecondCallBeforeFullMethodDescription.ParametersIndex = secondCallBeforeMethodDescription.ParametersIndex;
-            expectedSecondCallBeforeFullMethodDescription.Delay = 65F;
-            expectedSecondCallBeforeFullMethodDescription.TimeOut = 64F;
+            expectedSecondCallBeforeFullMethodDescription.Delay = 65;
+            expectedSecondCallBeforeFullMethodDescription.TimeOut = 64;
             expectedSecondCallBeforeFullMethodDescription.SuccessionOrder = 2;
             expectedSecondCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -368,8 +368,8 @@ namespace HudDimension.UnityTestBDD
             expectedFirstCallBeforeFullMethodDescription.ExecutionOrder = firstCallBeforeMethodDescription.ExecutionOrder;
             expectedFirstCallBeforeFullMethodDescription.Parameters = firstCallBeforeMethodDescription.Parameters;
             expectedFirstCallBeforeFullMethodDescription.ParametersIndex = firstCallBeforeMethodDescription.ParametersIndex;
-            expectedFirstCallBeforeFullMethodDescription.Delay = 56F;
-            expectedFirstCallBeforeFullMethodDescription.TimeOut = 65F;
+            expectedFirstCallBeforeFullMethodDescription.Delay = 56;
+            expectedFirstCallBeforeFullMethodDescription.TimeOut = 65;
             expectedFirstCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -381,8 +381,8 @@ namespace HudDimension.UnityTestBDD
             expectedFirstNestedCallBeforeFullMethodDescription.ExecutionOrder = secondCallBeforeMethodDescription.ExecutionOrder;
             expectedFirstNestedCallBeforeFullMethodDescription.Parameters = secondCallBeforeMethodDescription.Parameters;
             expectedFirstNestedCallBeforeFullMethodDescription.ParametersIndex = secondCallBeforeMethodDescription.ParametersIndex;
-            expectedFirstNestedCallBeforeFullMethodDescription.Delay = 32F;
-            expectedFirstNestedCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedFirstNestedCallBeforeFullMethodDescription.Delay = 32;
+            expectedFirstNestedCallBeforeFullMethodDescription.TimeOut = 54;
             expectedFirstNestedCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstNestedCallBeforeFullMethodDescription.MainMethod = expectedFirstCallBeforeFullMethodDescription;
 
@@ -427,8 +427,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 0F;
-            expectedMainFullMethodDescription.TimeOut = 0F;
+            expectedMainFullMethodDescription.Delay = 0;
+            expectedMainFullMethodDescription.TimeOut = 3000;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -444,8 +444,8 @@ namespace HudDimension.UnityTestBDD
             expectedCallBeforeFullMethodDescription.ExecutionOrder = callBeforeMethodDescription.ExecutionOrder;
             expectedCallBeforeFullMethodDescription.Parameters = callBeforeMethodDescription.Parameters;
             expectedCallBeforeFullMethodDescription.ParametersIndex = string.Empty;
-            expectedCallBeforeFullMethodDescription.Delay = 32F;
-            expectedCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedCallBeforeFullMethodDescription.Delay = 32;
+            expectedCallBeforeFullMethodDescription.TimeOut = 54;
             expectedCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
 
@@ -487,8 +487,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 0F;
-            expectedMainFullMethodDescription.TimeOut = 0F;
+            expectedMainFullMethodDescription.Delay = 0;
+            expectedMainFullMethodDescription.TimeOut = 3000;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -508,8 +508,8 @@ namespace HudDimension.UnityTestBDD
 
             expectedCallBeforeFullMethodDescription.Parameters = callBeforeParameters;
             expectedCallBeforeFullMethodDescription.ParametersIndex = string.Empty;
-            expectedCallBeforeFullMethodDescription.Delay = 32F;
-            expectedCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedCallBeforeFullMethodDescription.Delay = 32;
+            expectedCallBeforeFullMethodDescription.TimeOut = 54;
             expectedCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
             expectedCallBeforeFullMethodDescription.Id = "ThenMethod";
@@ -560,8 +560,8 @@ namespace HudDimension.UnityTestBDD
             expectedMainFullMethodDescription.ExecutionOrder = mainMethodDescription.ExecutionOrder;
             expectedMainFullMethodDescription.Parameters = mainMethodDescription.Parameters;
             expectedMainFullMethodDescription.ParametersIndex = mainMethodDescription.ParametersIndex;
-            expectedMainFullMethodDescription.Delay = 11F;
-            expectedMainFullMethodDescription.TimeOut = 33F;
+            expectedMainFullMethodDescription.Delay = 11;
+            expectedMainFullMethodDescription.TimeOut = 33;
             expectedMainFullMethodDescription.SuccessionOrder = 1;
             expectedMainFullMethodDescription.MainMethod = null;
 
@@ -580,8 +580,8 @@ namespace HudDimension.UnityTestBDD
             expectedSecondCallBeforeFullMethodDescription.ExecutionOrder = secondCallBeforeMethodDescription.ExecutionOrder;
             expectedSecondCallBeforeFullMethodDescription.Parameters = secondCallBeforeParameters;
             expectedSecondCallBeforeFullMethodDescription.ParametersIndex = string.Empty;
-            expectedSecondCallBeforeFullMethodDescription.Delay = 65F;
-            expectedSecondCallBeforeFullMethodDescription.TimeOut = 64F;
+            expectedSecondCallBeforeFullMethodDescription.Delay = 65;
+            expectedSecondCallBeforeFullMethodDescription.TimeOut = 64;
             expectedSecondCallBeforeFullMethodDescription.SuccessionOrder = 2;
             expectedSecondCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
             expectedSecondCallBeforeFullMethodDescription.Id = "SecondThenMethod";
@@ -601,8 +601,8 @@ namespace HudDimension.UnityTestBDD
             expectedFirstCallBeforeFullMethodDescription.ExecutionOrder = firstCallBeforeMethodDescription.ExecutionOrder;
             expectedFirstCallBeforeFullMethodDescription.Parameters = firstCallBeforeParameters;
             expectedFirstCallBeforeFullMethodDescription.ParametersIndex = string.Empty;
-            expectedFirstCallBeforeFullMethodDescription.Delay = 56F;
-            expectedFirstCallBeforeFullMethodDescription.TimeOut = 65F;
+            expectedFirstCallBeforeFullMethodDescription.Delay = 56;
+            expectedFirstCallBeforeFullMethodDescription.TimeOut = 65;
             expectedFirstCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstCallBeforeFullMethodDescription.MainMethod = expectedMainFullMethodDescription;
             expectedFirstCallBeforeFullMethodDescription.Id = "SecondThenMethod";
@@ -622,8 +622,8 @@ namespace HudDimension.UnityTestBDD
             expectedFirstNestedCallBeforeFullMethodDescription.ExecutionOrder = firstNestedCallBeforeMethodDescription.ExecutionOrder;
             expectedFirstNestedCallBeforeFullMethodDescription.Parameters = firstNestedCallBeforeParameters;
             expectedFirstNestedCallBeforeFullMethodDescription.ParametersIndex = string.Empty;
-            expectedFirstNestedCallBeforeFullMethodDescription.Delay = 32F;
-            expectedFirstNestedCallBeforeFullMethodDescription.TimeOut = 54F;
+            expectedFirstNestedCallBeforeFullMethodDescription.Delay = 32;
+            expectedFirstNestedCallBeforeFullMethodDescription.TimeOut = 54;
             expectedFirstNestedCallBeforeFullMethodDescription.SuccessionOrder = 1;
             expectedFirstNestedCallBeforeFullMethodDescription.MainMethod = expectedFirstCallBeforeFullMethodDescription;
             expectedFirstNestedCallBeforeFullMethodDescription.Id = "ThenMethod";

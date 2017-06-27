@@ -25,6 +25,8 @@ public class CreationOfGameObjectBDDStaticSecondScenario : StaticBDDComponent
 
     private const string CubeTag = "CUBE";
 
+    private const string CubeName = "object for test";
+
     [GenericBDDMethod]
     public IAssertionResult StartedAndWaitingForInput()
     {
@@ -62,9 +64,9 @@ public class CreationOfGameObjectBDDStaticSecondScenario : StaticBDDComponent
     {
         IAssertionResult result = null;
         GameObject cube = GameObject.FindWithTag(CubeTag);
-        if (cube == null)
+        if (cube == null || !cube.name.Equals(CubeName))
         {
-            result = new AssertionResultRetry("\"object for test\" not found");
+            result = new AssertionResultRetry("\"" + CubeName + "\" not found");
         }
         else if (cube != null && cube.activeSelf)
         {
@@ -74,8 +76,8 @@ public class CreationOfGameObjectBDDStaticSecondScenario : StaticBDDComponent
         return result;
     }
 
-    [Given(1, "There is a cube in the scene")]
-    [CallBefore(1, "StartedAndWaitingForInput", Delay = 1000f)]
+    [Given(1, "there is a cube in the scene called \"object for test\"")]
+    [CallBefore(1, "StartedAndWaitingForInput", Delay = 1000)]
     [CallBefore(2, "PressTheButtonCreate")]
     [CallBefore(3, "TheNewObjectAppears")]
     public IAssertionResult ThereIsACubeInTheScene()
@@ -93,7 +95,7 @@ public class CreationOfGameObjectBDDStaticSecondScenario : StaticBDDComponent
         return result;
     }
 
-    [Then(1, "the object named \"object for test\" has to be deleted from the scene")]
+    [Then(1, "the software has to destroy the object named \"object for test\"")]
     public IAssertionResult TheCubeDisappears()
     {
         IAssertionResult result = null;

@@ -187,7 +187,7 @@ namespace HudDimension.UnityTestBDD
 
             List<UnityTestBDDError> result = checkForErrors.CheckForNotMatchingPVS<GivenBaseAttribute>(chosenMethods, parametersIndexes, components);
 
-            string expectedMessage = "The ParametersValuesStorage array otherPVS for the parameter ChosenMethodsCheckerTestFirstDynamicComponent.GivenMethod.stringParam. is not found in Given methods at position 1";
+            string expectedMessage = "The ParametersValuesStorage field otherPVS for the parameter ChosenMethodsCheckerTestFirstDynamicComponent.GivenMethod.stringParam. is not found in Given methods at position 1";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckForNotMatchingPVS doesn't resturn the right message");
             Assert.That(component.Equals(result[0].Component), "The method CheckForNotMatchingPVS doesn't resturn the right Component");
             Assert.That(methodInfo.Equals(result[0].MethodMethodInfo), "The method CheckForNotMatchingPVS doesn't resturn the right MethodInfo");

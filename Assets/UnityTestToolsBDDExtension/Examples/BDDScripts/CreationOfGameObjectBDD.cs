@@ -14,6 +14,7 @@
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
 using HudDimension.UnityTestBDD;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,10 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
     private const string ButtonDeleteTag = "BUTTON DELETE";
 
     private const string CubeTag = "CUBE";
+
+    private const string CubeName = "object for test";
+
+    private GameObject[] listOfCubesInTheScene = null;
 
     [SerializeField]
     private GameObject warningTextObject;
@@ -41,7 +46,7 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
         }
     }
 
-    [Given("the program is just started and waiting for an input", Delay = 100f)]
+    [Given("the software is just started and it is waiting for an input")]
     public IAssertionResult StartedAndWaitingForInput()
     {
         IAssertionResult result = null;
@@ -78,9 +83,9 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
     {
         IAssertionResult result = null;
         GameObject cube = GameObject.FindWithTag(CubeTag);
-        if (cube == null)
+        if (cube == null || !cube.name.Equals(CubeName))
         {
-            result = new AssertionResultRetry("\"object for test\" not found");
+            result = new AssertionResultRetry("\""+ CubeName + "\" not found");
         }
         else if (cube != null && cube.activeSelf)
         {
@@ -90,7 +95,7 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
         return result;
     }
 
-    [Given("There is a cube in the scene")]
+    [Given("there is a cube in the scene called \"object for test\"")]
     [CallBefore(1, "StartedAndWaitingForInput")]
     [CallBefore(2, "PressTheButtonCreate")]
     [CallBefore(3, "TheNewObjectAppears")]
@@ -109,7 +114,7 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
         return result;
     }
 
-    [Then("the object named \"object for test\" has to be deleted from the scene")]
+    [Then("the software has to destroy the object named \"object for test\"")]
     public IAssertionResult TheCubeDisappears()
     {
         IAssertionResult result = null;
@@ -130,18 +135,31 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
         return result;
     }
 
-    [Then("only one object named \"object for test\" has to be in the scene", Delay = 1000f)]
+    [GenericBDDMethod]
+    public IAssertionResult StoreTheListOfCubesInTheScene()
+    {
+        this.listOfCubesInTheScene = GameObject.FindGameObjectsWithTag(CubeTag);
+        return new AssertionResultSuccessful(); ;
+    }
+
+    [Given("There is a cube in the scene called \"object for test\"")]
+    [CallBefore(1, "StartedAndWaitingForInput")]
+    [CallBefore(2, "PressTheButtonCreate")]
+    [CallBefore(3, "TheNewObjectAppears")]
+    [CallBefore(4, "StoreTheListOfCubesInTheScene")]
+    public IAssertionResult ThereIsACubeInTheSceneAndStoreItForAFollowingUse()
+    {
+        return new AssertionResultSuccessful();
+    }
+
+    [Then("nothing is going to change in the scene", Delay = 1000)]
     public IAssertionResult OnlyACubeInTheScene()
     {
         IAssertionResult result = null;
         GameObject[] cubes = GameObject.FindGameObjectsWithTag(CubeTag);
-        if (cubes == null || cubes.Length == 0)
+        if(this.listOfCubesInTheScene.SequenceEqual(cubes) == false)
         {
-            result = new AssertionResultRetry("No \"object for test\" not found");
-        }
-        else if (cubes.Length > 1)
-        {
-            result = new AssertionResultFailed("More than one \"object for test\" objects are in the scene");
+            result = new AssertionResultFailed("The objects in the scene are changed!");
         }
         else
         {
@@ -151,7 +169,7 @@ public class CreationOfGameObjectBDD : DynamicBDDComponent
         return result;
     }
 
-    [Then("the warning message \"%expectedWarningText%\" appears in the scene", Delay = 1000f)]
+    [Then("the warning message \"%expectedWarningText%\" has to appear on the scene", Delay = 1000)]
     public IAssertionResult WarningInTheScene(string expectedWarningText)
     {
         IAssertionResult result = null;

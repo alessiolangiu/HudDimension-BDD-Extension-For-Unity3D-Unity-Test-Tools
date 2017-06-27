@@ -40,7 +40,7 @@ namespace HudDimension.UnityTestBDD
         /// <value>
         /// The delay after which the method has to be executed.
         /// </value>
-        public float Delay { get; set; }
+        public uint Delay { get; set; }
 
         /// <summary>
         /// Gets or sets the time out.
@@ -48,7 +48,7 @@ namespace HudDimension.UnityTestBDD
         /// <value>
         /// In case of <see cref="AssertionResultRetry"/> response, it is timeout after which the method has not to be executed again.
         /// </value>
-        public float TimeOut { get; set; }
+        public uint TimeOut { get; set; }
 
         /// <summary>
         /// Gets or sets the succession order.
@@ -169,7 +169,7 @@ namespace HudDimension.UnityTestBDD
         /// Compares to.
         /// </summary>
         /// <param name="other">The other.</param>
-        /// <returns></returns>
+        /// <returns>0 if the objects are equals, -1 if <see cref="this"/> is lower than <paramref name="other"/> and 1 if <see cref="this"/> is greater than <paramref name="other"/> </returns>
         public int CompareTo(FullMethodDescription other)
         {
             HierarchicalOrder mainHierarchicalOrder = this.GetHierarchicalOrder();
@@ -178,9 +178,9 @@ namespace HudDimension.UnityTestBDD
         }
 
         /// <summary>
-        /// Gets the hierarchical order.
+        /// Calculates the hierarchical order using the <see cref="this.SuccessionOrder"/> value of its parents.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the root of the tree formed by <see cref="HierarchicalOrder"/> objects.</returns>
         private HierarchicalOrder GetHierarchicalOrder()
         {
             HierarchicalOrder result;

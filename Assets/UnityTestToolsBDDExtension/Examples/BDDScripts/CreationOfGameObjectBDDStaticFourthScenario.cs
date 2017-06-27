@@ -56,7 +56,7 @@ public class CreationOfGameObjectBDDStaticFourthScenario : StaticBDDComponent
         }
     }
 
-    [Given(1, "the program is just started and waiting for an input", Delay = 1000f)]
+    [Given(1, "the software is just started and it is waiting for an input", Delay = 1000)]
     public IAssertionResult StartedAndWaitingForInput()
     {
         IAssertionResult result = null;
@@ -88,7 +88,7 @@ public class CreationOfGameObjectBDDStaticFourthScenario : StaticBDDComponent
         return result;
     }
 
-    [Then(1, "the warning message \"Warning! No Object to delete!\" appears in the scene", Delay = 1000f)]
+    [Then(1, "the warning message \"Warning! No Object to delete!\" has to appear on the scene", Delay = 1000)]
     public IAssertionResult WarningInTheScene()
     {
         IAssertionResult result = null;

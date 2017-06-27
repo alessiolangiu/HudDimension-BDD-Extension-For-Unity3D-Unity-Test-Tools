@@ -240,7 +240,7 @@ namespace HudDimension.UnityTestBDD
                     {
                         IGivenWhenThenDeclaration genericComponentInteface = (IGivenWhenThenDeclaration)Activator.CreateInstance(typeof(T), string.Empty);
                         UnityTestBDDError error = new UnityTestBDDError();
-                        error.Message = "The ParametersValuesStorage array " + arrayPVSName + " for the parameter " + parametersIndexUtilities.GetParameterFullName(parameterIndex) + " is not found in " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
+                        error.Message = "The ParametersValuesStorage field " + arrayPVSName + " for the parameter " + parametersIndexUtilities.GetParameterFullName(parameterIndex) + " is not found in " + genericComponentInteface.GetStepName() + " methods at position " + (index + 1);
                         error.Component = component;
                         error.MethodMethodInfo = this.GetMethodInfo(chosenMethods[index], component);
                         error.StepType = typeof(T);

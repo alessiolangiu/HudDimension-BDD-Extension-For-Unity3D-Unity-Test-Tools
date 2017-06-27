@@ -61,7 +61,7 @@ namespace HudDimension.UnityTestBDD
                 unityInterface.EditorGUILayoutEndHorizontal();
                 unityInterface.EditorGUILayoutBeginHorizontal();
                 float currentViewWidth = unityInterface.EditorGUIUtilityCurrentViewWidth();
-                if (error.ShowRedEsclamationMark)
+                if (error.ShowRedExclamationMark)
                 {
                     Texture2D errorTexture = unityInterface.AssetDatabaseLoadAssetAtPath(this.ErrorTextureName, typeof(Texture2D));
                     GUILayoutOption[] errorTextureOptions = new GUILayoutOption[2] { unityInterface.GUILayoutWidth(24), unityInterface.GUILayoutHeight(24) };

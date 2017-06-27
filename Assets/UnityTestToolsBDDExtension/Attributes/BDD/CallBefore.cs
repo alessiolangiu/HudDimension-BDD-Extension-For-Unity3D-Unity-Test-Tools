@@ -30,11 +30,11 @@ namespace HudDimension.UnityTestBDD
 
         public uint ExecutionOrder { get; set; }
 
-        public float Delay { get; set; }
+        public uint Delay { get; set; }
 
         public string Method { get; set; }
 
-        public float Timeout { get; set; }
+        private uint timeout = 3000;
 
         public string Id
         {
@@ -46,6 +46,19 @@ namespace HudDimension.UnityTestBDD
             set
             {
                 this.id = value;
+            }
+        }
+
+        public uint Timeout
+        {
+            get
+            {
+                return this.timeout;
+            }
+
+            set
+            {
+                this.timeout = value;
             }
         }
 

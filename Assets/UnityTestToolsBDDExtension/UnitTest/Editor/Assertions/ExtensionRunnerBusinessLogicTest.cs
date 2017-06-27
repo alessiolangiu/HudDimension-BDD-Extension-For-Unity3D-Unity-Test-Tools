@@ -306,7 +306,7 @@ namespace HudDimension.UnityTestBDD
             FullMethodDescription methodDescription = Substitute.For<FullMethodDescription>();
             methodDescription.Method = mockedMethodInfo;
             methodDescription.GetFullName().Returns<string>("component.method");
-            methodDescription.Delay = 1000F;
+            methodDescription.Delay = 1000;
 
             ExtensionRunnerBusinessLogic mockedBusinessLogic = Substitute.For<ExtensionRunnerBusinessLogic>(gameObject);
 
@@ -343,7 +343,7 @@ namespace HudDimension.UnityTestBDD
             FullMethodDescription methodDescription = Substitute.For<FullMethodDescription>();
             methodDescription.Method = mockedMethodInfo;
             methodDescription.GetFullName().Returns<string>("component.method");
-            methodDescription.Delay = 1000F;
+            methodDescription.Delay = 1000;
 
             ExtensionRunnerBusinessLogic mockedBusinessLogic = Substitute.For<ExtensionRunnerBusinessLogic>(gameObject);
 
@@ -383,7 +383,7 @@ namespace HudDimension.UnityTestBDD
             FullMethodDescription methodDescription = Substitute.For<FullMethodDescription>();
             methodDescription.Method = mockedMethodInfo;
             methodDescription.GetFullName().Returns<string>("component.method");
-            methodDescription.TimeOut = 1000F;
+            methodDescription.TimeOut = 1000;
             ExtensionRunnerBusinessLogic mockedBusinessLogic = Substitute.For<ExtensionRunnerBusinessLogic>(gameObject);
 
             DateTime firstNowDatetime = new DateTime(2017, 05, 01, 00, 00, 00, 000);
@@ -523,7 +523,7 @@ namespace HudDimension.UnityTestBDD
 
             FullMethodDescription methodDescription = null;
 
-            string expectedString = "\n           [Given]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.GivenMethod [Delay= 0 Timeout= 0]\n           [Given]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 0 Timeout= 0]\n           [Given]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.GivenMethod [Delay= 0 Timeout= 0]\n           [ When]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ When]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ Then]        ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.ThenMethod [Delay= 56 Timeout= 65]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 65 Timeout= 64]\n           [ Then]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod [Delay= 11 Timeout= 33]\n           [ Then]     ExtensionRunnerBusinessLogicTestSecondDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod [Delay= 0 Timeout= 0]";
+            string expectedString = "\n           [Given]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.GivenMethod [Delay= 0 Timeout= 3000]\n           [Given]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 0 Timeout= 3000]\n           [Given]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.GivenMethod [Delay= 0 Timeout= 3000]\n           [ When]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ When]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ Then]        ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.ThenMethod [Delay= 56 Timeout= 65]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 65 Timeout= 64]\n           [ Then]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod [Delay= 11 Timeout= 33]\n           [ Then]     ExtensionRunnerBusinessLogicTestSecondDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod [Delay= 0 Timeout= 3000]";
 
             string result = businessLogic.GetbddMethodLocationForSpecificMethod(methods, methodDescription);
 
@@ -554,7 +554,7 @@ namespace HudDimension.UnityTestBDD
 
             FullMethodDescription methodDescription = methods[0];
 
-            string expectedString = "\n---------->[Given]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.GivenMethod [Delay= 0 Timeout= 0]\n           [Given]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 0 Timeout= 0]\n           [Given]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.GivenMethod [Delay= 0 Timeout= 0]\n           [ When]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ When]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ Then]        ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.ThenMethod [Delay= 56 Timeout= 65]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 65 Timeout= 64]\n           [ Then]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod [Delay= 11 Timeout= 33]\n           [ Then]     ExtensionRunnerBusinessLogicTestSecondDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod [Delay= 0 Timeout= 0]";
+            string expectedString = "\n---------->[Given]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.GivenMethod [Delay= 0 Timeout= 3000]\n           [Given]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 0 Timeout= 3000]\n           [Given]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.GivenMethod [Delay= 0 Timeout= 3000]\n           [ When]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ When]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ Then]        ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.ThenMethod [Delay= 56 Timeout= 65]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 65 Timeout= 64]\n           [ Then]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod [Delay= 11 Timeout= 33]\n           [ Then]     ExtensionRunnerBusinessLogicTestSecondDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod [Delay= 0 Timeout= 3000]";
 
             string result = businessLogic.GetbddMethodLocationForSpecificMethod(methods, methodDescription);
 
@@ -585,7 +585,7 @@ namespace HudDimension.UnityTestBDD
 
             FullMethodDescription methodDescription = methods[5];
 
-            string expectedString = "\n           [Given]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.GivenMethod [Delay= 0 Timeout= 0]\n           [Given]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 0 Timeout= 0]\n           [Given]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.GivenMethod [Delay= 0 Timeout= 0]\n           [ When]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ When]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n---------->[ Then]        ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.ThenMethod [Delay= 56 Timeout= 65]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 65 Timeout= 64]\n           [ Then]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod [Delay= 11 Timeout= 33]\n           [ Then]     ExtensionRunnerBusinessLogicTestSecondDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod [Delay= 0 Timeout= 0]";
+            string expectedString = "\n           [Given]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.GivenMethod [Delay= 0 Timeout= 3000]\n           [Given]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 0 Timeout= 3000]\n           [Given]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.GivenMethod [Delay= 0 Timeout= 3000]\n           [ When]  ExtensionRunnerBusinessLogicTestFirstDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n           [ When]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.WhenMethod [Delay= 21 Timeout= 34]\n---------->[ Then]        ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.ThenMethod [Delay= 56 Timeout= 65]\n           [ Then]     ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondGivenMethod [Delay= 65 Timeout= 64]\n           [ Then]  ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod [Delay= 11 Timeout= 33]\n           [ Then]     ExtensionRunnerBusinessLogicTestSecondDynamicComponent.SecondGivenMethod [Delay= 32 Timeout= 54]\n           [ Then]  ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod [Delay= 0 Timeout= 3000]";
 
             string result = businessLogic.GetbddMethodLocationForSpecificMethod(methods, methodDescription);
 

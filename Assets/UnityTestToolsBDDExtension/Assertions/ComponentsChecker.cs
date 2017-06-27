@@ -59,7 +59,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = null;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = false;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -142,7 +142,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = null;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = false;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -287,7 +287,7 @@ namespace HudDimension.UnityTestBDD
                 error.MethodMethodInfo = null;
                 error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = true;
-                error.ShowRedEsclamationMark = true;
+                error.ShowRedExclamationMark = true;
                 error.StepType = null;
                 error.Index = 0;
                 error.LockBuildParameters = true;
@@ -304,7 +304,7 @@ namespace HudDimension.UnityTestBDD
                 error.MethodMethodInfo = null;
                 error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = true;
-                error.ShowRedEsclamationMark = true;
+                error.ShowRedExclamationMark = true;
                 error.StepType = null;
                 error.Index = 0;
                 error.LockBuildParameters = true;
@@ -321,7 +321,7 @@ namespace HudDimension.UnityTestBDD
                 error.MethodMethodInfo = null;
                 error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = true;
-                error.ShowRedEsclamationMark = true;
+                error.ShowRedExclamationMark = true;
                 error.StepType = null;
                 error.Index = 0;
                 error.LockBuildParameters = true;
@@ -373,7 +373,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = method;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -435,7 +435,7 @@ namespace HudDimension.UnityTestBDD
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
                         error.LockBuildParameters = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockParametersRows = true;
@@ -490,7 +490,7 @@ namespace HudDimension.UnityTestBDD
                 error.LockRunnerInspectorOnErrors = true;
                 error.ShowButton = false;
                 error.LockBuildParameters = true;
-                error.ShowRedEsclamationMark = false;
+                error.ShowRedExclamationMark = false;
                 error.StepType = null;
                 error.Index = 0;
                 error.LockParametersRows = true;
@@ -523,12 +523,12 @@ namespace HudDimension.UnityTestBDD
                 if (customAttributes.Length > 0)
                 {
                     UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " doesn't return an IAssertionResult value.";
+                    error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " does not return an IAssertionResult value.";
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -571,7 +571,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = methodInfo;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -608,12 +608,12 @@ namespace HudDimension.UnityTestBDD
                 if (bddMethodBaseAttributes.Length == 0)
                 {
                     UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has a CallBefore attribute but it is not a BDD Step Method.";
+                    error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has a CallBefore attribute but it is not a BDD Method.";
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -669,7 +669,7 @@ namespace HudDimension.UnityTestBDD
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -685,12 +685,12 @@ namespace HudDimension.UnityTestBDD
                     if (givenDictionary.ContainsKey(givenAttibute.ExecutionOrder))
                     {
                         UnityTestBDDError error = new UnityTestBDDError();
-                        error.Message = "The Given declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value. Check the others Given methods.";
+                        error.Message = "The Given declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value: "+ givenAttibute.ExecutionOrder+". Check the others Given methods.";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -715,7 +715,7 @@ namespace HudDimension.UnityTestBDD
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -736,7 +736,7 @@ namespace HudDimension.UnityTestBDD
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -761,7 +761,7 @@ namespace HudDimension.UnityTestBDD
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -783,7 +783,7 @@ namespace HudDimension.UnityTestBDD
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -807,7 +807,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = null;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -827,7 +827,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = null;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -847,7 +847,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = null;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -877,7 +877,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = methodInfo;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -893,12 +893,12 @@ namespace HudDimension.UnityTestBDD
                 if (dictionary.ContainsKey(callBefore.ExecutionOrder))
                 {
                     UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has duplicate CallBefore.ExecutionOrder: " + callBefore.ExecutionOrder;
+                    error.Message = "The method " + methodInfo.DeclaringType.Name + "." + methodInfo.Name + " has duplicated CallBefore.ExecutionOrder: " + callBefore.ExecutionOrder;
                     error.Component = null;
                     error.MethodMethodInfo = methodInfo;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -921,7 +921,7 @@ namespace HudDimension.UnityTestBDD
                     error.MethodMethodInfo = methodInfo;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -961,12 +961,12 @@ namespace HudDimension.UnityTestBDD
                 else
                 {
                     UnityTestBDDError error = new UnityTestBDDError();
-                    error.Message = "There are more than one step method with the name " + component.GetType().Name + "." + method.Name + " You can have only one method with the same name.";
+                    error.Message = "There are more than one BDD Methods with the name " + component.GetType().Name + "." + method.Name + " You can have only one method with the same name.";
                     error.Component = component;
                     error.MethodMethodInfo = method;
                     error.LockRunnerInspectorOnErrors = true;
                     error.ShowButton = true;
-                    error.ShowRedEsclamationMark = true;
+                    error.ShowRedExclamationMark = true;
                     error.StepType = null;
                     error.Index = 0;
                     error.LockBuildParameters = true;
@@ -991,12 +991,12 @@ namespace HudDimension.UnityTestBDD
                     if (valuesArrayStorageList.Length > 1)
                     {
                         UnityTestBDDError error = new UnityTestBDDError();
-                        error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " has more than one ValuesArrayStorage definition.";
+                        error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " has more than one ParametersValuesStorage definitions.";
                         error.Component = component;
                         error.MethodMethodInfo = null;
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;
@@ -1015,7 +1015,7 @@ namespace HudDimension.UnityTestBDD
                             error.MethodMethodInfo = null;
                             error.LockRunnerInspectorOnErrors = true;
                             error.ShowButton = true;
-                            error.ShowRedEsclamationMark = true;
+                            error.ShowRedExclamationMark = true;
                             error.StepType = null;
                             error.Index = 0;
                             error.LockBuildParameters = true;
@@ -1027,12 +1027,12 @@ namespace HudDimension.UnityTestBDD
                             if (dictionary.ContainsKey(fieldInfo.FieldType.GetElementType()))
                             {
                                 UnityTestBDDError error = new UnityTestBDDError();
-                                error.Message = "The component " + component.GetType().Name + " has more than one ValuesArrayStorage for the type " + fieldInfo.FieldType.GetElementType();
+                                error.Message = "The component " + component.GetType().Name + " has more than one ParametersValuesStorage for the type " + fieldInfo.FieldType.GetElementType();
                                 error.Component = component;
                                 error.MethodMethodInfo = null;
                                 error.LockRunnerInspectorOnErrors = true;
                                 error.ShowButton = true;
-                                error.ShowRedEsclamationMark = true;
+                                error.ShowRedExclamationMark = true;
                                 error.StepType = null;
                                 error.Index = 0;
                                 error.LockBuildParameters = true;
@@ -1051,12 +1051,12 @@ namespace HudDimension.UnityTestBDD
                                 if (serializedFieldAttributes.Length == 0)
                                 {
                                     UnityTestBDDError error = new UnityTestBDDError();
-                                    error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " is private but it hasn't the [SerializedField] attribute. The inspector will not see it.";
+                                    error.Message = "The field " + component.GetType().Name + "." + fieldInfo.Name + " is private but it hasn't the [SerializedField] attribute. The inspector is not going to manage it.";
                                     error.Component = component;
                                     error.MethodMethodInfo = null;
                                     error.LockRunnerInspectorOnErrors = true;
                                     error.ShowButton = true;
-                                    error.ShowRedEsclamationMark = true;
+                                    error.ShowRedExclamationMark = true;
                                     error.StepType = null;
                                     error.Index = 0;
                                     error.LockBuildParameters = true;
@@ -1080,12 +1080,12 @@ namespace HudDimension.UnityTestBDD
                             if (!dictionary.ContainsKey(parameter.ParameterType))
                             {
                                 UnityTestBDDError error = new UnityTestBDDError();
-                                error.Message = "There is not ValuesArrayStorage for the type " + parameter.ParameterType.Name + " for the parameter " + parameter.Name + " for the method " + component.GetType().Name + "." + method.Name;
+                                error.Message = "There is not ParametersValuesStorage for the type " + parameter.ParameterType.Name + " for the parameter " + parameter.Name + " for the method " + component.GetType().Name + "." + method.Name;
                                 error.Component = component;
                                 error.MethodMethodInfo = null;
                                 error.LockRunnerInspectorOnErrors = true;
                                 error.ShowButton = true;
-                                error.ShowRedEsclamationMark = true;
+                                error.ShowRedExclamationMark = true;
                                 error.StepType = null;
                                 error.Index = 0;
                                 error.LockBuildParameters = true;
@@ -1123,7 +1123,7 @@ namespace HudDimension.UnityTestBDD
                         error.LockRunnerInspectorOnErrors = true;
                         error.ShowButton = true;
                         error.LockBuildParameters = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         error.Index = 0;
                         error.LockBuildParameters = true;

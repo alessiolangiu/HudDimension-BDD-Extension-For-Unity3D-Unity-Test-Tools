@@ -39,7 +39,7 @@ namespace HudDimension.UnityTestBDD
             error.Component = component;
             error.MethodMethodInfo = null;
             error.ShowButton = true;
-            error.ShowRedEsclamationMark = true;
+            error.ShowRedExclamationMark = true;
             errors.Add(error);
 
             IUnityInterfaceWrapper unityInterface = Substitute.For<IUnityInterfaceWrapper>();
@@ -98,7 +98,7 @@ namespace HudDimension.UnityTestBDD
             error.Component = component;
             error.MethodMethodInfo = null;
             error.ShowButton = true;
-            error.ShowRedEsclamationMark = true;
+            error.ShowRedExclamationMark = true;
 
             errors.Add(error);
 
@@ -107,7 +107,7 @@ namespace HudDimension.UnityTestBDD
             error.Component = component;
             error.MethodMethodInfo = null;
             error.ShowButton = false;
-            error.ShowRedEsclamationMark = false;
+            error.ShowRedExclamationMark = false;
 
             errors.Add(error);
 

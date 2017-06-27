@@ -17,7 +17,7 @@ using HudDimension.UnityTestBDD;
 
 public class TemplateStaticBDDComponent : StaticBDDComponent
 {
-    [Given(1, "given text", Delay = 1000f)]
+    [Given(1, "given text", Delay = 1000)]
     public IAssertionResult GivenMethod()
     {
         IAssertionResult result = new AssertionResultSuccessful();

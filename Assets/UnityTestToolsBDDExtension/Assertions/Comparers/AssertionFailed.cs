@@ -47,7 +47,7 @@ namespace HudDimension.UnityTestBDD
         /// Gets or sets the BDD method location.
         /// </summary>
         /// <value>
-        /// The description of the methods call chain with the information of which method has failed.
+        /// The description of the methods calls chain with the information of which method has failed.
         /// </value>
         public string BDDMethodLocation { get; set; }
 

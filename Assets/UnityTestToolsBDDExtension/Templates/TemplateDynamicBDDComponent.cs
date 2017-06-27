@@ -17,7 +17,7 @@ using HudDimension.UnityTestBDD;
 
 public class TemplateDynamicBDDComponent : DynamicBDDComponent
 {
-    [Given("given text", Delay = 1000f)]
+    [Given("given text", Delay = 1000)]
     public IAssertionResult GivenMethod()
     {
         IAssertionResult result = new AssertionResultSuccessful();

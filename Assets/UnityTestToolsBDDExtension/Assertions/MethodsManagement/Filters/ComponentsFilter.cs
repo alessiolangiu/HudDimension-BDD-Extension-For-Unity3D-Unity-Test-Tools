@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// Class containing the utility to select from a collection of <see cref="Component"/> objects only the <see cref="StaticBDDComponent"/> and the <see cref="DynamicBDDComponent"/> components.
+// </summary>
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -20,8 +24,16 @@ using UnityEngine;
 
 namespace HudDimension.UnityTestBDD
 {
+    /// <summary>
+    /// Class containing the utility to select from a collection of <see cref="Component"/> objects only the <see cref="StaticBDDComponent"/> and the <see cref="DynamicBDDComponent"/> components.
+    /// </summary>
     public class ComponentsFilter
     {
+        /// <summary>
+        /// Filters the specified components.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns></returns>
         public virtual Component[] Filter(Component[] components)
         {
             List<Component> bddComponentsList = Filter(typeof(StaticBDDComponent), components);

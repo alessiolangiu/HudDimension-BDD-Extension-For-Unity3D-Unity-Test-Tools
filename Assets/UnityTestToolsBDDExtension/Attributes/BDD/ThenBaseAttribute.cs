@@ -25,11 +25,24 @@ namespace HudDimension.UnityTestBDD
             this.Text = text;
         }
 
-        public float Delay { get; set; }
+        public uint Delay { get; set; }
 
-        public float Timeout { get; set; }
+        private uint timeout = 3000;
 
         public string Text { get; set; }
+
+        public uint Timeout
+        {
+            get
+            {
+                return this.timeout;
+            }
+
+            set
+            {
+                this.timeout = value;
+            }
+        }
 
         public override string GetStepName()
         {
@@ -46,12 +59,12 @@ namespace HudDimension.UnityTestBDD
             return 0;
         }
 
-        public override float GetDelay()
+        public override uint GetDelay()
         {
             return this.Delay;
         }
 
-        public override float GetTimeout()
+        public override uint GetTimeout()
         {
             return this.Timeout;
         }

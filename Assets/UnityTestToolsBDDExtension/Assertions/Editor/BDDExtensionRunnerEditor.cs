@@ -61,7 +61,7 @@ namespace HudDimension.UnityTestBDD
                         error.Index = 0;
                         error.LockBuildParameters = true;
                         error.LockParametersRows = true;
-                        error.ShowRedEsclamationMark = true;
+                        error.ShowRedExclamationMark = true;
                         error.StepType = null;
                         errors.Add(error);
                         break;

@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+//  The builder of a <see cref="MethodDescription"/> object.
+// </summary>
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -13,13 +17,21 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
-using System;
-using System.Reflection;
 
 namespace HudDimension.UnityTestBDD
 {
+    /// <summary>
+    ///  The builder of a <see cref="MethodDescription"/> object.
+    /// </summary>
     public class MethodDescriptionBuilder
     {
+        /// <summary>
+        /// Builds the list of <see cref="MethodDescription"/> objects based on the information contained into a <see cref="BaseMethodDescription"/> object.
+        /// </summary>
+        /// <param name="methodParametersLoader">The method parameters loader.</param>
+        /// <param name="baseMethodDescription">The base method description.</param>
+        /// <param name="parametersIndex">Index of the parameters.</param>
+        /// <returns>The built <see cref="MethodDescription"/> object.</returns>
         public virtual MethodDescription Build(MethodParametersLoader methodParametersLoader, BaseMethodDescription baseMethodDescription, string parametersIndex)
         {
             if (baseMethodDescription != null)

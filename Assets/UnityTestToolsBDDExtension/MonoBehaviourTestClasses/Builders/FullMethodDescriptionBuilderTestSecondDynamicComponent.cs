@@ -29,22 +29,22 @@ namespace HudDimension.UnityTestBDD
             return new AssertionResultSuccessful();
         }
 
-        [When("When method", Delay = 21f, Timeout = 34)]
+        [When("When method", Delay = 21, Timeout = 34)]
         public IAssertionResult WhenMethod(string whenStringParam, int whenIntParam)
         {
             return new AssertionResultSuccessful();
         }
 
         [Then("Then method")]
-        [CallBefore(1, "SecondGivenMethod", Delay = 32F, Timeout = 54F, Id = "ThenMethod")]
+        [CallBefore(1, "SecondGivenMethod", Delay = 32, Timeout = 54, Id = "ThenMethod")]
         public IAssertionResult ThenMethod(string stringParam)
         {
             return new AssertionResultSuccessful();
         }
 
-        [Then("Second Then method", Delay = 11f, Timeout = 33f)]
-        [CallBefore(1, "ThenMethod", Delay = 56F, Timeout = 65F, Id = "SecondThenMethod")]
-        [CallBefore(2, "SecondGivenMethod", Delay = 65F, Timeout = 64F, Id = "SecondThenMethod")]
+        [Then("Second Then method", Delay = 11, Timeout = 33)]
+        [CallBefore(1, "ThenMethod", Delay = 56, Timeout = 65, Id = "SecondThenMethod")]
+        [CallBefore(2, "SecondGivenMethod", Delay = 65, Timeout = 64, Id = "SecondThenMethod")]
         public IAssertionResult SecondThenMethod(int intParam, string stringParam)
         {
             return new AssertionResultSuccessful();
