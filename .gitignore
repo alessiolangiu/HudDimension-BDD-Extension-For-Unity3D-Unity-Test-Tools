@@ -10,8 +10,6 @@
 # =============== #
 
 Assets/UnityTestTools/
-Assets/UnityTestToolsBDDExtension/DevelopmentScene.unity
-Assets/UnityTestToolsBDDExtension/Examples/Scenes/BDDLogo.unity
 
 
 # Visual Studio 2015 cache directory
@@ -34,7 +32,6 @@ ExportedObj/
 
 # Unity3D generated meta files
 *.pidb.meta
-*.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
