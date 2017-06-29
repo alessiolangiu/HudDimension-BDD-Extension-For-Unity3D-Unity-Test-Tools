@@ -23,7 +23,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ComponentsCheckerTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateStepMethods method should return the expected list of UnityTestBDDError objects given a Dynamic component without methods with the same full method name")]
         public void CheckDuplicateStepMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithoutMethodsWithTheSameFullMethodName()
         {
@@ -34,7 +34,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckDuplicateStepMethods doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateStepMethods method should return the expected list of UnityTestBDDError objects given a Dynamic component with methods with the same full method name for the same step type")]
         public void CheckDuplicateStepMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithMethodsWithTheSameFullMethodNameForTheSameStepType()
         {
@@ -67,7 +67,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(methodInfo1.Equals(result[0].MethodMethodInfo) || methodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckDuplicateStepMethods doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateStepMethods method should return the expected list of UnityTestBDDError objects given a Dynamic component with methods with the same full method name for different step types")]
         public void CheckDuplicateStepMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithMethodsWithTheSameFullMethodNameForDifferentStepTypes()
         {
@@ -100,7 +100,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(methodInfo1.Equals(result[0].MethodMethodInfo) || methodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckDuplicateStepMethods doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateComponents method should return the expected list of UnityTestBDDError objects given only a Dynamic component")]
         public void CheckDuplicateComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_OnlyADynamicComponent()
         {
@@ -111,7 +111,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckDuplicateComponents doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateComponents method should return the expected list of UnityTestBDDError objects given a list with duplicated Dynamic component")]
         public void CheckDuplicateComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AListWithADuplicatedDynamicComponent()
         {
@@ -129,7 +129,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckDuplicateComponents doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckValuesParametersStorage method should return the expected list of UnityTestBDDError objects given a Dynamic component without errors")]
         public void CheckValuesParametersStorage_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithoutErrors()
         {
@@ -140,7 +140,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckValuesParametersStorage doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckValuesParametersStorage method should return the expected list of UnityTestBDDError objects given a Dynamic component with a field marked as ValuesParametersStorage that is not an array")]
         public void CheckValuesParametersStorage_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAFieldMarkedAsValuesParametersStorageThatIsNotAnArray()
         {
@@ -157,7 +157,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckValuesParametersStorage method should return the expected list of UnityTestBDDError objects given a Dynamic component with a field marked as ValuesParametersStorage for a type already present")]
         public void CheckValuesParametersStorage_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAFieldMarkedAsValuesParametersStorageForATypeAlreadyPresent()
         {
@@ -174,7 +174,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckValuesParametersStorage method should return the expected list of UnityTestBDDError objects given a Dynamic component with a field marked as ValuesParametersStorage without SerializedField attribute")]
         public void CheckValuesParametersStorage_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAFieldMarkedAsValuesParametersStorageWithoutSerializedFieldAttribute()
         {
@@ -191,7 +191,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckValuesParametersStorage method should return the expected list of UnityTestBDDError objects given a Dynamic component with a method with a parameter of a type not found in the list of the available ValuesParametersStorages")]
         public void CheckValuesParametersStorage_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAMethodWithAParameterOfATypeNotFoundInTheListOfTheAvailableValuesParametersStorages()
         {
@@ -208,7 +208,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckValuesParametersStorage doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodReturnValue method should return the expected list of UnityTestBDDError objects given a step method that returns a IAssertionResult object")]
         public void CheckStepMethodReturnValue_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStepMethodThatReturnsAIAssertionResultObject()
         {
@@ -220,7 +220,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckStepMethodReturnValue doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodReturnValue method should return the expected list of UnityTestBDDError objects given a step method that does not return a IAssertionResult object")]
         public void CheckStepMethodReturnValue_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStepMethodThatDoesNotReturnAIAssertionResultObject()
         {
@@ -245,7 +245,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodReturnValue doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeMethods method  should return the expected list of UnityTestBDDError objects given a Dynamic component without errors")]
         public void CheckCallBeforeMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithoutErrors()
         {
@@ -256,7 +256,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckCallBeforeMethods doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeMethods method  should return the expected list of UnityTestBDDError objects given a CallBefore attribute with a empty Method property")]
         public void CheckCCheckCallBeforeMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ACallBeforeAttributeWithAEmptyMethodProperty()
         {
@@ -282,7 +282,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodReturnValue doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeMethods method should return the expected list of UnityTestBDDError objects given a CallBefore attribute with a Method property pointing to a not found method")]
         public void CheckCCheckCallBeforeMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ACallBeforeAttributeWithAMethodPropertyPointingToANotFoundMethod()
         {
@@ -308,7 +308,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodReturnValue doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeOnStepDeclaration method should return the expected list of UnityTestBDDError objects given a CallBefore attribute on a step method")]
         public void CheckCallBeforeOnStepDeclaration_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ACallBeforeAttributeOnAStepMethod()
         {
@@ -319,7 +319,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckCallBeforeOnStepDeclaration doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeOnStepDeclaration method shuld return the expected list of UnityTestBDDError objects given a CallBefore attribute on an ordinary method")]
         public void CheckCallBeforeOnStepDeclaration_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ACallBeforeAttributeOnAOrdinaryMethod()
         {
@@ -346,7 +346,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckCallBeforeOnStepDeclaration doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeExecutionOrders method should return the expected list of UnityTestBDDError objects given a Dynamic component with all CallBefore attributes with right ExecutionOrder properties")]
         public void CheckCallBeforeExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAllCallBeforeAttributesWidhRightExecutionOrderProperties()
         {
@@ -357,7 +357,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckCallBeforeExecutionOrders doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeExecutionOrders method should return the expected list of UnityTestBDDError objects given a Dynamic component with a CallBefore attribute with an ExecutionOrder property value set to 0")]
         public void CheckCallBeforeExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAllCallBeforeAttributesWidhACallBeforeAttributeWithAnExecutionOrderPropertyValueSetToZero()
         {
@@ -384,7 +384,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckCallBeforeExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeExecutionOrders method should return the expected list of UnityTestBDDError objects given a Dynamic component with two CallBefore attributes with the same ExecutionOrder property value")]
         public void CheckCallBeforeExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAllCallBeforeAttributesWidhTwoCallBeforeAttributesWithTheSameExecutionOrderPropertyValue()
         {
@@ -411,7 +411,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckCallBeforeExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckCallBeforeExecutionOrders method should return the expected list of UnityTestBDDError objects given a Dynamic component with a missing value of ExecutionOrder for CallBefore attributes")]
         public void CheckCallBeforeExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithAllCallBeforeAttributesWidhAMissingValueOfExecutionOrderForCallBeforeAttributes()
         {
@@ -438,7 +438,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckCallBeforeExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Dynamic component")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponent()
         {
@@ -449,7 +449,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckStepMethodsExecutionOrders doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with no errors")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithNoErrors()
         {
@@ -460,7 +460,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckStepMethodsExecutionOrders doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with a Given method with an ExecutionOrder set to 0")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithAGivenMethodWithAnExecutionOrderSetToZero()
         {
@@ -487,7 +487,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with a When method with an ExecutionOrder set to 0")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithAWhenMethodWithAnExecutionOrderSetToZero()
         {
@@ -514,7 +514,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with a Then method with an ExecutionOrder set to 0")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithAThenMethodWithAnExecutionOrderSetToZero()
         {
@@ -541,7 +541,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with a Given methods with duplicated ExecutionOrder")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithAGivenMethodWithDuplicatedExecutionOrder()
         {
@@ -575,7 +575,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo1.Equals(result[0].MethodMethodInfo) || expectedMethodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with a When methods with duplicated ExecutionOrder")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithAWhenMethodWithDuplicatedExecutionOrder()
         {
@@ -609,7 +609,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo1.Equals(result[0].MethodMethodInfo) || expectedMethodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with a Then methods with duplicated ExecutionOrder")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithAThenMethodWithDuplicatedExecutionOrder()
         {
@@ -643,7 +643,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo1.Equals(result[0].MethodMethodInfo) || expectedMethodInfo2.Equals(result[0].MethodMethodInfo), "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with Given methods with missing ExecutionOrder")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithGivenMethodsWithMissingExecutionOrder()
         {
@@ -660,7 +660,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with When methods with missing ExecutionOrder")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithWhenMethodsWithMissingExecutionOrder()
         {
@@ -677,7 +677,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with Then methods with missing ExecutionOrder")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithThenMethodsWithMissingExecutionOrder()
         {
@@ -694,7 +694,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExecutionOrders doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with Given methods missing")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithGivenMethodsMissing()
         {
@@ -711,7 +711,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistance doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with When methods missing")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithWhenMethodsMissing()
         {
@@ -728,7 +728,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistance doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStepMethodsExecutionOrders method should return the expected list of UnityTestBDDError objects given a Static component with Then methods missing")]
         public void CheckStepMethodsExecutionOrders_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithThenMethodsMissing()
         {
@@ -745,7 +745,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistance doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStaticComponentsWithParameters method should return the expected list of UnityTestBDDError objects given a Static component without methods with parameters")]
         public void CheckStaticComponentsWithParameters_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithoutMethodsWithParameters()
         {
@@ -756,7 +756,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckStaticComponentsWithParameters doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckStaticComponentsWithParameters method should return the expected list of UnityTestBDDError objects given a Static component with methods with parameters")]
         public void CheckStaticComponentsWithParameters_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AStaticComponentWithMethodsWithParameters()
         {
@@ -781,7 +781,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckStaticComponentsWithParameters doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateStaticComponents method should return the expected list of UnityTestBDDError objects given only one Static component")]
         public void CheckDuplicateStaticComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_OnlyOneStaticComponent()
         {
@@ -792,7 +792,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckDuplicateStaticComponents doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckDuplicateStaticComponents method should return the expected list of UnityTestBDDError objects given two Static components")]
         public void CheckDuplicateStaticComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_TwoStaticComponents()
         {
@@ -808,7 +808,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result[0].MethodMethodInfo, "The method CheckDuplicateStaticComponents doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckRecursiveCalls method should return the expected list of UnityTestBDDError objects given a component with a recursive call")]
         public void CheckRecursiveCalls_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithARecursiveCall()
         {
@@ -840,7 +840,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedSecondMethodInfo.Equals(result[0].MethodMethodInfo) || expectedSecondMethodInfo.Equals(result[1].MethodMethodInfo), "The method CheckRecursiveCalls doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckRecursiveCalls method should return the expected list of UnityTestBDDError objects given a component without recursive calls")]
         public void CheckRecursiveCalls_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithoutRecursiveCalls()
         {
@@ -851,7 +851,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckRecursiveCalls doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckParametersUniqueness method should return the expected list of UnityTestBDDError objects given a component without methods with parameters")]
         public void CheckParametersUniqueness_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithoutMethodsWithParameters()
         {
@@ -862,7 +862,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckParametersUniqueness doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckParametersUniqueness method should return the expected list of UnityTestBDDError objects given a component with duplicated CallBefore without parameters")]
         public void CheckParametersUniqueness_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithDuplicatedCallBeforeWithoutParameters()
         {
@@ -873,7 +873,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckParametersUniqueness doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckParametersUniqueness method should return the expected list of UnityTestBDDError objects given a component with simple duplicated CallBefore with parameters")]
         public void CheckParametersUniqueness_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithSimpleDuplicatedCallBeforeWithParameters()
         {
@@ -898,7 +898,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodInfo.Equals(result[0].MethodMethodInfo), "The method CheckParametersUniqueness doesn't resturn the right MethodInfo");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckParametersUniqueness method should return the expected list of UnityTestBDDError objects given a component with nested duplicated CallBefore with parameters")]
         public void CheckParametersUniqueness_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithNestedDuplicatedCallBeforeWithParameters()
         {
@@ -909,7 +909,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckParametersUniqueness doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckParametersUniqueness method should return the expected list of UnityTestBDDError objects given a component with duplicated CallBefore with parameters and Ids")]
         public void CheckParametersUniqueness_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AComponentWithDuplicatedCallBeforeWithParametersAndIds()
         {
@@ -920,7 +920,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckParametersUniqueness doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckEnoughAttachedComponents method should return the expected list of UnityTestBDDError objects given a non empty list of components")]
         public void CheckEnoughAttachedComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ANonEmptyListOfComponents()
         {
@@ -932,7 +932,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckEnoughAttachedComponents doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckEnoughAttachedComponents method should return the expected list of UnityTestBDDError objects given an empty list of components")]
         public void CheckEnoughAttachedComponents_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AnEmptyListOfComponents()
         {

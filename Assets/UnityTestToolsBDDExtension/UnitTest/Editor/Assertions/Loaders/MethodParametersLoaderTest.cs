@@ -21,7 +21,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class MethodParametersLoaderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadMethodParameters method should return the expected MethodParameters object given a Dynamic component and a method with one string parameter and its parameterIndex")]
         public void LoadMethodParameters_Should_ReturnTheExpectedMethodParametersObject_Given_ADynamicComponentAndAMethodWithOneStringParameterAndItsParameterIndex()
         {
@@ -57,7 +57,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedMethodParameters.Equals(methodParameters), "The method MethodParametersLoader.LoadMethodParameters doesn't return the right object.");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadMethodParameters method should return the expected MethodParameters object given a Dynamic component and a method with one string parameter and one int parameter with their parameterIndexes")]
         public void LoadMethodParameters_Should_ReturnTheExpectedMethodParametersObject_Given_ADynamicComponentAndAMethodWithOneStringParameterAndOneIntParameterWithTheirParameterIndexes()
         {

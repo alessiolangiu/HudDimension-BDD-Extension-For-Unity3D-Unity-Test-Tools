@@ -21,7 +21,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class MethodsFilterByStepTypeTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return true given a Dynamic component for a Given method filtering Given methods")]
         public void Filter_Should_ReturnTrue_Given_ADynamicComponentForAGivenMethodFilteringGivenMethods()
         {
@@ -32,7 +32,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(true, result, "The method MethodsFilterByStepType.Filter does not return the right answer");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return false given a Dynamic component for a Given method filtering When methods")]
         public void Filter_Should_ReturnFalse_Given_ADynamicComponentForAGivenMethodFilteringWhenMethods()
         {

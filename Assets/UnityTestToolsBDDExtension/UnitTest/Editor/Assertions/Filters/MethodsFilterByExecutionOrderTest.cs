@@ -21,7 +21,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class MethodsFilterByExecutionOrderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return true given a Static component for a Given method filtering Given methods")]
         public void Filter_Should_ReturnTrue_Given_AStaticComponentForAGivenMethodFilteringGivenMethods()
         {
@@ -32,7 +32,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(true, result, "The method MethodsFilterByStepType.Filter does not return the right answer");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return false given a Static component for a Given method filtering When methods")]
         public void Filter_Should_ReturnTrue_Given_AStaticComponentForAGivenMethodFilteringWhenMethods()
         {
@@ -44,7 +44,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(false, result, "The method MethodsFilterByStepType.Filter does not return the right answer");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return false given a Static component for a Generic method filtering When methods")]
         public void Filter_Should_ReturnTrue_Given_AStaticComponentForAGenericMethodFilteringWhenMethods()
         {
@@ -56,7 +56,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(false, result, "The method MethodsFilterByStepType.Filter does not return the right answer");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return false given a Dynamic component for a Given method filtering Given methods")]
         public void Filter_Should_ReturnTrue_Given_ADynamicComponentForAGivenMethodFilteringGivenMethods()
         {

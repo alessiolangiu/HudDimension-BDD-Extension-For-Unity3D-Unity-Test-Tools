@@ -27,7 +27,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ArrayStorageUtilitiesTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetArrayStorageFieldInfoByType method should return the expected ParametersValuesStorage FieldInfo object given a Dynamic component passing string type")]
         public void GetArrayStorageFieldInfoByType_Should_ReturnTheExpectedParametersValuesStorageFieldInfoObject_Given_ADynamicComponentPassingStringType()
         {
@@ -44,7 +44,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedArrayStorage.DeclaringType.Equals(arrayStorage.DeclaringType), "The method GetArrayStorage doesn't return the right ArrayStorage");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetArrayStorageFieldInfoByType method should return null given a Dynamic component passing a not present type")]
         public void GetArrayStorageFieldInfoByType_Should_ReturnNull_Given_ADynamicComponentPassingANotPresentType()
         {
@@ -55,7 +55,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(arrayStorage, "The method GetArrayStorage doesn't return the right ArrayStorage");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("ResetArrayStorage method should reset the ParametersValuesStorage array given a Dynamic component and the FieldInfo object of the ParametersValuesStorage array")]
         public void ResetArrayStorage_Should_ResetTheParametersValuesStorageArray_Given_ADynamicComponentAndTheFieldInfoObjectOfTheParametersValuesStorageArray()
         {
@@ -73,7 +73,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, currentValue.Length, "The method ResetArrayStorage doesn't reset the array storage properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("ResetAllArrayStorage method should reset all ParametersValuesStorage arrays inside the Dynamic components in the list")]
         public void ResetAllArrayStorage_Should_ResetAllParametersValuesStorageArraysInsideTheDynamicComponentsInTheList()
         {
@@ -120,7 +120,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, currentSecondIntArrayStorageValue.Length, "The method ResetArrayStorage doesn't reset the array storage properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetArrayStorageFieldInfoByType method should return the corresponding ParametersValuesStorage FieldInfo object for all the planned supported types")]
         public void GetArrayStorageFieldInfoByType_Should_ReturnTheCorrespondingParametersValuesStorageFieldInfoObjectForAllThePlannedSuppoertedTypes()
         {
@@ -184,7 +184,7 @@ namespace HudDimension.UnityTestBDD
             }
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetArrayStorageFieldInfoByName method should return the expected FieldInfo object given a Dynamic component and the name of the ParametersValuesStorage array")]
         public void GetArrayStorageFieldInfoByName_Should_ReturnTheExpectedFieldInfoObject_Given_ADynamicComponentAndTheNameOfTheParametersValuesStorageArray()
         {
@@ -201,7 +201,7 @@ namespace HudDimension.UnityTestBDD
             Assert.That(expectedArrayStorage.DeclaringType.Equals(arrayStorage.DeclaringType), "The method GetArrayStorage doesn't return the right ArrayStorage");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetArrayStorageFieldInfoByName method should return null given a Dynamic component and a name of a ParametersValuesStorage array that is not present in the component")]
         public void GetArrayStorageFieldInfoByName_Should_ReturnNull_Given_ADynamicComponentAndANameOfAParametersValuesStorageArrayThatIsNotPresentInTheComponent()
         {

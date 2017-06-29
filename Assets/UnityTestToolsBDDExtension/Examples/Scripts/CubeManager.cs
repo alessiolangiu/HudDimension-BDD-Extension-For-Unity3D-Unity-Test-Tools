@@ -31,7 +31,7 @@ public class CubeManager : MonoBehaviour
     /// <value>
     /// The warning message GameObject.
     /// </value>
-    private const string EarningTag = "WARNING MESSAGE";
+    private const string WarningTag = "WARNING MESSAGE";
 
     /// <summary>
     /// The cube prefab
@@ -90,7 +90,9 @@ public class CubeManager : MonoBehaviour
     {
         if (GameObject.FindWithTag(CubeTag) == null)
         {
-            Transform cube = Instantiate(this.CubePrefab, transform);
+            Transform cube = Instantiate(this.CubePrefab, new Vector3(600, 260, -450), Quaternion.identity) as Transform;
+            cube.Rotate(-25, -45, 25, Space.Self);
+            cube.parent = gameObject.transform;
             cube.name = "object for test";
             this.WarningMessage.SetActive(false);
         }

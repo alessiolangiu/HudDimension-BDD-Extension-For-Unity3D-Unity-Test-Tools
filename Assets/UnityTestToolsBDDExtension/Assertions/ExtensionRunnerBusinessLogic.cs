@@ -258,6 +258,12 @@ namespace HudDimension.UnityTestBDD
             return result;
         }
 
+        public void SetSucceedOnAssertions()
+        {
+            TestComponent testComponent=this.RunnerGameObject.GetComponent<TestComponent>();
+            testComponent.succeedAfterAllAssertionsAreExecuted = true;
+        }
+
         internal bool CheckForErrors(
             Component[] allComponents,
             string[] givenMethods,

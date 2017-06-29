@@ -22,7 +22,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class MethodDescriptionBuilderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected MethodDescription object given a Dynamic component for a Given method with a string parameter and without ParametersIndexes")]
         public void Build_Should_ReturnTheExpectedMethodDescriptionObject_Given_ADynamicComponentForAGivenMethodWithAStringParameterAndWithoutParametersIndexes()
         {
@@ -77,7 +77,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(expectedMethodDescription.Equals(builderResult), "The method MethodDescriptionBuilder.Build does not return the expected object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected MethodDescription object given a Dynamic component for a Given method with a string parameter with its ParameterIndex")]
         public void Build_Should_ReturnTheExpectedMethodDescriptionObject_Given_ADynamicComponentForAGivenMethodWithAStringParameterWithItsParameterIndex()
         {
@@ -133,7 +133,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(expectedMethodDescription.Equals(builderResult), "The method MethodDescriptionBuilder.Build does not return the expected object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected MethodDescription object given a Dynamic component for a Then method without parameters")]
         public void Build_Should_ReturnTheExpectedMethodDescriptionObject_Given_ADynamicComponentForAThenMethodWithoutParameters()
         {

@@ -23,7 +23,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class MethodsManagementUtilitiesTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParametersIndexForMethod method should return the expected parameterIndex given the method full name and the arrays of chosen methods and chosen methods parameters indexes")]
         public void GetParametersIndexForMethod_Should_ReturnTheExpectedParameterIndex_Given_TheMethodFullNameAndTheArraysOfChosenMethodsAndChosenMethodsParametersIndexes()
         {
@@ -36,7 +36,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(chosenMethodsParametersIndexes[expectedIndex], parametersIndex, "The method GetParametersIndexForMethod doesn't return the expected parametersIndex");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParametersIndexForMethod method should return null given no method full name and the arrays of chosen methods and chosen methods parameters indexes")]
         public void GetParametersIndexForMethod_Should_ReturnNull_Given_NoMethodFullNameAndTheArraysOfChosenMethodsAndChosenMethodsParametersIndexes()
         {
@@ -48,7 +48,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(parametersIndex, "The method GetParametersIndexForMethod doesn't return the expected parametersIndex");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadMethodsDescriptionsFromChosenMethods method should return the expected MethodDescription objects given a Dynamic component and a list of chosen methods")]
         public void LoadMethodsDescriptionsFromChosenMethods_Should_ReturnTheExpectedMethodDescriptionObjects_Given_ADynamicComponentAndAListOfChosenMethods()
         {
@@ -93,7 +93,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(chosenMethods[1], expectedMethodDescription2.GetFullName(), "The method LoadMethodsDescriptionsFromChosenMethods doesn't return the expected methods");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsStaticBDDScenario method should return true given a list of components where two of them are Dynamic components and one is a Static component")]
         public void IsStaticBDDScenario_Should_ReturnTrue_Given_AListOfComponentsWhereTwoOfThemAreDynamicComponentsAndOneIsAStaticComponent()
         {
@@ -106,7 +106,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "THe method IsStaticBDDScenario does not return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsStaticBDDScenario method should return false given a list of Dynamic components")]
         public void IsStaticBDDScenario_Should_ReturnFalse_Given_AListOfDynamicComponents()
         {
@@ -118,7 +118,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "THe method IsStaticBDDScenario does not return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadFullMethodsDescriptions method should return the expected list of FullMethodDescription objects given a list of MethodDescription objects of methods containing CallBefore attributes")]
         public void LoadFullMethodsDescriptions_Should_ReturnTheExpectedListOfFullMethodDescriptionObjects_Given_AListOfMethodDescriptionObjectsOfMethodsContainingCallBeforeAttributes()
         {
@@ -161,7 +161,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedFullMethodDescriptionsList[5], result[5], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadFullMethodsDescriptions should load the parameters for the CallBefore method when the parameter index of the main MethodDescription is properly set.")]
         public void LoadFullMethodsDescriptions_Should_LoadParametersForTheCallBeforeMethod_When_TheParameterIndexOfTheMainMethodDescriptionIsProperlySet()
         {

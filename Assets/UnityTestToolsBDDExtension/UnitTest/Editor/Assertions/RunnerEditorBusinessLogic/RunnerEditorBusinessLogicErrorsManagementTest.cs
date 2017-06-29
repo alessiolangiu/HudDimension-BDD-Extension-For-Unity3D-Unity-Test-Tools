@@ -25,7 +25,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class RunnerEditorBusinessLogicErrorsManagementTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Errors method should call the expected Unity Editor statements given a list containing one UnityTestBDDError object")]
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingOneUnityTestBDDErrorObject()
         {
@@ -84,7 +84,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Errors method should call the expected Unity Editor statements given a list containing two UnityTestBDDError object")]
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingTwoUnityTestBDDErrorObject()
         {

@@ -23,7 +23,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ChosenMethodsCheckerTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForBlankMethods method should return the expected list of UnityTestBDDError objects given a chosen methods list without empty elements")]
         public void CheckForBlankMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AChosenMethodsListWithoutEmptyElements()
         {
@@ -33,7 +33,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckForBlankMethods doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForBlankMethods method should return the expected list of UnityTestBDDError objects given a chosen methods list with an empty element")]
         public void CheckForBlankMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AChosenMethodsListWithAnEmptyElement()
         {
@@ -49,7 +49,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(2, result[0].Index, "The method CheckForBlankMethods doesn't resturn the right method index");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForMethodNotFound method should return the expected list of UnityTestBDDError objects given a list of chosen methods and a Dynamic component with all the methods in the list")]
         public void CheckForMethodNotFound_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AListOfChosenMethodsAndADynamicComponentWithAllMethodsInTheList()
         {
@@ -61,7 +61,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckForMethodNotFound doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForMethodNotFound method should return the expected list of UnityTestBDDError objects given a list of chosen methods and a Dynamic component without a method in the list")]
         public void CheckForMethodNotFound_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AListOfChosenMethodsAndADynamicComponentWithoutAMethodInTheList()
         {
@@ -79,7 +79,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, result[0].Index, "The method CheckForMethodNotFound doesn't resturn the right method index");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForComponentNotFound method should return the expected list of UnityTestBDDError objects given a list of chosen methods and the corresponding Dynamic components")]
         public void CheckForComponentNotFound_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AListOfChosenMethodsAndTheCorrespondingDynamicComponents()
         {
@@ -91,7 +91,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckForMethodNotFound doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForComponentNotFound method should return the expected list of UnityTestBDDError objects given a list of chosen methods without a corresponding Dynamic component")]
         public void CheckForComponentNotFound_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AListOfChosenMethodsWithoutACorrespondingDynamicComponent()
         {
@@ -109,7 +109,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result[0].Index, "The method CheckForComponentNotFound doesn't resturn the right method index");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForNotMatchingParametersIndex method should return the expected list of UnityTestBDDError objects given the parametersIndexes and the Dynamic component with the corresponding methods and parameters")]
         public void CheckForNotMatchingParametersIndex_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_TheParametersIndexesAndTheDynamicComponentWithTheCorrespondingMethodsAndParameters()
         {
@@ -122,7 +122,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckForNotMatchingParametersIndex doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForNotMatchingParametersIndex method should return the expected list of UnityTestBDDError objects given the parametersIndexes and the Dynamic component with the corresponding methods but without a corresponding parameter")]
         public void CheckForNotMatchingParametersIndex_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_TheParametersIndexesAndTheDynamicComponentWithTheCorrespondingMethodsButWithoutACorrespondingParameter()
         {
@@ -141,7 +141,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result[0].Index, "The method CheckForNotMatchingParametersIndex doesn't resturn the right method index");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForNotMatchingParametersIndex method should return the expected list of UnityTestBDDError objects given the parametersIndexes and the Dynamic component with the corresponding methods but with a parameter with different type")]
         public void CheckForNotMatchingParametersIndex_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_TheParametersIndexesAndTheDynamicComponentWithTheCorrespondingMethodsButWithAParameterWithDifferentType()
         {
@@ -161,7 +161,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result[0].Index, "The method CheckForNotMatchingParametersIndex doesn't resturn the right method index");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForNotMatchingPVS method should return the expected list of UnityTestBDDError objects given a parametersIndexes and a Dynamic component with the corresponding ParametersValuesStorages")]
         public void CheckForNotMatchingPVS_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_TheParametersIndexesAndADynamicComponentWithTheCorrespondingParametersValuesStorages()
         {
@@ -174,7 +174,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method CheckForNotMatchingPVS doesn't check properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("CheckForNotMatchingPVS method should return the expected list of UnityTestBDDError objects given a parametersIndexes and a Dynamic component without a corresponding ParametersValuesStorages")]
         public void CheckForNotMatchingPVS_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_TheParametersIndexesAndADynamicComponentWithoutACorrespondingParametersValuesStorages()
         {

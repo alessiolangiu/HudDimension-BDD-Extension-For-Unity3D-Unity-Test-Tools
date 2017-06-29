@@ -24,7 +24,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class RunnerEditorBusinessLogicParametersLocationsBuilderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BuildParametersLocation method should load the expected values for the parameters and build the expected parametersIndexes given a FullMethodDescription list on a single Dynamic component on a single method")]
         public void BuildParametersLocation_Should_LoadTheExpectedValuesForTheParametersAndBuildTheExpectedParametersIndexes_Given_AFullMethodDescriptionListOnASIngleDynamicComponentOnASingleMethod()
         {
@@ -59,7 +59,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(";System.String,RunnerEditorBusinessLogicParametersLocationsBuilderUTFirstDynamicBDDForTest.GivenMethod.stringParam.,stringPVS.Array.data[0]", fullMethodsDescriptionsList[0].ParametersIndex, "The method BuildParametersLocation doesn't build the parametersIndex properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BuildParametersLocation method should load the expected values for the parameters and build the expected parametersIndexes given a FullMethodDescription list on a single Dynamic component and on a single method with a CallBefore attribute")]
         public void BuildParametersLocation_Should_LoadTheExpectedValuesForTheParametersAndBuildTheExpectedParametersIndexes_Given_AFullMethodDescriptionListOnASIngleDynamicComponentOnASingleMethodWithACallBeforeAttibute()
         {
@@ -98,7 +98,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(";System.String,RunnerEditorBusinessLogicParametersLocationsBuilderUTDynamicCallBeforeParameters.GivenMethod.stringParam.,stringPVS.Array.data[0];System.String,RunnerEditorBusinessLogicParametersLocationsBuilderUTDynamicCallBeforeParameters.SecondWhenMethod.whenStringParam.,stringPVS.Array.data[1]", fullMethodsDescriptionsList[1].ParametersIndex, "The method BuildParametersLocation doesn't build the parametersIndex properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BuildParametersLocation method should load the expected values for the parameters and build the expected parametersIndexes given a FullMethodDescription list on a single Dynamic component and on three methods")]
         public void BuildParametersLocation_Should_LoadTheExpectedValuesForTheParametersAndBuildTheExpectedParametersIndexes_Given_AFullMethodDescriptionListOnASingleDynamicComponentAndOnThreeMethods()
         {
@@ -183,7 +183,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(";System.Int32,RunnerEditorBusinessLogicParametersLocationsBuilderUTFirstDynamicBDDForTest.ThirdWhenMethod.whenIntParam.,intPVS.Array.data[1]", thirdWhenFullMethodMethodDescription.ParametersIndex, "The method BuildParametersLocation doesn't build the parametersIndex properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BuildParametersLocation method should load the expected values for the parameters and build the expected parametersIndexes given a FullMethodDescription list on two Dynamic components and on three methods")]
         public void BuildParametersLocation_Should_LoadTheExpectedValuesForTheParametersAndBuildTheExpectedParametersIndexes_Given_AFullMethodDescriptionListOnTwoDynamicComponentsAndOnThreeMethods()
         {
@@ -282,7 +282,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(";System.Int32,RunnerEditorBusinessLogicParametersLocationsBuilderUTFirstDynamicBDDForTest.ThirdWhenMethod.whenIntParam.,intPVS.Array.data[1]", thirdWhenFullMethodMethodDescription.ParametersIndex, "The method BuildParametersLocation doesn't build the parametersIndex properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BuildParametersLocation method should load the expected values for the parameters and build the expected parametersIndexes given a FullMethodDescription list on two Dynamic components and on three methods in adding")]
         public void BuildParametersLocation_Should_LoadTheExpectedValuesForTheParametersAndBuildTheExpectedParametersIndexes_Given_AFullMethodDescriptionListOnTwoDynamicComponentsAndOnThreeMethodsInAdding()
         {
@@ -387,7 +387,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(";System.String,RunnerEditorBusinessLogicParametersLocationsBuilderUTSecondDynamicBDDForTest.SecondWhenMethod.whenStringParam.,stringPVS.Array.data[0]", secondWhenFullMethodMethodDescription.ParametersIndex, "The method BuildParametersLocation doesn't build the parametersIndex properly");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("RebuildParametersIndexesArrays method should return the expected parametersIndexes arrays given the values in the FullMethodDescription objects are changed")]
         public void RebuildParametersIndexesArrays_Should_ReturnTheExpectedParametersIndexesArrays_Given_TheValuesInTheFullmethodDescriptionObjectAreChanged()
         {

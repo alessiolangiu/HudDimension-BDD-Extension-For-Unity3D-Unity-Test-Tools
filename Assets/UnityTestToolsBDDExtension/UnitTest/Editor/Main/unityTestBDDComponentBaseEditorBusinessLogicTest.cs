@@ -25,7 +25,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class UnityTestBDDComponentBaseEditorBusinessLogicTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Errors method should call the expected Unity Editor statements given one error on a component")]
         public void Errors_Should_CallTheExpectedUnityEditorStatements_Given_OneErrorOnAComponent()
         {
@@ -81,7 +81,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Errors method should call the expected Unity Editor statements given two errors on a component")]
         public void Errors_Should_CallTheExpectedUnityEditorStatements_Given_TwoErrorsOnAComponent()
         {

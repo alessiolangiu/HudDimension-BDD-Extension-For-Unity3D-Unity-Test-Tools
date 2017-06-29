@@ -21,7 +21,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ComponentsFilterTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return only the Dynamic component given two objects with the first as Dynamic component and the second as a normal MonoBehaviour class")]
         public void Filter_Should_ReturnOnlyTheDynamicComponent_Given_TwoObjectsWithTheFirstAsDynamicComponentsAndTheSecondAsANormalMonoBehaviourClass()
         {
@@ -35,7 +35,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(typeof(ComponentsFilterTestFirstDynamicComponent).Equals(filteredClasses[0].GetType()), "The BddComponentsFilter doesn't return the right class");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return only the two Dynamic components given three objects with the first and the third as Dynamic components and the second as a normal MonoBehaviour class")]
         public void Filter_Should_ReturnOnlyTheTwoDynamicComponents_Given_ThreeObjectsWithTheFirstAndTheThirdAsDynamicComponentsAndTheSecondAsANormalMonoBehaviourClass()
         {
@@ -52,7 +52,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(typeof(ComponentsFilterTestSecondDynamicComponent).Equals(filteredClasses[1].GetType()), "The BddComponentsFilter doesn't return the right class");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return only the Static component given two objects with the first as Static component and the second as a normal MonoBehaviour class")]
         public void Filter_Should_ReturnOnlyTheStaticComponent_Given_TwoObjectsWithTheFirstAsStaticComponentsAndTheSecondAsANormalMonoBehaviourClass()
         {
@@ -67,7 +67,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(typeof(ComponentsFilterTestFirstStaticComponent).Equals(filteredClasses[0].GetType()), "The BddComponentsFilter doesn't return the right class");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Filter method should return only the Static component given three objects with the first as Static component and the second as a normal MonoBehaviour class and the third as a Dynamic component")]
         public void Filter_Should_ReturnOnlyTheStaticComponent_Given_ThreeObjectsWithTheFirstAsStaticComponentsAndTheSecondAsANormalMonoBehaviourClassANdTheThirdAsADynamicComponent()
         {

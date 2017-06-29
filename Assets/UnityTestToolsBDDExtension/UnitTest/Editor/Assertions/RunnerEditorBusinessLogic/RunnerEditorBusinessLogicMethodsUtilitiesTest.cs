@@ -24,7 +24,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class RunnerEditorBusinessLogicMethodsUtilitiesTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("AddMissedMethodNameToMethodsNames method should add at the the end of the string array another element with the passed string")]
         public void AddMissedMethodNameToMethodsNames_Should_AddAtTheEndOfTheStringArrayAnotherElementWithThePassedString()
         {
@@ -39,7 +39,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(methodName, result[3], "The method UnityTestToolsBDDExtensionRunnerEditorBusinessLogic.AddMissedMethodNameToMethodsNames doesn't add the new method name at the end of the array.");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetMethodDescriptionForTheChosenMethod method should return the expected MethodDescription object given a Dynamic component and the method full name and the parametersIndexes")]
         public void GetMethodDescriptionForTheChosenMethod_Should_ReturnTheExpectedMethodDescriptionObject_Given_ADynamicComponentAndTheMethodFullNameAndTheParametersIndexes()
         {
@@ -82,7 +82,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(methodDescription.Equals(result), "The method UnityTestToolsBDDExtensionRunnerEditorBusinessLogic.GetMethodDescriptionForTheChosenMethod doesn't return the right object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetMethodDescriptionForTheChosenMethod method should return null given a Dynamic component and an empty string as method full name")]
         public void GetMethodDescriptionForTheChosenMethod_Should_ReturnNull_Given_ADynamicComponentAdnAnEmptyStringAsMethodFullName()
         {
@@ -125,7 +125,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsNull(result, "The method UnityTestToolsBDDExtensionRunnerEditorBusinessLogic.GetMethodDescriptionForTheChosenMethod doesn't return the right object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("UpdateDataIfNewMethodIsChosen method should update the expected data and return true given the current chosen method is different to the previous that was empty")]
         public void UpdateDataIfNewMethodIsChosen_Should_UpdateTheExpectedDataAndReturnTrue_Given_TheCurrentChosenMethodIsDifferenToThePreviousThatWasEmpty()
         {
@@ -157,7 +157,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedRebuild, rebuild, "The method UpdateDataIfNewMethodIsChosen does not return the right rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("UpdateDataIfNewMethodIsChosen method should update the expected data and return true given the current chosen method is different to the previous")]
         public void UpdateDataIfNewMethodIsChosen_Should_UpdateTheExpectedDataAndReturnTrue_Given_TheCurrentChosenMethodIsDifferenToThePrevious()
         {
@@ -189,7 +189,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedRebuild, rebuild, "The method UpdateDataIfNewMethodIsChosen does not return the right rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetMethodsNames method should return the expected array of strings containing the full names of the methods given a list of BaseMethodDescription objects")]
         public void GetMethodsNames_Should_ReturnTheExpectedArrayOfStringsContainingTheFullNamesOfTheMethods_Given_ALIstOfBaseMethodDescriptionObjects()
         {

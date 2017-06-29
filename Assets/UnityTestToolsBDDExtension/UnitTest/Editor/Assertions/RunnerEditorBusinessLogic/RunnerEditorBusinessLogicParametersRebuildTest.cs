@@ -22,7 +22,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class RunnerEditorBusinessLogicParametersRebuildTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsBDDObjectsNull method should return true given a null BDDObjects array")]
         public void IsBDDObjectsNull_Should_ReturnTrue_Given_ANullBDDObjectsArray()
         {
@@ -33,7 +33,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method IsBDDObjectsNull doesn't return the right state of the BDDObjects");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsBDDObjectsNull method should return false given an empty BDDObjects array")]
         public void IsBDDObjectsNull_Should_ReturnFalse_Given_AnEmptyBDDObjectsArray()
         {
@@ -44,7 +44,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method IsBDDObjectsNull doesn't return the right state of the BDDObjects");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsBDDObjectsNull method should return false given a non empty BDDObjects array")]
         public void IsBDDObjectsNull_Should_ReturnFalse_Given_ANonEmptyBDDObjectsArray()
         {
@@ -55,7 +55,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method IsBDDObjectsNull doesn't return the right state of the BDDObjects");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsEditorApplicationCompilingJustFinished method should return false and set the value of IsCompiling property to false given the state of IsCompiling property is false and the state of the EditorApplication.IsCompiling property is false")]
         public void IsEditorApplicationCompilingJustFinished_Should_ReturnFalseAndSetTheValueOfIsCompilingPropertyToFalse_Given_TheStateOfIsCompilingPropertyIsFalseAndTheStateOfTHeEditorApplicationIsCompilingPropertyIsFalse()
         {
@@ -70,7 +70,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(runnerBusinessLogicData.IsCompiling, "The method IsEditorApplicationCompilingJustFinished doesn't return the right last state of editor compilation");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsEditorApplicationCompilingJustFinished method should return true and set the value of IsCompiling property to false given the state of IsCompiling property is true and the state of the EditorApplication.IsCompiling property is false")]
         public void IsEditorApplicationCompilingJustFinished_Should_ReturnTrueAndSetTheValueOfIsCompilingPropertyToFalse_Given_TheStateOfIsCompilingPropertyIsTrueAndTheStateOfTheEditorApplicationIsCompilingPropertyIsFalse()
         {
@@ -85,7 +85,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(runnerBusinessLogicData.IsCompiling, "The method IsEditorApplicationCompilingJustFinished doesn't return the right last state of editor compilation");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsEditorApplicationCompilingJustFinished method should return false and set the value of IsCompiling property to true given the state of IsCompiling property is false and the state of the EditorApplication.IsCompiling property is true")]
         public void IsEditorApplicationCompilingJustFinished_Should_ReturnFalseAndSetTheValueOfIsCompilingPropertyToTrue_Given_TheStateOfIsCompilingPropertyIsFalseAndTheStateOfTheEditorApplicationIsCompilingPropertyIsTrue()
         {
@@ -100,7 +100,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(runnerBusinessLogicData.IsCompiling, "The method IsEditorApplicationCompilingJustFinished doesn't return the right last state of editor compilation");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsEditorApplicationCompilingJustFinished method should return false and set the value of IsCompiling property to true given the state of IsCompiling property is true and the state of the EditorApplication.IsCompiling property is true")]
         public void IsEditorApplicationCompilingJustFinished_Should_ReturnFalseAndSetTheValueOfIsCompilingPropertyToTrue_Given_TheStateOfIsCompilingPropertyIsTrueAndTheStateOfTheEditorApplicationIsCompilingPropertyIsTrue()
         {
@@ -115,7 +115,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(runnerBusinessLogicData.IsCompiling, "The method IsEditorApplicationCompilingJustFinished doesn't return the right last state of editor compilation");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BddObjectsHaveChanged method should return false given the BDDObjects array is null and the currentComponents array is empty")]
         public void BddObjectsHaveChanged_Should_ReturnFalse_GivenTheBDDObjectsArrayIsNullAndTheCurrentComponentsArrayIsEmpty()
         {
@@ -131,7 +131,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method BddObjectsHaveChanged doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BddObjectsHaveChanged method should return true given the BDDObjects array is null and the currentComponents array is not empty")]
         public void BddObjectsHaveChanged_Should_ReturnTrue_GivenTheBDDObjectsArrayIsNullAndTheCurrentComponentsArrayIsNotEmpty()
         {
@@ -147,7 +147,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method BddObjectsHaveChanged doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BddObjectsHaveChanged method should return false given the BDDObjects array is not empty and the currentComponents array has the same elements of the BDDObjects Array")]
         public void BddObjectsHaveChanged_Should_ReturnFalse_GivenTheBDDObjectsArrayIsNotEmptyAndTheCurrentComponentsArrayHasTheSameElementsOfTheBDDObjectsArray()
         {
@@ -163,7 +163,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method BddObjectsHaveChanged doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BddObjectsHaveChanged method should return true given the BDDObjects array is not empty and the currentComponents array is empty")]
         public void BddObjectsHaveChanged_Should_ReturnFalse_GivenTheBDDObjectsArrayIsNotEmptyAndTheCurrentComponentsArrayIsEmpty()
         {
@@ -179,7 +179,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method BddObjectsHaveChanged doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsParametersRebuildNeeded method should return false given the BDDObjects is null and BDDObjects did not changed and EditorApplicationIsCompiling is true and it is a Dynamic scenario")]
         public void IsParametersRebuildNeeded_Should_ReturnFalse_Given_TheBDDObjectsIsNullAndBDDObjectsDidNotChangedAndEditorApplicationIsCompilingIsTrueAndItIsADynamicScenario()
         {
@@ -196,7 +196,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method IsParametersRebuildNeeded returns the wrong rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsParametersRebuildNeeded method should return true given the BDDObjects is null and BDDObjects did not changed and EditorApplicationIsCompiling is false and CompilingIsJustFinished and it is a Dynamic scenario")]
         public void IsParametersRebuildNeeded_Should_ReturnTrue_Given_TheBDDObjectsIsNullAndBDDObjectsDidNotChangedAndEditorApplicationIsCompilingIsFalseAndCompilingIsJustFinishedAndItIsADynamicScenario()
         {
@@ -213,7 +213,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method IsParametersRebuildNeeded returns the wrong rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsParametersRebuildNeeded method should return true given the BDDObjects is null and BDDObjects did not changed and EditorApplicationIsCompiling is false and CompilingJustFinished is false and it is a Dynamic scenario")]
         public void IsParametersRebuildNeeded_Should_ReturnTrue_Given_TheBDDObjectsIsNullAndBDDObjectsDidNotChangedAndEditorApplicationIsCompilingIsFalseAndCompilingJustFinishedIsFalseAndItIsADynamicScenario()
         {
@@ -230,7 +230,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method IsParametersRebuildNeeded returns the wrong rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsParametersRebuildNeeded method should return false given the BDDObjects is not null and BDDObjects did not changed and EditorApplicationIsCompiling is false and CompilingJustFinished is false and it is a Dynamic scenario")]
         public void IsParametersRebuildNeeded_Should_ReturnFalse_Given_TheBDDObjectsIsNullAndBDDObjectsDidNotChangedAndEditorApplicationIsCompilingIsFalseAndCompilingJustFinishedIsFalseAndItIsADynamicScenario()
         {
@@ -246,7 +246,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method IsParametersRebuildNeeded returns the wrong rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsParametersRebuildNeeded method should return true given the BDDObjects is not null and BDDObjects are changed and EditorApplicationIsCompiling is false and CompilingJustFinished is false and it is a Dynamic scenario")]
         public void IsParametersRebuildNeeded_Should_ReturnTrue_Given_TheBDDObjectsIsNotNullAndBDDObjectsAreChangedAndEditorApplicationIsCompilingIsFalseAndCompilingJustFinishedIsFalseAndItIsADynamicScenario()
         {
@@ -263,7 +263,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method IsParametersRebuildNeeded returns the wrong rebuild state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("IsParametersRebuildNeeded method should return False given the BDDObjects is not null and BDDObjects are changed and EditorApplicationIsCompiling is true and CompilingJustFinished is false and it is a Dynamic scenario")]
         public void IsParametersRebuildNeeded_Should_ReturnFalse_Given_TheBDDObjectsIsNotNullAndBDDObjectsAreChangedAndEditorApplicationIsCompilingIsTrueAndCompilingJustFinishedIsFalseAndItIsADynamicScenario()
         {

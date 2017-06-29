@@ -22,7 +22,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class FullMethodDescriptionBuilderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription object given a Dynamic component for a Given method without CallBefore attributes")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObject_Given_ADynamicComponentForAGivenMethodWithoutCallBeforeAttributes()
         {
@@ -59,7 +59,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedFullMethodDescription, result[0], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription object given a Dynamic component for a When method with Delay and Timeout properties")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObject_Given_ADynamicComponentForAWhenMethodWithDelayAndTimeoutProperties()
         {
@@ -96,7 +96,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedFullMethodDescription, result[0], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Dynamic component for a Then method with a single CallBefore attribute")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_ADynamicComponentForAThenMethodWithASingleCallBeforeAttribute()
         {
@@ -151,7 +151,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMainFullMethodDescription, result[1], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Dynamic component for a When method with a single CallBefore attribute calling a GenericBDDMethod")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_ADynamicComponentForAWhenMethodWithASingleCallBeforeAttributeCallingAGenericBDDMethod()
         {
@@ -224,7 +224,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMainFullMethodDescription, result[2], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Dynamic component for a Then method with a complex CallBefore attributes cascade")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_ADynamicComponentForAWhenMethodWithAComplexCallBeforeAttributesCascade()
         {
@@ -311,7 +311,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMainFullMethodDescription, result[3], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Static component for a Then method with a complex CallBefore attributes cascade")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_AStaticComponentForAWhenMethodWithAComplexCallBeforeAttributesCascade()
         {
@@ -399,7 +399,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMainFullMethodDescription, result[3], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Dynamic component for a Then method with a CallBefore attribute calling a method with parameters")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_ADynamicComponentForAThenMethodWithACallBeforeAttributeCallingAMethodWIthParameters()
         {
@@ -459,7 +459,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMainFullMethodDescription, result[1], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Dynamic component for a Then method with a CallBefore attribute with Id property calling a method with parameters")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_ADynamicComponentForAThenMethodWithACallBeforeAttributeWithIdPropertyCallingAMethodWithParameters()
         {
@@ -524,7 +524,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMainFullMethodDescription, result[1], "The method build doesn't return the right fullMethodDescription");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected FullMethodDescription objects list given a Dynamic component for a Then method with a complex CallBefore attributes cascade with Id properties calling methods with parameters")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObjectsList_Given_ADynamicComponentForAThenMethodWithAComplexCallBeforeAttributeCascadeWithIdPropertiesCallingMethodsWithParameters()
         {

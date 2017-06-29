@@ -21,7 +21,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class BaseMethodDescriptionBuilderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected BaseMethodDescription object given a Dynamic component and a simple Given method")]
         public void Build_Should_ReturnTheExpectedBaseMethodDescriptionObject_Given_ADynamicComponentAndASimpleGivenMethod()
         {
@@ -42,7 +42,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedBaseMethodDescription.Text, builderResult.Text, "The method BaseMethodDescriptionBuilder.Build does not return the expected Text");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Build method should return the expected BaseMethodDescription object given a Static component on a Given method")]
         public void Build_Should_ReturnTheExpectedBaseMethodDescriptionObject_Given_AStaticComponentOnAGivenMethod()
         {

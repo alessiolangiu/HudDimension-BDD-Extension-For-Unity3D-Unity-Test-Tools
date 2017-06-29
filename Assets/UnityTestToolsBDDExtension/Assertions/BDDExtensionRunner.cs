@@ -133,6 +133,7 @@ namespace HudDimension.UnityTestBDD
             this.BusinessLogic.AreThereErrors = this.BusinessLogic.CheckForErrors(gameObject.GetComponents<Component>(), this.Given, this.GivenParametersIndex, this.When, this.WhenParametersIndex, this.Then, this.ThenParametersIndex);
             if (!this.BusinessLogic.AreThereErrors)
             {
+                this.BusinessLogic.SetSucceedOnAssertions();
                 this.BusinessLogic.MethodsDescription = this.BusinessLogic.GetAllMethodsDescriptions(gameObject.GetComponents<Component>(), this.Given, this.GivenParametersIndex, this.When, this.WhenParametersIndex, this.Then, this.ThenParametersIndex);
             }
         }

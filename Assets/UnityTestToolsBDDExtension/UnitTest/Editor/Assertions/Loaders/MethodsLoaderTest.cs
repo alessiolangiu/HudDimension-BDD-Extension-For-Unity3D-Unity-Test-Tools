@@ -22,7 +22,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class MethodsLoaderTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return the expected list of BaseMethodDescription objects given a Dynamic component loading Given methods")]
         public void LoadStepMethods_Should_ReturnTheExpectedListOfBaseMethodDescriptionObjects_Given_ADynamicComponentLoadingGivenMethods()
         {
@@ -41,7 +41,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(expectedMethod.Equals(methods[0]), "The BDDStepMethodsFilter.FilterAllStepMethods method doesn't return the expected Method Object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return an empty list of BaseMethodDescription objects given a Dynamic component without When methods loading When methods")]
         public void LoadStepMethods_Should_ReturnAnEmptyListOfBaseMethodDescriptionObjects_GivenADynamicComponentWithoutWhenMethodsLoadingWhenMethods()
         {
@@ -53,7 +53,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, methods.Count, "The BDDStepMethodsFilter.FilterAllStepMethods method doesn't return the expected amount of elements");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return the expected list of BaseMethodDescription objects given a Dynamic component with two Then methods loading Then methods")]
         public void LoadStepMethods_Should_ReturnTheExpectedListOfBaseMethodDescriptionObjects_Given_ADynamicComponentWithTwoThenMethodsLoadingThenMethods()
         {
@@ -95,7 +95,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(expectedMethod2.Equals(returnedMethod2), "The BDDStepMethodsFilter.FilterAllStepMethods method doesn't return the expected Method Object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return the expected list of BaseMethodDescription objects given a Static component with one Given method loading Given Methods")]
         public void LoadStepMethods_Should_ReturnTheExpectedListOfBaseMethodDescriptionObjects_Given_AStaticComponentWithOneGivenMethodLoadingGivenMethods()
         {
@@ -115,7 +115,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(expectedMethod.Equals(methods[0]), "The BDDStepMethodsFilter.FilterAllStepMethods method doesn't return the expected Method Object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return the expected list of BaseMethodDescription given a Static component with three Then methods loading Then methods")]
         public void LoadStepMethods_Should_ReturnTheExpectedListOfBaseMethodDescription_Given_AStaticComponentWithThreeThenMethodsLoadingThenMethods()
         {
@@ -156,7 +156,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(expectedMethod3.Equals(resultMethod3), "The BDDStepMethodsFilter.FilterAllStepMethods method doesn't return the expected Method Object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return an empty list given a Static component with a missing ExecutionOrder value")]
         public void LoadStepMethods_Should_ReturnAnEmptyList_Given_AStaticComponentWithAMissingExecutionOrderValue()
         {
@@ -169,7 +169,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, result.Count, "The method LoadStepMethods does not return the right list.");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("LoadStepMethods method should return an empty list given a Static component with a repeted ExecutionOrder value")]
         public void LoadStepMethods_Should_ReturnAnEmptyList_Given_AStaticComponentWithARepetedExecutionOrderValue()
         {

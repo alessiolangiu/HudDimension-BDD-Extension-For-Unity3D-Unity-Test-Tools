@@ -21,7 +21,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ParametersIndexUtilitiesTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("BuildParameterIndex method should return the expected ParameterIndex given all the informations for building it")]
         public void BuildParameterIndex_Should_ReturnTheExpectedParameterIndex_Given_AllTheInformationsForBuildingIt()
         {
@@ -39,7 +39,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParametersIndex, result, "The method BuildParameterIndex doesn't return the right index");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterType method should return SystemString given a parameterIndex for a string parameter")]
         public void GetParameterType_Should_ReturnSystemString_Given_AParameterIndexForAStringParameter()
         {
@@ -50,7 +50,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParameterType, result, "The method GetParameterType doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetComponentName method should return ComponentName given a parameterIndex for a component called ComponentName")]
         public void GetComponentName_Should_ReturnComponentName_Given_AParameterIndexForAComponentCalledComponentName()
         {
@@ -61,7 +61,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedComponentName, result, "The method GetComponentName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetMethodName should return MethodName given a parameterIndex for a method called MethodName")]
         public void GetMethodName_Should_ReturnMethodName_Given_AParameterIndexForAMethodCalledMethodName()
         {
@@ -72,7 +72,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMethodName, result, "The method GetMethodName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterName method should return parameterName given a parameterIndex for a parameter called ParameterName")]
         public void GetParameterName_Should_ReturnParameterName_Given_AParameterIndexForAParameterCalledParameterName()
         {
@@ -83,7 +83,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParamenterName, result, "The method GetParameterName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterId method should return parameterId given a parameterIndex for a parameter id with value parameterId")]
         public void GetParameterId_Should_ReturnParameterId_Given_AParameterIndexForAParameterIdWithValueParameterId()
         {
@@ -94,7 +94,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParamenterId, result, "The method GetParameterId doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterValueStorageLocation method should return the expected ValueStorageLocation given a parameterIndex")]
         public void GetParameterValueStorageLocation_Should_ReturnTheExpectedValueStorageLocation_Given_AParameterIndex()
         {
@@ -105,7 +105,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParamenterValueStorageLocation, result, "The method GetParameterValueStorageLocation doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterValueStorageLocationIndex method should return 0 given a parameterIndex whith the index of the ParametersValueStorage array set to 0")]
         public void GetParameterValueStorageLocationIndex_Should_ReturnZero_Given_AParameterIndexWithTheIndexOfTHeParametersValuesStorageArraySetToZero()
         {
@@ -116,7 +116,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParameterValueStorageLocationIndex, result, "The method GetParameterValueStorageLocationIndex doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterFullName method shuld return the expected parameter full name given a parameterIndex")]
         public void GetParameterFullName_Should_ReturnTheExpectedParameterFullName_Given_AParameterIndex()
         {
@@ -127,7 +127,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParameterFullName, result, "The method GetParameterFullName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterFullName method should return the expected parameter full name given all the informations for building it")]
         public void GetParameterFullName_Should_ReturnTheExpectedParameterFullName_Given_AllTheInformationsForBuildingIt()
         {
@@ -141,7 +141,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParameterFullName, result, "The method GetParameterFullName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetMethodFullName method should return the expected method full name given a parameterIndex")]
         public void GetMethodFullName_Should_ReturnTheExpectedMethodFullName_Given_AParameterIndex()
         {
@@ -152,7 +152,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedMethodFullName, result, "The method GetMethodFullName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParameterValueStorageName method should return the expected ParameterValueStorage name given a parameterIndex")]
         public void GetParameterValueStorageName_Should_ReturnTheExpectedParameterValueStorageName_Given_AParameterIndex()
         {
@@ -163,7 +163,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedParameterValueStorageName, result, "The method GetParameterValueStorageName doesn't return the right parameterType");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetParametersIndexList method should return the expected list of parameterIndexes given a parametersIndexes")]
         public void GetParametersIndexList_Should_ReturnTheExpectedListOfParameterIndexes_Given_AParametersIndexes()
         {

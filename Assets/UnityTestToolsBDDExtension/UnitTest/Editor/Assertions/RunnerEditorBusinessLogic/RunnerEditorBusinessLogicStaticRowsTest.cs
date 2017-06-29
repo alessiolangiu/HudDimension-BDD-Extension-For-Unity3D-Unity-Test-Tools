@@ -24,7 +24,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class RunnerEditorBusinessLogicStaticRowsTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawStaticRows method should call the right Unity Editor statements given a Static component with a single Given Method")]
         public void DrawStaticRows_Should_CallTheRightUnityEditoStatements_Given_AStaticComponentWithASingleGivenMethod()
         {
@@ -58,7 +58,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawStaticRows method should call the right Unity Editor statements given a Static component with two When methods")]
         public void DrawStaticRows_Should_CallTheRightUnityEditoStatements_Given_AStaticComponentWithTwoWhenMethods()
         {

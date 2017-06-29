@@ -20,7 +20,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ChosenMethodsTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("Clone method should return the an equal object")]
         public void Clone_Should_ReturnAnEqualObject()
         {

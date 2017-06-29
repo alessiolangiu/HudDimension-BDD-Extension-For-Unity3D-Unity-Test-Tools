@@ -27,7 +27,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class RunnerEditorBusinessLogicDynamicRowsElementsTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawFoldoutSymbol method should call the expected Unity Editor statements given a method with parameters and without user interactions with the foldout symbol")]
         public void DrawFoldoutSymbol_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithParametersAndWithoutUserInteractionsWithTheFoldoutSymbol()
         {
@@ -68,7 +68,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedFoldouts, foldouts, "Il metodo DrawFoldoutSymbol non restituisce il corretto valore di foldouts");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawFoldoutSymbol method should call the expected Unity Editor statements given a method with parameters and with user interactions with the foldout symbol")]
         public void DrawFoldoutSymbol_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithParametersAndWithUserInteractionsWithTheFoldoutSymbol()
         {
@@ -109,7 +109,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedFoldouts, foldouts, "Il metodo DrawFoldoutSymbol non restituisce il corretto valore di foldouts");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawFoldoutSymbol method should call the expected Unity Editor statements given a method without parameters")]
         public void DrawFoldoutSymbol_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithoutParameters()
         {
@@ -150,7 +150,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedFoldouts, foldouts, "Il metodo DrawFoldoutSymbol non restituisce il corretto valore di foldouts");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawLabel method should call the expected Unity Editor statements given being called three times for the Given methods with increasing indexes")]
         public void DrawLabel_Should_CallTheExpectedUnityEditorStatements_Given_BeingCalledThreeTimesForGivenMethodsWithIncreasingIndexes()
         {
@@ -169,7 +169,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawDescription method should call the expected Unity Editor statements given a blank chosen method")]
         public void DrawDescription_Should_CallTheExpectedUnityEditorStatements_Given_ABlankChosenMethod()
         {
@@ -184,7 +184,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawDescription method should call the expected Unity Editor statements given a MethodDescription object without parameters")]
         public void DrawDescription_Should_CallTheExpectedUnityEditorStatements_Given_AMethodDescriptionObjectWithoutParameters()
         {
@@ -206,7 +206,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawDescription method should call the expected Unity Editor statements given a MethodDescription object with parameters")]
         public void DrawDescription_Should_CallTheExpectedUnityEditorStatements_Given_AMethodDescriptionObjectWithParameters()
         {
@@ -236,7 +236,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawDescription method should call the expected Unity Editor statements given a null MethodDescription parameter")]
         public void DrawDescription_Should_CallTheExpectedUnityEditorStatements_Given_ANullMethodDescriptionParameter()
         {
@@ -251,7 +251,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawComboBox  method should call the expected Unity Editor statements given an empty selection and without user interaction")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_AnEmptySelectionAndWithoutUserInteraction()
         {
@@ -269,7 +269,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(string.Empty, result, "The method DrawComboBox doesn't return the right method");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawComboBox  method should call the expected Unity Editor statements given an empty selection and a new selection action")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_AnEmptySelectionAndANewSelectionAction()
         {
@@ -287,7 +287,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual("SecondMethod", result, "The method DrawComboBox doesn't return the right method");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawComboBox  method should call the expected Unity Editor statements given a selection and without a user interaction")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_ASelectionAndWithoutUserInteraction()
         {
@@ -305,7 +305,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual("SecondMethod", result, "The method DrawComboBox doesn't return the right method");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawComboBox  method should call the expected Unity Editor statements given a selection and a new selection action")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_ASelectionAndANewSelectionAction()
         {
@@ -323,7 +323,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual("ThirdMethod", result, "The method DrawComboBox doesn't return the right method");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawComboBox method should call the expected Unity Editor statements given an empty selection and an empty list")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_AnEmptySelectionAndAnEmptyList()
         {
@@ -341,7 +341,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(string.Empty, result, "The method DrawComboBox doesn't return the right method");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawParametersRows method should call the expected Unity Editor statements given a method with one parameter and foldout false")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithOneParameterAndFoldoutFalse()
         {
@@ -382,7 +382,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawParametersRows method should call the expected Unity Editor statements given a method with one string parameter and foldout true")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithOneStringParameterAndFoldoutTrue()
         {
@@ -426,7 +426,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawParametersRows method should call the expected Unity Editor statements given a method with two parameters and foldout true")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithTwoParametersAndFoldoutTrue()
         {
@@ -497,7 +497,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawParametersRows method should call the expected Unity Editor statements given a null MethodDescription")]
         public void DrawComboBox_Should_CallTheExpectedUnityEditorStatements_Given_ANullMethodDescription()
         {
@@ -561,7 +561,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawAddRowButton method should call the expected Unity Editor statements given three methods without interactions")]
         public void DrawAddRowButton_Should_CallTheExpectedUnityEditorStatements_Given_ThreeMethodsWithoutInteractions()
         {
@@ -602,7 +602,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(chosenMethods.ChosenMethodsParametersIndex, newChosenMethods.ChosenMethodsParametersIndex, "THe method DrawAddRowButton doesn't return the right ChoosenMethods object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawAddRowButton method should call the expected Unity Editor statements given three methods with interaction on the first row")]
         public void DrawAddRowButton_Should_CallTheExpectedUnityEditorStatements_Given_ThreeMethodsWithInteractionOnTheFirstRow()
         {
@@ -655,7 +655,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual("3", newChosenMethods.ChosenMethodsParametersIndex[3], "The method DrawAddRowButton doesn't add correctly the new row");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawAddRowButton method should call the expected Unity Editor statements given three methods with interaction on the last row")]
         public void DrawAddRowButton_Should_CallTheExpectedUnityEditorStatements_Given_ThreeMethodsWithInteractionOnTheLastRow()
         {
@@ -708,7 +708,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(string.Empty, newChosenMethods.ChosenMethodsParametersIndex[3], "The method DrawAddRowButton doesn't add correctly the new row");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawRemoveRowButton method should call the expected Unity Editor statements given three methods without interactions")]
         public void DrawRemoveRowButton_Should_CallTheExpectedUnityEditorStatements_Given_ThreeMethodsWithoutInteractions()
         {
@@ -749,7 +749,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(chosenMethods.ChosenMethodsParametersIndex, newChosenMethods.ChosenMethodsParametersIndex, "THe method DrawAddRowButton doesn't return the right ChoosenMethods object");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawRemoveRowButton method should call the expected Unity Editor statements given three methods with interaction on the first row")]
         public void DrawRemoveRowButton_Should_CallTheExpectedUnityEditorStatements_Given_ThreeMethodsWithInteractionOnTheFirstRow()
         {
@@ -796,7 +796,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual("3", newChosenMethods.ChosenMethodsParametersIndex[1], "The method DrawAddRowButton doesn't add correctly the new row");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawRemoveRowButton method should call the expected Unity Editor statements given three methods with interaction on the last row")]
         public void DrawRemoveRowButton_Should_CallTheExpectedUnityEditorStatements_Given_ThreeMethodsWithInteractionOnTheLastRow()
         {
@@ -843,7 +843,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual("2", newChosenMethods.ChosenMethodsParametersIndex[1], "The method DrawAddRowButton doesn't add correctly the new row");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("DrawRemoveRowButton method should call the expected Unity Editor statements given one methods with interaction on the row")]
         public void DrawRemoveRowButton_Should_CallTheExpectedUnityEditorStatements_Given_OneMethodsWithInteractionOnTheRow()
         {

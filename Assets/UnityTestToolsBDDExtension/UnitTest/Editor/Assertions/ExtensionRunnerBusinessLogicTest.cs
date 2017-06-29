@@ -25,7 +25,7 @@ namespace HudDimension.UnityTestBDD
     [TestFixture]
     public class ExtensionRunnerBusinessLogicTest
     {
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetAllMethodsDescriptions method should return the expected list of FullMethodDescription objects given a the complete list of Given When Then chosen methods with nested CallBefore attributes for Dynamic components")]
         public void GetAllMethodsDescriptions_Should_ReturnTheExpectedListOfFullMethodDescriptionObjects_Given_ACompleteListOfGivenWhenThenChosenMethodsWithNestedCallBeforeAttributesForDynamicComponents()
         {
@@ -75,7 +75,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expecetdMethod11, resultList[10].GetFullName(), "The method GetAllMethodsDescriptions doesn't return the right methods order.");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetAllMethodsDescriptions method should return the expected list of FullMethodDescription objects given a Static component with nested CallBefore attributes")]
         public void GetAllMethodsDescriptions_Should_ReturnTheExpectedListOfFullMethodDescriptionObjects_Given_AStaticComponentWithNestedCallBeforeAttributes()
         {
@@ -109,7 +109,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expecetdMethod11, resultList[7].GetFullName(), "The method GetAllMethodsDescriptions doesn't return the right methods order.");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("RunCycle method should perform the expected calls for the first method in the list and return the index for the next method given the method has not a configured delay")]
         public void RunCycle_Should_PerformTheExpectedCallsForTheFirstMethodInTheListAndReturnTheIndexForTheNextMethod_Given_TheMethodHasNotAConfiguredDelay()
         {
@@ -148,7 +148,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(1, newIndexToRun, "The method RunCycle doesn't return the right value");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("RunCycle method should perform the expected calls for the first method in the list and return the same index given the method has not a delay configured and the method returns an AssertionResultRetry object")]
         public void RunCycle_Should_PerformTheExpectedCallsForTheFirstMethodInTheListAndReturnTheSameIndex_Given_TheMethodHasNotAConfiguredDelayAndTheMethodReturnsAnAssertionResultRetryObject()
         {
@@ -185,7 +185,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(0, newIndexToRun, "The method RunCycle doesn't return the right value");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("RunCycle method should perform the expected calls given it is invoked after the last method in the list")]
         public void RunCycle_ShouldPerFormTheExpectedCalls_Given_ItIsInvokedAfterTheLastMethodInTheList()
         {
@@ -210,7 +210,7 @@ namespace HudDimension.UnityTestBDD
             });
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("InvokeMethod method should return true given the invoked method returns a AssertionResultSuccessful object")]
         public void InvokeMethod_Should_ReturnTrue_Given_TheInvokedMethodReturnsAAssertionResultSuccessfulObject()
         {
@@ -241,7 +241,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method InvokeMethod doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("InvokeMethod method should perform the expected calls and return false given the invoked method returns a AssertionResultRetry object")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnFalse_Given_TheInvokedMethodReturnsAAssertionResultRetryObject()
         {
@@ -290,7 +290,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method InvokeMethod doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("InvokeMethod method should perform the expected calls and return false given the invoked method has a not reached delay")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnFalse_GivenTheInvokedMethodHasANotReachedDelay()
         {
@@ -327,7 +327,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method InvokeMethod doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("InvokeMethod method should perform the expected calls and return true given the invoked method has a reached delay and returns a AssertionResultSuccessful object")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnTrue_Given_TheInvokedMethodHasAReachedDelayAndReturnsAAssertionResultSuccessfulObject()
         {
@@ -367,7 +367,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsTrue(result, "The method InvokeMethod doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("InvokeMethod method should perform the expected calls and return false given the invoked method has a reached delay and returns a AssertionResultRetry object")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnFalse_Given_TheInvokedMethodHasAReachedDelayAndReturnsAAssertionResultRetryObject()
         {
@@ -406,7 +406,7 @@ namespace HudDimension.UnityTestBDD
             Assert.IsFalse(result, "The method InvokeMethod doesn't return the right state");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetScenarioTextForErrorInSpecificMethod method should return the expected string given the list of the FullMethodDescription objects and without a specific method in error")]
         public void GetScenarioTextForError_Should_ReturnTheExpectedString_GivenTheListOfTheFullMethodDescriptionObjectsAndWithoutASPecificMethodInError()
         {
@@ -437,7 +437,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedString, result, "The method GetScenarioTextForErrorInSpecificMethod doesn't return the right scenario text");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetScenarioTextForErrorInSpecificMethod method should return the expected string given the list of the FullMethodDescription objects between three Dynamic components and with the first given main method in error")]
         public void GetScenarioTextForError_Should_ReturnTheExpectedString_Given_TheListOfTheFullMethodDescriptionObjectsBeteweenThreeDynamicComponentsAndWithTheFirstGivenMainMethodInError()
         {
@@ -468,7 +468,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedString, result, "The method GetScenarioTextForErrorInSpecificMethod doesn't return the right scenario text");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetScenarioTextForErrorInSpecificMethod method should return the expected string given the list of the FullMethodDescription objects between three Dynamic components and the error in a CallBefore method")]
         public void GetScenarioTextForError_Should_ReturnTheExpectedString_Given_TheListOfTheFullMethodDescriptionObjectsBeteweenThreeDynamicComponentsAndAndTheErrorInACallBeforeMethod()
         {
@@ -499,7 +499,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedString, result, "The method GetScenarioTextForErrorInSpecificMethod doesn't return the right scenario text");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetbddMethodLocationForSpecificMethod method should return the expected string given a list of FullMethodDescription objects and without a specific method in error")]
         public void GetbddMethodLocationForSpecificMethod_Should_ReturnTheExpectedString_Given_AListOfFullMethodDescriptionObjectsAndWithoutASpecificMethodInError()
         {
@@ -530,7 +530,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedString, result, "The method GetbddMethodLocationForSpecificMethod doesn't return the right location text");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetbddMethodLocationForSpecificMethod method should return the expected string given a list of FullMethodDescription objects and with the first method in error")]
         public void GetbddMethodLocationForSpecificMethod_Should_ReturnTheExpectedString_Given_AListOfFullMethodDescriptionObjectsAndTheFirstMethodInError()
         {
@@ -561,7 +561,7 @@ namespace HudDimension.UnityTestBDD
             Assert.AreEqual(expectedString, result, "The method GetbddMethodLocationForSpecificMethod doesn't return the right location text");
         }
 
-        [Test(Author = "AlessioLangiu")]
+        [Test]
         [Description("GetbddMethodLocationForSpecificMethod method should return the expected string given a list of FullMethodDescription objects and with a nested method in error")]
         public void GetbddMethodLocationForSpecificMethod_Should_ReturnTheExpectedString_Given_AListOfFullMethodDescriptionObjectsAndANestedMethodInError()
         {

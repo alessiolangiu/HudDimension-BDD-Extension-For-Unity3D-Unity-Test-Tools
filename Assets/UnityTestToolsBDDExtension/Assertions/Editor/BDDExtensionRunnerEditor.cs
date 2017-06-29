@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityTest;
 
 namespace HudDimension.UnityTestBDD
 {
@@ -80,6 +81,7 @@ namespace HudDimension.UnityTestBDD
 
             MethodsManagementUtilities methodsManagementUtilities = new MethodsManagementUtilities();
             bool isStaticScenario = methodsManagementUtilities.IsStaticBDDScenario(bddComponents);
+            SetSucceedOnAssertions(script.gameObject);
             if (!this.RunnerInspectorIsLockedOnErrors(errors))
             {
                 this.DrawOptions(this.runnerBusinessLogicData, isStaticScenario, script, this.unityIntefaceWrapper, bddComponents);
@@ -133,6 +135,16 @@ namespace HudDimension.UnityTestBDD
                 }
             }
         }
+
+        [MenuItem("Unity Test Tools/BDD Extension/Create BDD Test")]
+        public static void CreateNewBDDTest()
+        {
+            GameObject test = TestComponent.CreateTest();
+            test.AddComponent<BDDExtensionRunner>();
+            SetSucceedOnAssertions(test);
+        }
+
+
 
         private void DrawOptions(RunnerEditorBusinessLogicData businessLogicData, bool isStaticScenario, BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface, Component[] bddComponents)
         {
@@ -344,6 +356,12 @@ namespace HudDimension.UnityTestBDD
             script.ThenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
 
             dirtyStatus = givenDirtyStatus || whenDirtyStatus || thenDirtyStatus;
+        }
+
+        private static void SetSucceedOnAssertions(GameObject testGameObject)
+        {
+            TestComponent testComponent = testGameObject.GetComponent<TestComponent>();
+            testComponent.succeedAfterAllAssertionsAreExecuted = true;
         }
     }
 }
