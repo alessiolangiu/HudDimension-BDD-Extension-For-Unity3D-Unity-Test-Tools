@@ -122,7 +122,7 @@ namespace HudDimension.UnityTestBDD
 
         public void DrawParametersRows(IUnityInterfaceWrapper unityInterface, bool foldout, List<FullMethodDescription> fullMethodDescriptionsList, Dictionary<Type, ISerializedObjectWrapper> serializedObjects, bool lockParametersRows)
         {
-            if (fullMethodDescriptionsList != null && fullMethodDescriptionsList.Count > 0 && foldout && !lockParametersRows)
+            if (fullMethodDescriptionsList != null && fullMethodDescriptionsList.Count > 0 && foldout/* && !lockParametersRows*/)
             {
                 bool theCallBeforeMethodsHaveParameters = false;
                 foreach (FullMethodDescription fullMethodDescription in fullMethodDescriptionsList)

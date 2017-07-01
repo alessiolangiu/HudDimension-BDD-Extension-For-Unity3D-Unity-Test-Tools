@@ -170,8 +170,12 @@ namespace HudDimension.UnityTestBDD
         private void ChooseBetweenUpdateAndFixedUpdate(BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface)
         {
             GUIContent label = unityInterface.GUIContent("Run under Fixed Update");
-            Undo.RecordObject(script, "Change the use of Fixed Update.");
-            script.UseFixedUpdate = GUILayout.Toggle(script.UseFixedUpdate, label, GUILayout.ExpandWidth(false));
+            bool result = GUILayout.Toggle(script.UseFixedUpdate, label, GUILayout.ExpandWidth(false));
+            if (result != script.UseFixedUpdate)
+            {
+                Undo.RecordObject(script, "Change the use of Fixed Update.");
+                script.UseFixedUpdate = result;
+            }
         }
 
         private bool LockParametersRows(List<UnityTestBDDError> errors)
@@ -207,6 +211,7 @@ namespace HudDimension.UnityTestBDD
                     on,
                     () =>
                     {
+                        RegisterUndoInformations(script, components, "Rebuld settings");
                         this.RebuildParameters(script, components, runnerBusinessLogicData);
                         runnerBusinessLogicData.BDDObjects = components;
                         runnerBusinessLogicData.SerializedObjects = businessLogicParametersRebuild.RebuildSerializedObjectsList(components, runnerBusinessLogicData.SerializedObjects);

@@ -252,6 +252,26 @@ namespace HudDimension.UnityTestBDD
 
                         result.Add(error);
                     }
+                    else
+                    {
+                        Array array = arrayPVS.GetValue(component) as Array;
+                        if (array == null || array.Length == 0)
+                        {
+                            IGivenWhenThenDeclaration genericComponentInteface = (IGivenWhenThenDeclaration)Activator.CreateInstance(typeof(T), string.Empty);
+                            UnityTestBDDError error = new UnityTestBDDError();
+                            error.Message = "The component "+ component.GetType().Name+" seems to have been reset, so some parameter values are lost. Please, undo the reset operation or rebuild the settings to confirm the reset.";
+                            error.Component = component;
+                            error.MethodMethodInfo = this.GetMethodInfo(chosenMethods[index], component);
+                            error.StepType = typeof(T);
+                            error.Index = index;
+                            error.LockRunnerInspectorOnErrors = false;
+                            error.ShowButton = true;
+                            error.LockBuildParameters = true;
+                            error.LockParametersRows = true;
+
+                            result.Add(error);
+                        }
+                    }
                 }
             }
 

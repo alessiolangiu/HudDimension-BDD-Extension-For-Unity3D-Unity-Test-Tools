@@ -104,6 +104,7 @@ namespace HudDimension.UnityTestBDD
 
         private static object GetValue(object obj, string arrayName, int index)
         {
+            object result = null;
             ArrayStorageUtilities arrayStorageUtilities = new ArrayStorageUtilities();
             FieldInfo field = arrayStorageUtilities.GetArrayStorageFieldInfoByName(obj, arrayName);
             if (field == null)
@@ -112,7 +113,11 @@ namespace HudDimension.UnityTestBDD
             }
 
             Array array = field.GetValue(obj) as Array;
-            return array.GetValue(index);
+            if (array.Length > index)
+            {
+                result= array.GetValue(index);
+            }
+            return result; 
         }
     }
 }
