@@ -13,6 +13,8 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
+using UnityEditor;
+
 namespace HudDimension.UnityTestBDD
 {
     public interface ISerializedObjectWrapper
@@ -22,5 +24,7 @@ namespace HudDimension.UnityTestBDD
         void Update();
 
         void ApplyModifiedProperties();
+
+        SerializedObject GetSerializedObject();
     }
 }

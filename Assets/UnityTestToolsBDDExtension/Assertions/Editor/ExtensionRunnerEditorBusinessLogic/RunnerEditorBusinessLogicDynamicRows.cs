@@ -15,6 +15,7 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace HudDimension.UnityTestBDD
@@ -37,12 +38,13 @@ namespace HudDimension.UnityTestBDD
             bool rebuild,
             out ChosenMethods updatedChosenMethodsList,
             out bool[] updatedFoldouts,
-            out bool dirtyStatus) where T : IGivenWhenThenDeclaration
+            out bool dirtyStatus,
+            out string undoText) where T : IGivenWhenThenDeclaration
         {
             updatedChosenMethodsList = (ChosenMethods)chosenMethods.Clone();
             updatedFoldouts = new bool[foldouts.Length];
             Array.Copy(foldouts, updatedFoldouts, foldouts.Length);
-
+            undoText = string.Empty;
             dirtyStatus = false;
 
             List<BaseMethodDescription> methodsList = methodsLoader.LoadStepMethods<T>(bddComponents);
@@ -63,11 +65,12 @@ namespace HudDimension.UnityTestBDD
                 dynamicRowsElements.DrawLabel<T>(unityInterface, index);
                 float textSize = (unityInterface.EditorGUIUtilityCurrentViewWidth() - RunnerEditorBusinessLogicData.LabelWidthAbsolute - RunnerEditorBusinessLogicData.ButtonsWidthAbsolute) * RunnerEditorBusinessLogicData.TextWidthPercent;
                 dynamicRowsElements.DrawDescription(unityInterface, chosenMethods.ChosenMethodsNames[index], methodDescription, textSize);
-                string newChosenMethod = dynamicRowsElements.DrawComboBox(unityInterface, chosenMethods.ChosenMethodsNames[index], methodsNames);
-                rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, updatedChosenMethodsList, updatedFoldouts, index, rebuild);
 
-                dirtyStatus = dirtyStatus || dynamicRowsElements.DrawAddRowButton(unityInterface, index, updatedChosenMethodsList, target, out updatedChosenMethodsList);
-                dirtyStatus = dirtyStatus || dynamicRowsElements.DrawRemoveRowButton(unityInterface, index, updatedChosenMethodsList, target, out updatedChosenMethodsList);
+                
+                string newChosenMethod = dynamicRowsElements.DrawComboBox(unityInterface, chosenMethods.ChosenMethodsNames[index], methodsNames);
+                rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, updatedChosenMethodsList, updatedFoldouts, index, rebuild, out undoText);
+                dirtyStatus = dirtyStatus || dynamicRowsElements.DrawAddRowButton(unityInterface, index, updatedChosenMethodsList, target, undoText, out updatedChosenMethodsList, out undoText);
+                dirtyStatus = dirtyStatus || dynamicRowsElements.DrawRemoveRowButton(unityInterface, index, updatedChosenMethodsList, target, undoText, out updatedChosenMethodsList, out undoText);
                 if (dirtyStatus)
                 {
                     break;
@@ -81,5 +84,7 @@ namespace HudDimension.UnityTestBDD
 
             return rebuild;
         }
+
+
     }
 }

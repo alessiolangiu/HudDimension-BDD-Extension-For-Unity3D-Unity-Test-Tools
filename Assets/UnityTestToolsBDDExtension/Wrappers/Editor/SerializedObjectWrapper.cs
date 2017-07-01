@@ -13,6 +13,7 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
+using System;
 using UnityEditor;
 
 namespace HudDimension.UnityTestBDD
@@ -36,6 +37,11 @@ namespace HudDimension.UnityTestBDD
             SerializedProperty property = this.serializedObject.FindProperty(parameterLocationString);
             ISerializedPropertyWrapper propertyWrapper = new SerializedPropertyWrapper(property);
             return propertyWrapper;
+        }
+
+        public SerializedObject GetSerializedObject()
+        {
+            return this.serializedObject;
         }
 
         public void Update()

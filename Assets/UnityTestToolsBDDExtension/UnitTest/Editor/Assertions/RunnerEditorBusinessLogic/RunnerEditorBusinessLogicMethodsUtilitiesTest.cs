@@ -146,7 +146,9 @@ namespace HudDimension.UnityTestBDD
             bool[] foldouts = new bool[10] { false, true, true, true, true, true, true, true, true, true };
             int index = 0;
             bool rebuild = false;
-            rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, chosenMethods, foldouts, index, rebuild);
+            string undoText = string.Empty;
+
+            rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, chosenMethods, foldouts, index, rebuild, out undoText);
 
             Assert.AreEqual(expectedChosenMethodsNames, chosenMethods.ChosenMethodsNames, "The method UpdateDataIfNewMethodIsChosen does not return the right ChosenMethods object");
 
@@ -178,7 +180,9 @@ namespace HudDimension.UnityTestBDD
             bool[] foldouts = new bool[10] { true, true, true, true, true, true, true, true, true, true };
             int index = 0;
             bool rebuild = false;
-            rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, chosenMethods, foldouts, index, rebuild);
+            string undoText = string.Empty;
+
+            rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, chosenMethods, foldouts, index, rebuild, out undoText);
 
             Assert.AreEqual(expectedChosenMethodsNames, chosenMethods.ChosenMethodsNames, "The method UpdateDataIfNewMethodIsChosen does not return the right ChosenMethods object");
 

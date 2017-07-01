@@ -170,6 +170,7 @@ namespace HudDimension.UnityTestBDD
         private void ChooseBetweenUpdateAndFixedUpdate(BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface)
         {
             GUIContent label = unityInterface.GUIContent("Run under Fixed Update");
+            Undo.RecordObject(script, "Change the use of Fixed Update.");
             script.UseFixedUpdate = GUILayout.Toggle(script.UseFixedUpdate, label, GUILayout.ExpandWidth(false));
         }
 
@@ -321,7 +322,7 @@ namespace HudDimension.UnityTestBDD
             bool givenDirtyStatus = false;
             bool whenDirtyStatus = false;
             bool thenDirtyStatus = false;
-
+            string undoText;
             MethodParametersLoader parametersLoader = new MethodParametersLoader();
             RunnerEditorBusinessLogicMethodsUtilities methodsUtilities = new RunnerEditorBusinessLogicMethodsUtilities();
             RunnerEditorBusinessLogicDynamicRowsElements dynamicRowsElements = new RunnerEditorBusinessLogicDynamicRowsElements();
@@ -335,22 +336,24 @@ namespace HudDimension.UnityTestBDD
             chosenMethods.ChosenMethodsNames = script.Given;
             chosenMethods.ChosenMethodsParametersIndex = script.GivenParametersIndex;
 
-            this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<GivenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.GivenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.GivenFoldouts, out givenDirtyStatus);
-
+            this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<GivenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.GivenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.GivenFoldouts, out givenDirtyStatus, out undoText);
+            RegisterUndoInformations(target, bddComponents, undoText);
             script.Given = chosenMethods.ChosenMethodsNames;
             script.GivenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
 
             chosenMethods.ChosenMethodsNames = script.When;
             chosenMethods.ChosenMethodsParametersIndex = script.WhenParametersIndex;
 
-            this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<WhenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.WhenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.WhenFoldouts, out whenDirtyStatus);
+            this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<WhenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.WhenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.WhenFoldouts, out whenDirtyStatus, out undoText);
+            RegisterUndoInformations(target, bddComponents, undoText);
 
             script.When = chosenMethods.ChosenMethodsNames;
             script.WhenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
 
             chosenMethods.ChosenMethodsNames = script.Then;
             chosenMethods.ChosenMethodsParametersIndex = script.ThenParametersIndex;
-            this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<ThenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.ThenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.ThenFoldouts, out thenDirtyStatus);
+            this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<ThenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.ThenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.ThenFoldouts, out thenDirtyStatus, out undoText);
+            RegisterUndoInformations(target, bddComponents, undoText);
 
             script.Then = chosenMethods.ChosenMethodsNames;
             script.ThenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
@@ -362,6 +365,18 @@ namespace HudDimension.UnityTestBDD
         {
             TestComponent testComponent = testGameObject.GetComponent<TestComponent>();
             testComponent.succeedAfterAllAssertionsAreExecuted = true;
+        }
+
+        private void RegisterUndoInformations(UnityEngine.Object target, Component[] bddComponents, string undoText)
+        {
+            List<UnityEngine.Object> objects = new List<UnityEngine.Object>();
+            objects.Add(target);
+            foreach (Component component in bddComponents)
+            {
+                UnityEngine.Object unityObject = (UnityEngine.Object)component;
+                objects.Add(unityObject);
+            }
+            Undo.RecordObjects(objects.ToArray(), undoText);
         }
     }
 }

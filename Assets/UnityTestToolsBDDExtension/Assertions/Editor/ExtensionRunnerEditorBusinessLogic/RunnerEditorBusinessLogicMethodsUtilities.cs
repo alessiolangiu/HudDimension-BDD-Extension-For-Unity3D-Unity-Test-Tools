@@ -40,12 +40,13 @@ namespace HudDimension.UnityTestBDD
             return methodDescription;
         }
 
-        public bool UpdateDataIfNewMethodIsChosen(string newChosenMethod, ChosenMethods chosenMethods, bool[] foldouts, int index, bool rebuild)
+        public bool UpdateDataIfNewMethodIsChosen(string newChosenMethod, ChosenMethods chosenMethods, bool[] foldouts, int index, bool rebuild, out string newUndoText)
         {
+            newUndoText = string.Empty;
             if (!newChosenMethod.Equals(chosenMethods.ChosenMethodsNames[index]))
             {
                 chosenMethods.ChosenMethodsNames[index] = newChosenMethod;
-
+                newUndoText = "Change Step Method";
                 foldouts[index] = false;
                 rebuild = true;
             }

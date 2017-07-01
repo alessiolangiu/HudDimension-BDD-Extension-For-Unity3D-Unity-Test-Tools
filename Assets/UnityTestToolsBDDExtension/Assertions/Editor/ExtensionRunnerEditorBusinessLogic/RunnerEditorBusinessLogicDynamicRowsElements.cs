@@ -180,8 +180,9 @@ namespace HudDimension.UnityTestBDD
             }
         }
 
-        public bool DrawAddRowButton(IUnityInterfaceWrapper unityInterface, int currentIndex, ChosenMethods chosenMethods, UnityEngine.Object target, out ChosenMethods newChosenMethods)
+        public bool DrawAddRowButton(IUnityInterfaceWrapper unityInterface, int currentIndex, ChosenMethods chosenMethods, UnityEngine.Object target, string undoText, out ChosenMethods newChosenMethods, out string newUndoText)
         {
+            newUndoText = undoText;
             bool dirty = false;
             newChosenMethods = new ChosenMethods();
             newChosenMethods.ChosenMethodsNames = chosenMethods.ChosenMethodsNames;
@@ -189,6 +190,7 @@ namespace HudDimension.UnityTestBDD
 
             if (unityInterface.GUILayoutButton("+", EditorStyles.miniButton, unityInterface.GUILayoutWidth(20)))
             {
+                newUndoText = "Add Step Method row";
                 string[] newArrayMethodsNames = new string[newChosenMethods.ChosenMethodsNames.Length + 1];
                 string[] newArrayMethodsParametersIndex = new string[newChosenMethods.ChosenMethodsParametersIndex.Length + 1];
                 int newIndex = 0;
@@ -221,8 +223,9 @@ namespace HudDimension.UnityTestBDD
             return dirty;
         }
 
-        public bool DrawRemoveRowButton(IUnityInterfaceWrapper unityInterface, int currentIndex, ChosenMethods chosenMethods, UnityEngine.Object target, out ChosenMethods newChosenMethods)
+        public bool DrawRemoveRowButton(IUnityInterfaceWrapper unityInterface, int currentIndex, ChosenMethods chosenMethods, UnityEngine.Object target, string undoText, out ChosenMethods newChosenMethods, out string newUndoText)
         {
+            newUndoText = undoText;
             bool dirty = false;
             newChosenMethods = new ChosenMethods();
             newChosenMethods.ChosenMethodsNames = chosenMethods.ChosenMethodsNames;
@@ -231,6 +234,7 @@ namespace HudDimension.UnityTestBDD
             {
                 if (chosenMethods.ChosenMethodsNames.Length > 1)
                 {
+                    newUndoText = "Remove Step Method row";
                     string[] newArrayMethodsNames = new string[newChosenMethods.ChosenMethodsNames.Length - 1];
                     string[] newArrayMethodsParametersIndex = new string[newChosenMethods.ChosenMethodsParametersIndex.Length - 1];
                     int newIndex = 0;
