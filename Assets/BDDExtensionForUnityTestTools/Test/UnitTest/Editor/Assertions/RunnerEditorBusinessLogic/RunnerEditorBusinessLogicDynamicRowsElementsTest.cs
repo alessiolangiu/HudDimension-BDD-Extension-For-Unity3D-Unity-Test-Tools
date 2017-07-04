@@ -27,6 +27,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class RunnerEditorBusinessLogicDynamicRowsElementsTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("DrawFoldoutSymbol method should call the expected Unity Editor statements given a method with parameters and without user interactions with the foldout symbol")]
         public void DrawFoldoutSymbol_Should_CallTheExpectedUnityEditorStatements_Given_AMethodWithParametersAndWithoutUserInteractionsWithTheFoldoutSymbol()

@@ -20,6 +20,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class HierarchicalOrderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("CompareTo method should return 1 when the first Hierarchical Order is greater than the second one")]
         public void CompareTo_Should_ReturnOne_When_TheFirstGOIsGreaterThanTheSecondOne()

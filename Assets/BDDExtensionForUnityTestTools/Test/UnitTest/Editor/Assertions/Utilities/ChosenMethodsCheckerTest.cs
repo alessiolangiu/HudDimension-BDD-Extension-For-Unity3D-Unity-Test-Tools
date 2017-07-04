@@ -23,6 +23,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ChosenMethodsCheckerTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("CheckForBlankMethods method should return the expected list of UnityTestBDDError objects given a chosen methods list without empty elements")]
         public void CheckForBlankMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_AChosenMethodsListWithoutEmptyElements()

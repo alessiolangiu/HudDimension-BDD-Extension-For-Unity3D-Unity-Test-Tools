@@ -22,6 +22,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class MethodsLoaderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("LoadStepMethods method should return the expected list of BaseMethodDescription objects given a Dynamic component loading Given methods")]
         public void LoadStepMethods_Should_ReturnTheExpectedListOfBaseMethodDescriptionObjects_Given_ADynamicComponentLoadingGivenMethods()

@@ -21,6 +21,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ParametersIndexUtilitiesTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("BuildParameterIndex method should return the expected ParameterIndex given all the informations for building it")]
         public void BuildParameterIndex_Should_ReturnTheExpectedParameterIndex_Given_AllTheInformationsForBuildingIt()

@@ -20,6 +20,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ChosenMethodsTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Clone method should return the an equal object")]
         public void Clone_Should_ReturnAnEqualObject()

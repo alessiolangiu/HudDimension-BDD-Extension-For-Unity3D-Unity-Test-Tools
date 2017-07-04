@@ -25,6 +25,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class UnityTestBDDComponentBaseEditorBusinessLogicTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Errors method should call the expected Unity Editor statements given one error on a component")]
         public void Errors_Should_CallTheExpectedUnityEditorStatements_Given_OneErrorOnAComponent()

@@ -23,6 +23,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class MethodsManagementUtilitiesTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("GetParametersIndexForMethod method should return the expected parameterIndex given the method full name and the arrays of chosen methods and chosen methods parameters indexes")]
         public void GetParametersIndexForMethod_Should_ReturnTheExpectedParameterIndex_Given_TheMethodFullNameAndTheArraysOfChosenMethodsAndChosenMethodsParametersIndexes()

@@ -21,6 +21,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class MethodParametersLoaderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("LoadMethodParameters method should return the expected MethodParameters object given a Dynamic component and a method with one string parameter and its parameterIndex")]
         public void LoadMethodParameters_Should_ReturnTheExpectedMethodParametersObject_Given_ADynamicComponentAndAMethodWithOneStringParameterAndItsParameterIndex()

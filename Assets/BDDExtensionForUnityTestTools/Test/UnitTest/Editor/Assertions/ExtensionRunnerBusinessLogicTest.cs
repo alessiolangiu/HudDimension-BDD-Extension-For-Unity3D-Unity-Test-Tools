@@ -25,6 +25,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ExtensionRunnerBusinessLogicTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("GetAllMethodsDescriptions method should return the expected list of FullMethodDescription objects given a the complete list of Given When Then chosen methods with nested CallBefore attributes for Dynamic components")]
         public void GetAllMethodsDescriptions_Should_ReturnTheExpectedListOfFullMethodDescriptionObjects_Given_ACompleteListOfGivenWhenThenChosenMethodsWithNestedCallBeforeAttributesForDynamicComponents()
@@ -43,7 +49,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> resultList = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 
@@ -82,7 +88,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             ExtensionRunnerBusinessLogicTestFirstStaticComponent component = UnitTestUtility.CreateComponent<ExtensionRunnerBusinessLogicTestFirstStaticComponent>();
             Component[] components = new Component[1] { component };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> resultList = businessLogic.GetAllMethodsDescriptions(components, null, null, null, null, null, null);
@@ -113,7 +119,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("RunCycle method should perform the expected calls for the first method in the list and return the index for the next method given the method has not a configured delay")]
         public void RunCycle_Should_PerformTheExpectedCallsForTheFirstMethodInTheListAndReturnTheIndexForTheNextMethod_Given_TheMethodHasNotAConfiguredDelay()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -152,7 +158,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("RunCycle method should perform the expected calls for the first method in the list and return the same index given the method has not a delay configured and the method returns an AssertionResultRetry object")]
         public void RunCycle_Should_PerformTheExpectedCallsForTheFirstMethodInTheListAndReturnTheSameIndex_Given_TheMethodHasNotAConfiguredDelayAndTheMethodReturnsAnAssertionResultRetryObject()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -189,7 +195,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("RunCycle method should perform the expected calls given it is invoked after the last method in the list")]
         public void RunCycle_ShouldPerFormTheExpectedCalls_Given_ItIsInvokedAfterTheLastMethodInTheList()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -214,7 +220,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("InvokeMethod method should return true given the invoked method returns a AssertionResultSuccessful object")]
         public void InvokeMethod_Should_ReturnTrue_Given_TheInvokedMethodReturnsAAssertionResultSuccessfulObject()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -245,7 +251,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("InvokeMethod method should perform the expected calls and return false given the invoked method returns a AssertionResultRetry object")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnFalse_Given_TheInvokedMethodReturnsAAssertionResultRetryObject()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -294,7 +300,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("InvokeMethod method should perform the expected calls and return false given the invoked method has a not reached delay")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnFalse_GivenTheInvokedMethodHasANotReachedDelay()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -331,7 +337,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("InvokeMethod method should perform the expected calls and return true given the invoked method has a reached delay and returns a AssertionResultSuccessful object")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnTrue_Given_TheInvokedMethodHasAReachedDelayAndReturnsAAssertionResultSuccessfulObject()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -371,7 +377,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("InvokeMethod method should perform the expected calls and return false given the invoked method has a reached delay and returns a AssertionResultRetry object")]
         public void InvokeMethod_Should_PerformTheExpectedCallsAndReturnFalse_Given_TheInvokedMethodHasAReachedDelayAndReturnsAAssertionResultRetryObject()
         {
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
 
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
 
@@ -424,7 +430,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> methods = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 
@@ -455,7 +461,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> methods = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 
@@ -486,7 +492,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> methods = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 
@@ -517,7 +523,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> methods = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 
@@ -548,7 +554,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> methods = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 
@@ -579,7 +585,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             string[] thenMethods = new string[2] { "ExtensionRunnerBusinessLogicTestThirdDynamicComponent.SecondThenMethod", "ExtensionRunnerBusinessLogicTestSecondDynamicComponent.ThenMethod" };
             string[] thenParameters = new string[2] { string.Empty, string.Empty };
 
-            GameObject gameObject = new GameObject();
+            GameObject gameObject = UnitTestUtility.CreateGameObject();
             ExtensionRunnerBusinessLogic businessLogic = new ExtensionRunnerBusinessLogic(gameObject);
             List<FullMethodDescription> methods = businessLogic.GetAllMethodsDescriptions(components, givenMethods, givenParameters, whenMethods, whenParameters, thenMethods, thenParameters);
 

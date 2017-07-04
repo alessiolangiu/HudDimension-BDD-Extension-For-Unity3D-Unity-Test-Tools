@@ -24,6 +24,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class RunnerEditorBusinessLogicParametersLocationsBuilderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("BuildParametersLocation method should load the expected values for the parameters and build the expected parametersIndexes given a FullMethodDescription list on a single Dynamic component on a single method")]
         public void BuildParametersLocation_Should_LoadTheExpectedValuesForTheParametersAndBuildTheExpectedParametersIndexes_Given_AFullMethodDescriptionListOnASIngleDynamicComponentOnASingleMethod()

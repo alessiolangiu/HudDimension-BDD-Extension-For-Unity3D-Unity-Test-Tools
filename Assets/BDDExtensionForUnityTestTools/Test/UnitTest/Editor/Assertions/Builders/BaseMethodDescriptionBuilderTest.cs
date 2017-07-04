@@ -21,6 +21,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class BaseMethodDescriptionBuilderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Build method should return the expected BaseMethodDescription object given a Dynamic component and a simple Given method")]
         public void Build_Should_ReturnTheExpectedBaseMethodDescriptionObject_Given_ADynamicComponentAndASimpleGivenMethod()

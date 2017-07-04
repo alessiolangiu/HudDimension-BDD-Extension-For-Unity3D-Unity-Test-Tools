@@ -24,6 +24,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class RunnerEditorBusinessLogicMethodsUtilitiesTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("AddMissedMethodNameToMethodsNames method should add at the the end of the string array another element with the passed string")]
         public void AddMissedMethodNameToMethodsNames_Should_AddAtTheEndOfTheStringArrayAnotherElementWithThePassedString()

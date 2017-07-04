@@ -22,6 +22,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class FullMethodDescriptionBuilderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Build method should return the expected FullMethodDescription object given a Dynamic component for a Given method without CallBefore attributes")]
         public void Build_Should_ReturnTheExpectedFullMethodDescriptionObject_Given_ADynamicComponentForAGivenMethodWithoutCallBeforeAttributes()

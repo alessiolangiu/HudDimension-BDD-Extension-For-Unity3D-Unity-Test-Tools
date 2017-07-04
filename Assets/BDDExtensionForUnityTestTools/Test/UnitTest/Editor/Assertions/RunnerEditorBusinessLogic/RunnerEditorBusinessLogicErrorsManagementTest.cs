@@ -25,6 +25,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class RunnerEditorBusinessLogicErrorsManagementTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Errors method should call the expected Unity Editor statements given a list containing one UnityTestBDDError object")]
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingOneUnityTestBDDErrorObject()

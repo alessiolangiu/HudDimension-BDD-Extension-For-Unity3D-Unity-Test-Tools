@@ -24,6 +24,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class RunnerEditorBusinessLogicStaticRowsTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("DrawStaticRows method should call the right Unity Editor statements given a Static component with a single Given Method")]
         public void DrawStaticRows_Should_CallTheRightUnityEditoStatements_Given_AStaticComponentWithASingleGivenMethod()

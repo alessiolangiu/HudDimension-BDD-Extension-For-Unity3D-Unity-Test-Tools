@@ -22,6 +22,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class RunnerEditorBusinessLogicParametersRebuildTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("IsBDDObjectsNull method should return true given a null BDDObjects array")]
         public void IsBDDObjectsNull_Should_ReturnTrue_Given_ANullBDDObjectsArray()

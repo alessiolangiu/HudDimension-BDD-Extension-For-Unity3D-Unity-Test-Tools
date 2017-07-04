@@ -128,8 +128,33 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     MethodInfo method = methodDescription.Method;
                     Component component = methodDescription.ComponentObject;
                     object[] parameters = businessLogic.GetParametersValues(methodDescription);
+                    IAssertionResult executionResult = null;
 
-                    IAssertionResult executionResult = (IAssertionResult)method.Invoke(component, parameters);
+                    object executionResultObject = method.Invoke(component, parameters);
+                    if (executionResultObject == null)
+                    {
+                        string errorText = "The Step Method return null.";
+                        string scenarioText = businessLogic.GetScenarioTextForErrorInSpecificMethod(businessLogic.MethodsDescription, methodDescription);
+                        string bddMethodLocation = businessLogic.GetbddMethodLocationForSpecificMethod(businessLogic.MethodsDescription, methodDescription);
+                        businessLogic.InvokeAssertionFailed(errorText, scenarioText, bddMethodLocation, gameObject);
+                        return true;
+                    }
+                    if(typeof(AssertionResultSuccessful).IsAssignableFrom(executionResultObject.GetType()) ||
+                        typeof(AssertionResultFailed).IsAssignableFrom(executionResultObject.GetType()) ||
+                        typeof(AssertionResultRetry).IsAssignableFrom(executionResultObject.GetType()))
+                    
+                    {
+                        executionResult = (IAssertionResult)executionResultObject;
+                    }
+                    else
+                    {
+                        string errorText = "The return value of the Step Method is not a valid IAssertionResult implementation.";
+                        string scenarioText = businessLogic.GetScenarioTextForErrorInSpecificMethod(businessLogic.MethodsDescription, methodDescription);
+                        string bddMethodLocation = businessLogic.GetbddMethodLocationForSpecificMethod(businessLogic.MethodsDescription, methodDescription);
+                        businessLogic.InvokeAssertionFailed(errorText, scenarioText, bddMethodLocation, gameObject);
+                        return true;
+                    }
+
                     if (executionResult is AssertionResultSuccessful)
                     {
                         performed = true;
@@ -260,7 +285,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
 
         public void SetSucceedOnAssertions()
         {
-            TestComponent testComponent=this.RunnerGameObject.GetComponent<TestComponent>();
+            TestComponent testComponent = this.RunnerGameObject.GetComponent<TestComponent>();
             testComponent.succeedAfterAllAssertionsAreExecuted = true;
         }
 

@@ -21,6 +21,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class MethodsFilterByMethodsFullNameListTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Filter method should return true given a Dynamic component and the GivenMethod method and a list of methods that include the GivenMethod method")]
         public void Filter_Should_ReturnTrue_Given_ADynamicComponentAndTheGivenMethodMethodAndAListOfMethodsThatIncludeTheGivenMethodMethod()

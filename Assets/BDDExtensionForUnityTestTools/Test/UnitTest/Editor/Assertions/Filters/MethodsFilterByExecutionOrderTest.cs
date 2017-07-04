@@ -21,6 +21,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class MethodsFilterByExecutionOrderTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Filter method should return true given a Static component for a Given method filtering Given methods")]
         public void Filter_Should_ReturnTrue_Given_AStaticComponentForAGivenMethodFilteringGivenMethods()

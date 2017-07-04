@@ -21,6 +21,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ComponentsFilterTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("Filter method should return only the Dynamic component given two objects with the first as Dynamic component and the second as a normal MonoBehaviour class")]
         public void Filter_Should_ReturnOnlyTheDynamicComponent_Given_TwoObjectsWithTheFirstAsDynamicComponentsAndTheSecondAsANormalMonoBehaviourClass()

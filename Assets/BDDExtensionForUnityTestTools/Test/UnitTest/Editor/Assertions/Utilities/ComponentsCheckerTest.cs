@@ -23,6 +23,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ComponentsCheckerTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("CheckDuplicateStepMethods method should return the expected list of UnityTestBDDError objects given a Dynamic component without methods with the same full method name")]
         public void CheckDuplicateStepMethods_Should_ReturnTheExpectedListOfUnityTestBDDErrorObjects_Given_ADynamicComponentWithoutMethodsWithTheSameFullMethodName()

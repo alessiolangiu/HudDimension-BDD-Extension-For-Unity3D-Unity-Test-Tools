@@ -27,6 +27,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
     [TestFixture]
     public class ArrayStorageUtilitiesTest
     {
+        [TearDown]
+        public void Cleanup()
+        {
+            UnitTestUtility.DestroyTemporaryTestGameObjects();
+        }
+
         [Test]
         [Description("GetArrayStorageFieldInfoByType method should return the expected ParametersValuesStorage FieldInfo object given a Dynamic component passing string type")]
         public void GetArrayStorageFieldInfoByType_Should_ReturnTheExpectedParametersValuesStorageFieldInfoObject_Given_ADynamicComponentPassingStringType()
