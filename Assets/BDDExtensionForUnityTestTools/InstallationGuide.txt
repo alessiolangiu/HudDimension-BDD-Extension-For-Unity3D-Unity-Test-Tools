@@ -1,0 +1,5 @@
+After installing the BDD Extension for Unity Test Tools from the Unity Asset Store, and you have not the Unity Test Tools installed in your project, you are going to have some build error: it is caused by the references to the Unity Test Tools classes.
+
+This is an extension of the Integration Test functionality coming from Unity Test Tools: it uses them, so it can work properly only if you install the BDD Extension beside the Unity Test Tools.
+
+If you have some issues, please write an email to info@huddimension.co.uk
