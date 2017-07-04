@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
+using System;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
@@ -173,6 +174,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         {
             Component component = UnitTestUtility.CreateComponent<ChosenMethodsCheckerTestFirstDynamicComponent>();
             Component[] components = new Component[1] { component };
+            ArrayStorageUtilities arrayStorageUtilities = new ArrayStorageUtilities();
+            FieldInfo stringPVS= arrayStorageUtilities.GetArrayStorageFieldInfoByType(component, typeof(string));
+            Array array = new string[1];
+            stringPVS.SetValue(component, array);
             string[] chosenMethods = new string[1] { "ChosenMethodsCheckerTestFirstDynamicComponent.GivenMethod" };
             string[] parametersIndexes = new string[1] { ";System.String,ChosenMethodsCheckerTestFirstDynamicComponent.GivenMethod.stringParamWrongName.,stringPVS.Array.data[0];" };
             ChosenMethodsChecker checkForErrors = new ChosenMethodsChecker();

@@ -13,6 +13,7 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,6 +45,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 GameObject.DestroyImmediate(gameObject);
             }
             gameObjects = new List<GameObject>();
+        }
+
+        public static T CreateComponent<T>(GameObject gameObject) where T : MonoBehaviour
+        {
+            T component = gameObject.AddComponent<T>();
+            return component;
         }
     }
 }

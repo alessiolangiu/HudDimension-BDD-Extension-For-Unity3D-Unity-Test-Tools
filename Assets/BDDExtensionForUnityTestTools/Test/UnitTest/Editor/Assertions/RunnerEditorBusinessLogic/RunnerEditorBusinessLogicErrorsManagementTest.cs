@@ -36,7 +36,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingOneUnityTestBDDErrorObject()
         {
             UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
-
+            BDDExtensionRunner runner = UnitTestUtility.CreateComponent<BDDExtensionRunner>();
             RunnerEditorBusinessLogicErrorsManagement runnerEditorBusinessLogicErrorsManagement = new RunnerEditorBusinessLogicErrorsManagement();
             string expectedMessage = "Message";
             List<UnityTestBDDError> errors = new List<UnityTestBDDError>();
@@ -48,13 +48,16 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             error.ShowRedExclamationMark = true;
             errors.Add(error);
 
+            string errorTextureFullPath = Utilities.GetAssetFullPath(runner, runnerEditorBusinessLogicErrorsManagement.ErrorTextureFileName);
+            string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(runner, runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName);
+
             IUnityInterfaceWrapper unityInterface = Substitute.For<IUnityInterfaceWrapper>();
             unityInterface.EditorGUIUtilityCurrentViewWidth().Returns(600f);
             float labelWidth = 500f;
             Texture2D inputTexture = new Texture2D(10, 10);
-            unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName, typeof(Texture2D)).Returns(inputTexture);
+            unityInterface.AssetDatabaseLoadAssetAtPath(openComponentButtonTextureFullPath, typeof(Texture2D)).Returns(inputTexture);
             Texture2D errorTexture = new Texture2D(10, 10);
-            unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.ErrorTextureFileName, typeof(Texture2D)).Returns(errorTexture);
+            unityInterface.AssetDatabaseLoadAssetAtPath(errorTextureFullPath, typeof(Texture2D)).Returns(errorTexture);
 
             GUILayoutOption buttonWidth = GUILayout.Width(16);
             unityInterface.GUILayoutWidth(24).Returns(buttonWidth);
@@ -67,7 +70,8 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             GUILayoutOption[] errorTextureOptions = new GUILayoutOption[2];
             errorTextureOptions[0] = buttonWidth;
             errorTextureOptions[1] = buttonHeight;
-            runnerEditorBusinessLogicErrorsManagement.Errors(errors, unityInterface, null);
+
+            runnerEditorBusinessLogicErrorsManagement.Errors(errors, unityInterface, runner);
 
             Received.InOrder(() =>
             {
@@ -77,12 +81,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 unityInterface.EditorGUILayoutEndHorizontal();
                 unityInterface.EditorGUILayoutBeginHorizontal();
                 unityInterface.EditorGUIUtilityCurrentViewWidth();
-                unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.ErrorTextureFileName, typeof(Texture2D));
+                unityInterface.AssetDatabaseLoadAssetAtPath(errorTextureFullPath, typeof(Texture2D));
                 unityInterface.GUILayoutWidth(24);
                 unityInterface.GUILayoutHeight(24);
                 unityInterface.EditorGUILayoutLabelField(errorTexture, Arg.Is<GUILayoutOption[]>(x => x.SequenceEqual(errorTextureOptions) == true));
                 unityInterface.EditorGUILayoutLabelField(expectedMessage, labelWidth);
-                unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName, typeof(Texture2D));
+                unityInterface.AssetDatabaseLoadAssetAtPath(openComponentButtonTextureFullPath, typeof(Texture2D));
                 unityInterface.GUILayoutWidth(24);
                 unityInterface.GUILayoutHeight(24);
                 unityInterface.GUILayoutButton(inputTexture, EditorStyles.label, Arg.Is<GUILayoutOption[]>(x => x.SequenceEqual(options) == true));
@@ -95,6 +99,8 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         public void Errors_Should_CallTheExpectedUnityEditoStatements_Given_AListContainingTwoUnityTestBDDErrorObject()
         {
             UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent component = UnitTestUtility.CreateComponent<UnityTestBDDComponentBaseEditorBusinessLogicTestFirstDynamicComponent>();
+            BDDExtensionRunner runner = UnitTestUtility.CreateComponent<BDDExtensionRunner>();
+
             RunnerEditorBusinessLogicErrorsManagement runnerEditorBusinessLogicErrorsManagement = new RunnerEditorBusinessLogicErrorsManagement();
             string expectedFirstMessage = "FirstMessage";
             string expectedSecondMessage = "SecondMessage";
@@ -116,14 +122,15 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             error.ShowRedExclamationMark = false;
 
             errors.Add(error);
-
+            string errorTextureFullPath = Utilities.GetAssetFullPath(runner, runnerEditorBusinessLogicErrorsManagement.ErrorTextureFileName);
+            string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(runner, runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName);
             IUnityInterfaceWrapper unityInterface = Substitute.For<IUnityInterfaceWrapper>();
             unityInterface.EditorGUIUtilityCurrentViewWidth().Returns(600f);
             float labelWidth = 500f;
             Texture2D inputTexture = new Texture2D(10, 10);
-            unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName, typeof(Texture2D)).Returns(inputTexture);
+            unityInterface.AssetDatabaseLoadAssetAtPath(openComponentButtonTextureFullPath, typeof(Texture2D)).Returns(inputTexture);
             Texture2D errorTexture = new Texture2D(10, 10);
-            unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.ErrorTextureFileName, typeof(Texture2D)).Returns(errorTexture);
+            unityInterface.AssetDatabaseLoadAssetAtPath(errorTextureFullPath, typeof(Texture2D)).Returns(errorTexture);
 
             GUILayoutOption buttonWidth = GUILayout.Width(16);
             unityInterface.GUILayoutWidth(24).Returns(buttonWidth);
@@ -137,7 +144,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             errorTextureOptions[0] = buttonWidth;
             errorTextureOptions[1] = buttonHeight;
 
-            runnerEditorBusinessLogicErrorsManagement.Errors(errors, unityInterface, null);
+            runnerEditorBusinessLogicErrorsManagement.Errors(errors, unityInterface, runner);
 
             Received.InOrder(() =>
             {
@@ -147,12 +154,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 unityInterface.EditorGUILayoutEndHorizontal();
                 unityInterface.EditorGUILayoutBeginHorizontal();
                 unityInterface.EditorGUIUtilityCurrentViewWidth();
-                unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.ErrorTextureFileName, typeof(Texture2D));
+                unityInterface.AssetDatabaseLoadAssetAtPath(errorTextureFullPath, typeof(Texture2D));
                 unityInterface.GUILayoutWidth(24);
                 unityInterface.GUILayoutHeight(24);
                 unityInterface.EditorGUILayoutLabelField(errorTexture, Arg.Is<GUILayoutOption[]>(x => x.SequenceEqual(errorTextureOptions) == true));
                 unityInterface.EditorGUILayoutLabelField(expectedFirstMessage, labelWidth);
-                unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName, typeof(Texture2D));
+                unityInterface.AssetDatabaseLoadAssetAtPath(openComponentButtonTextureFullPath, typeof(Texture2D));
                 unityInterface.GUILayoutWidth(24);
                 unityInterface.GUILayoutHeight(24);
                 unityInterface.GUILayoutButton(inputTexture, EditorStyles.label, Arg.Is<GUILayoutOption[]>(x => x.SequenceEqual(options) == true));
@@ -166,7 +173,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 unityInterface.EditorGUIUtilityCurrentViewWidth();
 
                 unityInterface.EditorGUILayoutLabelField(expectedSecondMessage, labelWidth);
-                unityInterface.AssetDatabaseLoadAssetAtPath(runnerEditorBusinessLogicErrorsManagement.OpenComponentButtonTextureFileName, typeof(Texture2D));
+                unityInterface.AssetDatabaseLoadAssetAtPath(openComponentButtonTextureFullPath, typeof(Texture2D));
                 unityInterface.GUILayoutWidth(24);
                 unityInterface.GUILayoutHeight(24);
 
