@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the business logic of the errors management.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -14,17 +18,32 @@
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the business logic of the errors management.
+    /// </summary>
     public class RunnerEditorBusinessLogicErrorsManagement
     {
+        /// <summary>
+        /// The filename of the openComponentButtonTexture.
+        /// </summary>
         private string openComponentButtonTextureFileName = @"openComponentButton.png";
+
+        /// <summary>
+        /// The filename of the errorTexture.
+        /// </summary>
         private string errorTextureFileName = @"exclamation_red.png";
 
+        /// <summary>
+        /// Gets or sets the filename of the errorTexture.
+        /// </summary>
+        /// <value>
+        /// The filename of the errorTexture.
+        /// </value>
         public string ErrorTextureFileName
         {
             get
@@ -38,6 +57,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the filename of the openComponentButtonTexture.
+        /// </summary>
+        /// <value>
+        /// The name of the filename of the openComponentButtonTexture.
+        /// </value>
         public string OpenComponentButtonTextureFileName
         {
             get
@@ -51,10 +76,16 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Draws the given errors.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <param name="unityInterface">The unity interface.</param>
+        /// <param name="bddExtensionRunner">The BDD extension runner.</param>
         public void Errors(List<UnityTestBDDError> errors, IUnityInterfaceWrapper unityInterface, BDDExtensionRunner bddExtensionRunner)
         {
-            string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, OpenComponentButtonTextureFileName);
-            string errorTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, ErrorTextureFileName);
+            string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, this.OpenComponentButtonTextureFileName);
+            string errorTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, this.ErrorTextureFileName);
             foreach (UnityTestBDDError error in errors)
             {
                 unityInterface.EditorGUILayoutBeginHorizontal();

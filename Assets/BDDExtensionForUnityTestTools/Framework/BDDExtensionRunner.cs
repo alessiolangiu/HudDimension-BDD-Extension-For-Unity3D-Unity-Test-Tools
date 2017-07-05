@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class is the core of the BDD Extension Framework for Unity Test Tools.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -17,23 +21,60 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class is the core of the BDD Extension Framework for Unity Test Tools.
+    /// </summary>
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
     public class BDDExtensionRunner : MonoBehaviour
     {
+        /// <summary>
+        /// Define if the test has to be executed inside the FixedUpdate instead of the Update method.
+        /// </summary>
         [SerializeField]
         private bool useFixedUpdate = false;
+
+        /// <summary>
+        /// The list of the Step Method of type Given.
+        /// </summary>
         [SerializeField]
         private string[] given = new string[] { string.Empty };
+
+        /// <summary>
+        /// The list of the Step Method of type When.
+        /// </summary>
         [SerializeField]
         private string[] when = new string[] { string.Empty };
+
+        /// <summary>
+        /// The list of the Step Method of type Then.
+        /// </summary>
         [SerializeField]
         private string[] then = new string[] { string.Empty };
+
+        /// <summary>
+        /// The list of the Step Method parameters indexes of type Given.
+        /// </summary>
         [SerializeField]
         private string[] givenParametersIndex = new string[] { string.Empty };
+
+        /// <summary>
+        ///  The list of the Step Method parameters indexes of type When.
+        /// </summary>
         [SerializeField]
         private string[] whenParametersIndex = new string[] { string.Empty };
+
+        /// <summary>
+        ///  The list of the Step Method parameters indexes of type Then.
+        /// </summary>
         [SerializeField]
         private string[] thenParametersIndex = new string[] { string.Empty };
 
+        /// <summary>
+        /// Gets or sets the list of the Step Method of type Given.
+        /// </summary>
+        /// <value>
+        /// The list of the Step Method of type Given.
+        /// </value>
         public string[] Given
         {
             get
@@ -47,6 +88,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the list of the Step Method of type When.
+        /// </summary>
+        /// <value>
+        /// The list of the Step Method of type When.
+        /// </value>
         public string[] When
         {
             get
@@ -60,6 +107,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the list of the Step Method of type Then.
+        /// </summary>
+        /// <value>
+        /// The list of the Step Method of type Then.
+        /// </value>
         public string[] Then
         {
             get
@@ -73,6 +126,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the list of the Step Method parameters indexes of type Given.
+        /// </summary>
+        /// <value>
+        /// The list of the Step Method parameters indexes of type Given.
+        /// </value>
         public string[] GivenParametersIndex
         {
             get
@@ -86,6 +145,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the list of the Step Method parameters indexes of type When.
+        /// </summary>
+        /// <value>
+        /// The list of the Step Method parameters indexes of type When.
+        /// </value>
         public string[] WhenParametersIndex
         {
             get
@@ -99,6 +164,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the list of the Step Method parameters indexes of type Then.
+        /// </summary>
+        /// <value>
+        /// The list of the Step Method parameters indexes of type Then.
+        /// </value>
         public string[] ThenParametersIndex
         {
             get
@@ -112,8 +183,20 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets the object containing the business logic.
+        /// </summary>
+        /// <value>
+        /// The business logic object.
+        /// </value>
         public ExtensionRunnerBusinessLogic BusinessLogic { get; private set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the test has to be executed inside the FixedUpdate instead of the Update method.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if it has to use the FixedUpdate; otherwise, <c>false</c>.
+        /// </value>
         public bool UseFixedUpdate
         {
             get
@@ -127,6 +210,9 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Start method.
+        /// </summary>
         private void Start()
         {
             this.BusinessLogic = new ExtensionRunnerBusinessLogic(gameObject);
@@ -138,6 +224,9 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Update method.
+        /// </summary>
         private void Update()
         {
             if (!this.BusinessLogic.AreThereErrors && !this.useFixedUpdate)
@@ -146,6 +235,9 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Fixed update method.
+        /// </summary>
         private void FixedUpdate()
         {
             if (!this.BusinessLogic.AreThereErrors && this.useFixedUpdate)

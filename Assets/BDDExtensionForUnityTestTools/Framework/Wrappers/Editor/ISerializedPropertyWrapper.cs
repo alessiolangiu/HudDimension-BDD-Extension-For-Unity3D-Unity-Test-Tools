@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This is the interface for the SerializedProperty wrapper.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -17,8 +21,15 @@ using UnityEditor;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This is the interface for the SerializedProperty wrapper.
+    /// </summary>
     public interface ISerializedPropertyWrapper
     {
+        /// <summary>
+        /// Gets the SerializedProperty object.
+        /// </summary>
+        /// <returns>The SerializedProperty object.</returns>
         SerializedProperty GetProperty();
     }
 }

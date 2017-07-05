@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the business logic of the BDDExtensionRunner component.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -21,25 +25,79 @@ using UnityTest;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the business logic of the BDDExtensionRunner component.
+    /// </summary>
     public class ExtensionRunnerBusinessLogic
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExtensionRunnerBusinessLogic"/> class.
+        /// </summary>
+        /// <param name="gameObject">The game object.</param>
         public ExtensionRunnerBusinessLogic(GameObject gameObject)
         {
-            this.RunnerGameObject = gameObject;
+            this.IntegrationTestGameObject = gameObject;
         }
 
+        /// <summary>
+        /// Gets or sets the list of <see cref="FullMethodDescription"/> objects.
+        /// </summary>
+        /// <value>
+        /// The list of <see cref="FullMethodDescription"/> objects.
+        /// </value>
         public List<FullMethodDescription> MethodsDescription { get; set; }
 
+        /// <summary>
+        /// Gets or sets the start time for the time count of delayed methods executions.
+        /// </summary>
+        /// <value>
+        /// The start time for the time count of delayed methods executions.
+        /// </value>
         public DateTime StartDelayTime { get; set; }
 
+        /// <summary>
+        /// Gets or sets the start time for the time count of the <see cref="AssertionResultRetry"/> timeout methods executions.
+        /// </summary>
+        /// <value>
+        /// The start time for the time count of the <see cref="AssertionResultRetry"/> timeout methods executions.
+        /// </value>
         public DateTime? StartTimoutTime { get; set; }
 
+        /// <summary>
+        /// Gets or sets the index of the method to run in the MethodsDescription.
+        /// </summary>
+        /// <value>
+        /// The index of the method to run in the MethodsDescription.
+        /// </value>
         public int IndexToRun { get; set; }
 
-        public GameObject RunnerGameObject { get; set; }
+        /// <summary>
+        /// Gets or sets the Integration Test gameObject.
+        /// </summary>
+        /// <value>
+        /// The Integration Test gameObject.
+        /// </value>
+        public GameObject IntegrationTestGameObject { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether there are errors for avoiding the execution of the test.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if there are errors; otherwise, <c>false</c>.
+        /// </value>
         public bool AreThereErrors { get; internal set; }
 
+        /// <summary>
+        /// Gets the list of <see cref="FullMethodDescription"/> objects to run.
+        /// </summary>
+        /// <param name="allComponents">All components.</param>
+        /// <param name="givenMethods">The given methods.</param>
+        /// <param name="givenParameters">The given parameters.</param>
+        /// <param name="whenMethods">The when methods.</param>
+        /// <param name="whenParameters">The when parameters.</param>
+        /// <param name="thenMethods">The then methods.</param>
+        /// <param name="thenParameters">The then parameters.</param>
+        /// <returns>The list of <see cref="FullMethodDescription"/> objects to run.</returns>
         public List<FullMethodDescription> GetAllMethodsDescriptions(
             Component[] allComponents,
             string[] givenMethods,
@@ -69,6 +127,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets list of <see cref="FullMethodDescription"/> objects inside a Static Component.
+        /// </summary>
+        /// <typeparam name="T">The type of the Step Method.</typeparam>
+        /// <param name="bddComponents">The BDD components.</param>
+        /// <param name="methodsManagementUtilities">The methods management utilities.</param>
+        /// <returns>The list of <see cref="FullMethodDescription"/> objects inside a Static Component.</returns>
         public List<FullMethodDescription> GetAllStaticFullMethodsDescriptions<T>(Component[] bddComponents, MethodsManagementUtilities methodsManagementUtilities) where T : IGivenWhenThenDeclaration
         {
             List<FullMethodDescription> result = null;
@@ -82,6 +147,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Runs a test cycle.
+        /// </summary>
+        /// <param name="businessLogic">The business logic.</param>
+        /// <param name="methodsDescription">The methods description.</param>
+        /// <param name="indexToRun">The index to run.</param>
+        /// <returns>The index of the next method to run.</returns>
         public int RunCycle(ExtensionRunnerBusinessLogic businessLogic, List<FullMethodDescription> methodsDescription, int indexToRun)
         {
             int runningIndex = indexToRun;
@@ -93,7 +165,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
 
             if (runningIndex < methodsDescription.Count)
             {
-                bool performed = businessLogic.InvokeMethod(businessLogic, methodsDescription[runningIndex], businessLogic.RunnerGameObject);
+                bool performed = businessLogic.InvokeMethod(businessLogic, methodsDescription[runningIndex], businessLogic.IntegrationTestGameObject);
                 if (performed)
                 {
                     runningIndex++;
@@ -102,17 +174,28 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
             else
             {
-                businessLogic.InvokeAssertionSuccess(businessLogic.RunnerGameObject);
+                businessLogic.InvokeAssertionSuccessful(businessLogic.IntegrationTestGameObject);
             }
 
             return runningIndex;
         }
 
+        /// <summary>
+        /// Return the DateTime.Now. It is useful when mocking the class.
+        /// </summary>
+        /// <returns>DateTime.Now value.</returns>
         public virtual DateTime DateTimeNow()
         {
             return DateTime.Now;
         }
 
+        /// <summary>
+        /// Invokes the <paramref name="methodDescription"/> method.
+        /// </summary>
+        /// <param name="businessLogic">The business logic.</param>
+        /// <param name="methodDescription">The method description.</param>
+        /// <param name="gameObject">The game object.</param>
+        /// <returns>True if the method is executed or false if the method still has to be executed.</returns>
         public virtual bool InvokeMethod(ExtensionRunnerBusinessLogic businessLogic, FullMethodDescription methodDescription, GameObject gameObject)
         {
             bool performed = false;
@@ -139,10 +222,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                         businessLogic.InvokeAssertionFailed(errorText, scenarioText, bddMethodLocation, gameObject);
                         return true;
                     }
-                    if(typeof(AssertionResultSuccessful).IsAssignableFrom(executionResultObject.GetType()) ||
+
+                    if (typeof(AssertionResultSuccessful).IsAssignableFrom(executionResultObject.GetType()) ||
                         typeof(AssertionResultFailed).IsAssignableFrom(executionResultObject.GetType()) ||
                         typeof(AssertionResultRetry).IsAssignableFrom(executionResultObject.GetType()))
-                    
                     {
                         executionResult = (IAssertionResult)executionResultObject;
                     }
@@ -196,6 +279,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return performed;
         }
 
+        /// <summary>
+        /// Gets the parameters values for the method Invoke.
+        /// </summary>
+        /// <param name="methodDescription">The method description.</param>
+        /// <returns>An array containing the ordered collection of the parameters values.</returns>
         public virtual object[] GetParametersValues(FullMethodDescription methodDescription)
         {
             List<object> parameters = new List<object>();
@@ -207,11 +295,22 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return parameters.ToArray();
         }
 
-        public void InvokeAssertionSuccess(GameObject gameObject)
+        /// <summary>
+        /// Invokes the successful assertion.
+        /// </summary>
+        /// <param name="gameObject">The game object.</param>
+        public void InvokeAssertionSuccessful(GameObject gameObject)
         {
             AssertionComponent.Create<AssertionSuccessful>(CheckMethod.Start, gameObject, "TestComponent.enabled");
         }
 
+        /// <summary>
+        /// Invokes the failed assertion.
+        /// </summary>
+        /// <param name="errorText">The error text.</param>
+        /// <param name="scenarioText">The scenario text.</param>
+        /// <param name="bddMethodLocation">The BDD method location.</param>
+        /// <param name="gameObject">The game object.</param>
         public virtual void InvokeAssertionFailed(string errorText, string scenarioText, string bddMethodLocation, GameObject gameObject)
         {
             AssertionFailed assertion = AssertionComponent.Create<AssertionFailed>(CheckMethod.Start, gameObject, "TestComponent.enabled");
@@ -220,6 +319,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             assertion.BDDMethodLocation = bddMethodLocation;
         }
 
+        /// <summary>
+        /// Gets the scenario text indicating the sentence that raises the error.
+        /// </summary>
+        /// <param name="methods">The methods.</param>
+        /// <param name="methodDescription">The method description.</param>
+        /// <returns>The scenario text indicating the sentence that raised the error.</returns>
         public virtual string GetScenarioTextForErrorInSpecificMethod(List<FullMethodDescription> methods, FullMethodDescription methodDescription)
         {
             string result = string.Empty;
@@ -258,6 +363,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Get the BDD methods chain list indicating which method raised the error.
+        /// </summary>
+        /// <param name="methods">The methods.</param>
+        /// <param name="methodDescription">The method description.</param>
+        /// <returns>The BDD methods chain list indicating which method raised the error.</returns>
         public virtual string GetbddMethodLocationForSpecificMethod(List<FullMethodDescription> methods, FullMethodDescription methodDescription)
         {
             string result = string.Empty;
@@ -283,12 +394,26 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Sets the succeedAfterAllAssertionsAreExecuted field of the <see cref="TestComponent"/> to true.
+        /// </summary>
         public void SetSucceedOnAssertions()
         {
-            TestComponent testComponent = this.RunnerGameObject.GetComponent<TestComponent>();
+            TestComponent testComponent = this.IntegrationTestGameObject.GetComponent<TestComponent>();
             testComponent.succeedAfterAllAssertionsAreExecuted = true;
         }
 
+        /// <summary>
+        /// Runs the errors check.
+        /// </summary>
+        /// <param name="allComponents">All components.</param>
+        /// <param name="givenMethods">The given methods.</param>
+        /// <param name="givenParameters">The given parameters.</param>
+        /// <param name="whenMethods">The when methods.</param>
+        /// <param name="whenParameters">The when parameters.</param>
+        /// <param name="thenMethods">The then methods.</param>
+        /// <param name="thenParameters">The then parameters.</param>
+        /// <returns>True if there is at least one error, false otherwise.</returns>
         internal bool CheckForErrors(
             Component[] allComponents,
             string[] givenMethods,
@@ -330,13 +455,22 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     message += error.Message + "\n";
                 }
 
-                this.InvokeAssertionFailed("Errors detected in configuration. Please, fix them before run the test.\n" + message, null, null, this.RunnerGameObject);
+                this.InvokeAssertionFailed("Errors detected in configuration. Please, fix them before run the test.\n" + message, null, null, this.IntegrationTestGameObject);
                 return true;
             }
 
             return false;
         }
 
+        /// <summary>
+        /// Gets the list of <see cref="FullMethodDescription"/> objects to run for a Dynamic Scenario.
+        /// </summary>
+        /// <typeparam name="T">The type of the Step Method to filter.</typeparam>
+        /// <param name="components">The components.</param>
+        /// <param name="methodsManagementUtilities">The methods management utilities.</param>
+        /// <param name="methodsFullNamesList">The methods full names list.</param>
+        /// <param name="methodsParametersList">The methods parameters list.</param>
+        /// <returns>The list of <see cref="FullMethodDescription"/> objects to run for a Dynamic Scenario.</returns>
         private List<FullMethodDescription> GetAllDynamicFullMethodsDescriptions<T>(Component[] components, MethodsManagementUtilities methodsManagementUtilities, string[] methodsFullNamesList, string[] methodsParametersList) where T : IGivenWhenThenDeclaration
         {
             List<FullMethodDescription> result = null;
@@ -354,6 +488,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets one of the labels "Given", "When", "Then", "and", according to the sentences sequence.
+        /// </summary>
+        /// <param name="previousStepType">Type of the previous step.</param>
+        /// <param name="currentStepType">Type of the current step.</param>
+        /// <returns>One of the labels "Given", "When", "Then", "and", according to the sentences sequence.</returns>
         private string GetLabel(Type previousStepType, Type currentStepType)
         {
             string result = null;
@@ -377,6 +517,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets the text describing the Type of the BDD Step.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>The text describing the Type of the BDD Step.</returns>
         private string GetStepTypeText(FullMethodDescription method)
         {
             string result = null;
@@ -396,6 +541,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets the text describing for the method for log operations.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>The text describing for the method for log operations.</returns>
         private string GetMethodText(FullMethodDescription method)
         {
             string result = method.GetFullName();
@@ -403,6 +553,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets the indenting for method for log operations.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>The indenting for method for log operations.</returns>
         private string GetIndentingForMethod(FullMethodDescription method)
         {
             string result = string.Empty;

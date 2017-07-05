@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class describes the Step Methods for a single BDD Step type.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -17,12 +21,28 @@ using System;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class describes the Step Methods for a single BDD Step type.
+    /// </summary>
+    /// <seealso cref="System.ICloneable" />
     public class ChosenMethods : ICloneable
     {
+        /// <summary>
+        /// The chosenMethods array, containing the full names of the Step Methods.
+        /// </summary>
         private string[] chosenMethodsNames;
 
+        /// <summary>
+        /// The chosenMethods parametersIndexes array, containing the parametersIndexes of the Step Methods.
+        /// </summary>
         private string[] chosenMethodsParametersIndex;
 
+        /// <summary>
+        /// Gets or sets the chosenMethods array, containing the full names of the Step Methods.
+        /// </summary>
+        /// <value>
+        /// The chosenMethods array, containing the full names of the Step Methods.
+        /// </value>
         public string[] ChosenMethodsNames
         {
             get
@@ -36,6 +56,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets the chosenMethods parametersIndexes array, containing the parametersIndexes of the Step Methods.
+        /// </summary>
+        /// <value>
+        /// The chosenMethods parametersIndexes array, containing the parametersIndexes of the Step Methods.
+        /// </value>
         public string[] ChosenMethodsParametersIndex
         {
             get
@@ -49,6 +75,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>The cloned object.</returns>
         public object Clone()
         {
             ChosenMethods newObject = new ChosenMethods();

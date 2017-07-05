@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class is the Custom Editor for the BDDExtensionRunner.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -13,7 +17,6 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
-using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -21,21 +24,57 @@ using UnityTest;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class is the Custom Editor for the BDDExtensionRunner.
+    /// </summary>
+    /// <seealso cref="UnityEditor.Editor" />
     [CustomEditor(typeof(BDDExtensionRunner), true)]
     public class BDDExtensionRunnerEditor : Editor
     {
+        /// <summary>
+        /// The business logic data.
+        /// </summary>
         private RunnerEditorBusinessLogicData runnerBusinessLogicData = new RunnerEditorBusinessLogicData();
 
+        /// <summary>
+        /// The unity interface wrapper.
+        /// </summary>
         private IUnityInterfaceWrapper unityIntefaceWrapper = new UnityInterfaceWrapper();
 
+        /// <summary>
+        /// The parameters rebuild  business logic.
+        /// </summary>
         private RunnerEditorBusinessLogicParametersRebuild businessLogicParametersRebuild = new RunnerEditorBusinessLogicParametersRebuild();
 
+        /// <summary>
+        /// The dynamic rows  business logic.
+        /// </summary>
         private RunnerEditorBusinessLogicDynamicRows businessLogicDynamicRows = new RunnerEditorBusinessLogicDynamicRows();
 
+        /// <summary>
+        /// The static rows business logic.
+        /// </summary>
         private RunnerEditorBusinessLogicStaticRows businessLogicStaticRows = new RunnerEditorBusinessLogicStaticRows();
 
+        /// <summary>
+        /// This field is true if the Inspector has to be redrawn.
+        /// </summary>
         private bool dirtyStatus = false;
 
+        /// <summary>
+        /// Creates the menu for creating a new BDD test.
+        /// </summary>
+        [MenuItem("Unity Test Tools/BDD Extension Framework/Create BDD Test")]
+        public static void CreateNewBDDTest()
+        {
+            GameObject test = TestComponent.CreateTest();
+            test.AddComponent<BDDExtensionRunner>();
+            SetSucceedOnAssertions(test);
+        }
+
+        /// <summary>
+        /// Implement this function to make a custom inspector.
+        /// </summary>
         public override void OnInspectorGUI()
         {
             BDDExtensionRunner script = (BDDExtensionRunner)target;
@@ -136,16 +175,24 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
-        [MenuItem("Unity Test Tools/BDD Extension Framework/Create BDD Test")]
-        public static void CreateNewBDDTest()
+        /// <summary>
+        /// Sets the succeedAfterAllAssertionsAreExecuted field on the <see cref="TestComponent"/>.
+        /// </summary>
+        /// <param name="testGameObject">The test game object.</param>
+        private static void SetSucceedOnAssertions(GameObject testGameObject)
         {
-            GameObject test = TestComponent.CreateTest();
-            test.AddComponent<BDDExtensionRunner>();
-            SetSucceedOnAssertions(test);
+            TestComponent testComponent = testGameObject.GetComponent<TestComponent>();
+            testComponent.succeedAfterAllAssertionsAreExecuted = true;
         }
 
-
-
+        /// <summary>
+        /// Draws the options.
+        /// </summary>
+        /// <param name="businessLogicData">The business logic data.</param>
+        /// <param name="isStaticScenario">If set to <c>true</c> [is static scenario].</param>
+        /// <param name="script">The script.</param>
+        /// <param name="unityInterface">The unity interface.</param>
+        /// <param name="bddComponents">The BDD components.</param>
         private void DrawOptions(RunnerEditorBusinessLogicData businessLogicData, bool isStaticScenario, BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface, Component[] bddComponents)
         {
             Rect rect = unityInterface.EditorGUILayoutGetControlRect();
@@ -167,6 +214,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Draws the checkbox for choosing between update and fixed update.
+        /// </summary>
+        /// <param name="script">The script.</param>
+        /// <param name="unityInterface">The unity interface.</param>
         private void ChooseBetweenUpdateAndFixedUpdate(BDDExtensionRunner script, IUnityInterfaceWrapper unityInterface)
         {
             GUIContent label = unityInterface.GUIContent("Run under Fixed Update");
@@ -178,6 +230,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Detects if the parameters rows have to be locked.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <returns>True  if the parameters rows have to be locked.</returns>
         private bool LockParametersRows(List<UnityTestBDDError> errors)
         {
             foreach (UnityTestBDDError error in errors)
@@ -191,6 +248,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return false;
         }
 
+        /// <summary>
+        /// Draws the button "Rebuild settings.".
+        /// </summary>
+        /// <param name="script">The script.</param>
+        /// <param name="components">The components.</param>
         private void ForceRebuildParametersButton(BDDExtensionRunner script, Component[] components)
         {
             if (GUILayout.Button("Rebuild settings.", EditorStyles.miniButton, GUILayout.Width(100)))
@@ -211,7 +273,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     on,
                     () =>
                     {
-                        RegisterUndoInformations(script, components, "Rebuld settings");
+                        RegisterUndoInformation(script, components, "Rebuld settings");
                         this.RebuildParameters(script, components, runnerBusinessLogicData);
                         runnerBusinessLogicData.BDDObjects = components;
                         runnerBusinessLogicData.SerializedObjects = businessLogicParametersRebuild.RebuildSerializedObjectsList(components, runnerBusinessLogicData.SerializedObjects);
@@ -221,6 +283,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Detects if the parameters rebuild has to be locked.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <returns>True if the parameters rebuild has to be locked.</returns>
         private bool BuildParametersIsLocked(List<UnityTestBDDError> errors)
         {
             foreach (UnityTestBDDError error in errors)
@@ -234,6 +301,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return false;
         }
 
+        /// <summary>
+        /// Determines whether the scenario is Static.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>
+        ///   <c>true</c> if the scenario is Static; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsStaticScenario(Component[] components)
         {
             if (components == null)
@@ -252,6 +326,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return false;
         }
 
+        /// <summary>
+        /// Determines if the Inspector has to be locked because of the presence of errors.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <returns>True if the Inspector has to be locked.</returns>
         private bool RunnerInspectorIsLockedOnErrors(List<UnityTestBDDError> errors)
         {
             foreach (UnityTestBDDError error in errors)
@@ -265,6 +344,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return false;
         }
 
+        /// <summary>
+        /// Rebuilds the parameters.
+        /// </summary>
+        /// <param name="script">The script.</param>
+        /// <param name="dynamicBDDComponents">The dynamic BDD components.</param>
+        /// <param name="runnerBusinessLogicData">The runner business logic data.</param>
         private void RebuildParameters(BDDExtensionRunner script, Component[] dynamicBDDComponents, RunnerEditorBusinessLogicData runnerBusinessLogicData)
         {
             // Generate the three list of MethodDescription for each step type: Given, When, Then
@@ -311,6 +396,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             script.ThenParametersIndex = parametersLocationsBuilder.RebuildParametersIndexesArrays(thenFullMethodsDescriptionList, script.Then);
         }
 
+        /// <summary>
+        /// Builds the static scenario.
+        /// </summary>
+        /// <param name="bddComponents">The BDD components.</param>
         private void BuildStaticScenario(Component[] bddComponents)
         {
             BaseMethodDescriptionBuilder baseMethodDescriptionBuilder = new BaseMethodDescriptionBuilder();
@@ -322,6 +411,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             this.businessLogicStaticRows.DrawStaticRows<ThenBaseAttribute>(this.unityIntefaceWrapper, bddStepMethodsLoader, bddComponents, RunnerEditorBusinessLogicData.LabelWidthAbsolute, RunnerEditorBusinessLogicData.ButtonsWidthAbsolute);
         }
 
+        /// <summary>
+        /// Builds the dynamic scenario.
+        /// </summary>
+        /// <param name="script">The script.</param>
+        /// <param name="bddComponents">The BDD components.</param>
+        /// <param name="lockParametersRows">If set to <c>true</c> [lock parameters rows].</param>
+        /// <param name="dirtyStatus">If set to <c>true</c> [dirty status].</param>
         private void BuildDynamicScenario(BDDExtensionRunner script, Component[] bddComponents, bool lockParametersRows, out bool dirtyStatus)
         {
             bool givenDirtyStatus = false;
@@ -342,7 +438,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             chosenMethods.ChosenMethodsParametersIndex = script.GivenParametersIndex;
 
             this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<GivenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.GivenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.GivenFoldouts, out givenDirtyStatus, out undoText);
-            RegisterUndoInformations(target, bddComponents, undoText);
+            this.RegisterUndoInformation(this.target, bddComponents, undoText);
             script.Given = chosenMethods.ChosenMethodsNames;
             script.GivenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
 
@@ -350,7 +446,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             chosenMethods.ChosenMethodsParametersIndex = script.WhenParametersIndex;
 
             this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<WhenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.WhenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.WhenFoldouts, out whenDirtyStatus, out undoText);
-            RegisterUndoInformations(target, bddComponents, undoText);
+            this.RegisterUndoInformation(this.target, bddComponents, undoText);
 
             script.When = chosenMethods.ChosenMethodsNames;
             script.WhenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
@@ -358,7 +454,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             chosenMethods.ChosenMethodsNames = script.Then;
             chosenMethods.ChosenMethodsParametersIndex = script.ThenParametersIndex;
             this.runnerBusinessLogicData.Rebuild = this.businessLogicDynamicRows.DrawDynamicRows<ThenBaseAttribute>(this.unityIntefaceWrapper, methodsLoader, methodDescriptionBuilder, parametersLoader, bddComponents, chosenMethods, this.runnerBusinessLogicData.ThenFoldouts, this.runnerBusinessLogicData.SerializedObjects, script, methodsUtilities, dynamicRowsElements, lockParametersRows, this.runnerBusinessLogicData.Rebuild, out chosenMethods, out this.runnerBusinessLogicData.ThenFoldouts, out thenDirtyStatus, out undoText);
-            RegisterUndoInformations(target, bddComponents, undoText);
+            this.RegisterUndoInformation(this.target, bddComponents, undoText);
 
             script.Then = chosenMethods.ChosenMethodsNames;
             script.ThenParametersIndex = chosenMethods.ChosenMethodsParametersIndex;
@@ -366,13 +462,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             dirtyStatus = givenDirtyStatus || whenDirtyStatus || thenDirtyStatus;
         }
 
-        private static void SetSucceedOnAssertions(GameObject testGameObject)
-        {
-            TestComponent testComponent = testGameObject.GetComponent<TestComponent>();
-            testComponent.succeedAfterAllAssertionsAreExecuted = true;
-        }
-
-        private void RegisterUndoInformations(UnityEngine.Object target, Component[] bddComponents, string undoText)
+        /// <summary>
+        /// Registers the undo information.
+        /// </summary>
+        /// <param name="target">The target.</param>
+        /// <param name="bddComponents">The BDD components.</param>
+        /// <param name="undoText">The undo text.</param>
+        private void RegisterUndoInformation(UnityEngine.Object target, Component[] bddComponents, string undoText)
         {
             List<UnityEngine.Object> objects = new List<UnityEngine.Object>();
             objects.Add(target);
@@ -381,6 +477,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 UnityEngine.Object unityObject = (UnityEngine.Object)component;
                 objects.Add(unityObject);
             }
+
             Undo.RecordObjects(objects.ToArray(), undoText);
         }
     }

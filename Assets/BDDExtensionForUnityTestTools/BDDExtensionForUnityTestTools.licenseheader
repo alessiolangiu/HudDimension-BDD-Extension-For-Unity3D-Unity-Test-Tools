@@ -1,7 +1,7 @@
 ﻿extensions: designer.cs generated.cs
 extensions: .cs .cpp .h
 //-----------------------------------------------------------------------
-// <copyright file="%FileName%" company="Hud Dimesion">
+// <copyright file="%FileName%" company="Hud Dimension">
 //     Copyright (c) Hud Dimension. All rights reserved.
 // </copyright>
 //

@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// A collection of utilities for managing the BDD Methods.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -18,8 +22,18 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// A collection of utilities for managing the BDD Methods.
+    /// </summary>
     public class MethodsManagementUtilities
     {
+        /// <summary>
+        /// Builds a list of <see cref="FullMethodDescription"/> objects given a list of <see cref="BaseMethodDescription"/> objects.
+        /// </summary>
+        /// <typeparam name="T">The type of the Step Method.</typeparam>
+        /// <param name="methodsDescriptionsList">The methods descriptions list.</param>
+        /// <param name="fullMethodDescriptionBuilder">The full method description builder.</param>
+        /// <returns>A list of <see cref="FullMethodDescription"/> objects.</returns>
         public List<FullMethodDescription> LoadFullMethodsDescriptions<T>(List<BaseMethodDescription> methodsDescriptionsList, FullMethodDescriptionBuilder fullMethodDescriptionBuilder) where T : IGivenWhenThenDeclaration
         {
             List<FullMethodDescription> fullMethodsDescriptions = new List<FullMethodDescription>();
@@ -34,6 +48,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return fullMethodsDescriptions;
         }
 
+        /// <summary>
+        ///  Builds a list of <see cref="FullMethodDescription"/> objects given a list of <see cref="MethodDescription"/> objects.
+        /// </summary>
+        /// <typeparam name="T">The type of the Step Method.</typeparam>
+        /// <param name="methodsDescriptionsList">The methods descriptions list.</param>
+        /// <param name="fullMethodDescriptionBuilder">The full method description builder.</param>
+        /// <returns>A list of <see cref="FullMethodDescription"/> objects.</returns>
         public List<FullMethodDescription> LoadFullMethodsDescriptions<T>(List<MethodDescription> methodsDescriptionsList, FullMethodDescriptionBuilder fullMethodDescriptionBuilder) where T : IGivenWhenThenDeclaration
         {
             List<FullMethodDescription> fullMethodsDescriptions = new List<FullMethodDescription>();
@@ -48,6 +69,17 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return fullMethodsDescriptions;
         }
 
+        /// <summary>
+        /// Builds a list of <see cref="FullMethodDescription"/> objects given a list of method full names.
+        /// </summary>
+        /// <typeparam name="T">The type of the Step Method.</typeparam>
+        /// <param name="dynamicBDDComponents">The dynamic BDD components.</param>
+        /// <param name="methodsLoader">The methods loader.</param>
+        /// <param name="methodDescriptionBuilder">The method description builder.</param>
+        /// <param name="methodParametersLoader">The method parameters loader.</param>
+        /// <param name="chosenMethods">The chosen methods.</param>
+        /// <param name="chosenMethodsParametersIndexes">The chosen methods parameters indexes.</param>
+        /// <returns>A list of <see cref="FullMethodDescription"/> objects.</returns>
         public List<MethodDescription> LoadMethodsDescriptionsFromChosenMethods<T>(Component[] dynamicBDDComponents, MethodsLoader methodsLoader, MethodDescriptionBuilder methodDescriptionBuilder, MethodParametersLoader methodParametersLoader, string[] chosenMethods, string[] chosenMethodsParametersIndexes) where T : IGivenWhenThenDeclaration
         {
             List<MethodDescription> methodsDescriptions = new List<MethodDescription>();
@@ -63,6 +95,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return methodsDescriptions;
         }
 
+        /// <summary>
+        /// Gets the parameters index string for the passed method name.
+        /// </summary>
+        /// <param name="methodFullName">Full name of the method.</param>
+        /// <param name="chosenMethods">The chosen methods.</param>
+        /// <param name="chosenMethodsParametersIndexes">The chosen methods parameters indexes.</param>
+        /// <returns>The parameters index string.</returns>
         public string GetParametersIndexForMethod(string methodFullName, string[] chosenMethods, string[] chosenMethodsParametersIndexes)
         {
             string result = null;
@@ -77,6 +116,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Determines whether if the scenario is static.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>
+        ///   <c>true</c> if there is a Static Component; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsStaticBDDScenario(Component[] components)
         {
             bool result = false;
@@ -91,6 +137,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets the full id of a method.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>The full id of a method.</returns>
         public string GetFullId(FullMethodDescription method)
         {
             if (method == null)
@@ -102,6 +153,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return mainFullId + method.Id;
         }
 
+        /// <summary>
+        /// Gets the main full id of a method.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>The main full id of a method.</returns>
         public string GetMainFullId(FullMethodDescription method)
         {
             if (method == null || method.MainMethod == null)
@@ -112,6 +168,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return this.GetMainFullId(method.MainMethod) + method.Id + "_";
         }
 
+        /// <summary>
+        /// Gets the ordered list of <see cref="BaseMethodDescription"/> objects given a list of method full names.
+        /// </summary>
+        /// <param name="baseMethodsDescriptions">The base methods descriptions.</param>
+        /// <param name="chosenMethods">The chosen methods.</param>
+        /// <returns>The ordered list of <see cref="BaseMethodDescription"/> objects.</returns>
         private List<BaseMethodDescription> GetOrderedListByMethodsNames(List<BaseMethodDescription> baseMethodsDescriptions, string[] chosenMethods)
         {
             List<BaseMethodDescription> result = new List<BaseMethodDescription>();

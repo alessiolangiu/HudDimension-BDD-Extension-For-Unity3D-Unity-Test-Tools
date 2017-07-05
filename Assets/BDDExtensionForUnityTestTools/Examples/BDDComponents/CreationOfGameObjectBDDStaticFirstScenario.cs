@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This BDD Component is part of the example of how to use a Static Component for building a scenario.
+// </summary>
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -17,14 +21,30 @@ using HudDimension.BDDExtensionForUnityTestTools;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This BDD Component is part of the example of how to use a Static Component for building a scenario.
+/// </summary>
 public class CreationOfGameObjectBDDStaticFirstScenario : StaticBDDComponent
 {
+    /// <summary>
+    /// The tag for the button "Create".
+    /// </summary>
     private const string ButtonCreateTag = "BUTTON CREATE";
 
+    /// <summary>
+    /// The tag for the cube.
+    /// </summary>
     private const string CubeTag = "CUBE";
 
+    /// <summary>
+    /// The name of the game object to create.
+    /// </summary>
     private const string CubeName = "object for test";
 
+    /// <summary>
+    /// This method checks when the software is waiting for input.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [Given(1, "the software is just started and it is waiting for an input")]
     public IAssertionResult StartedAndWaitingForInput()
     {
@@ -47,6 +67,10 @@ public class CreationOfGameObjectBDDStaticFirstScenario : StaticBDDComponent
         return result;
     }
 
+    /// <summary>
+    /// This method performs the press action of the "Create" button.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [When(1, "I press the button \"Create\"")]
     public IAssertionResult PressTheButtonCreate()
     {
@@ -57,6 +81,10 @@ public class CreationOfGameObjectBDDStaticFirstScenario : StaticBDDComponent
         return result;
     }
 
+    /// <summary>
+    /// This method checks if an object named "object for test" is on the scene.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [Then(1, "an object named \"object for test\" has to appear on the scene")]
     public IAssertionResult TheNewObjectAppears()
     {

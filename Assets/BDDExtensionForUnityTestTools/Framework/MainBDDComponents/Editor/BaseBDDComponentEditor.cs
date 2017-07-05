@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This is the custom inspector for the BDD Components.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -18,14 +22,30 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This is the custom inspector for the BDD Components.
+    /// </summary>
+    /// <seealso cref="UnityEditor.Editor" />
     [CustomEditor(typeof(BaseBDDComponent), true)]
     public class BaseBDDComponentEditor : Editor
     {
+        /// <summary>
+        /// The path of the BDD Component image.
+        /// </summary>
         private string texturePath = null;
 
+        /// <summary>
+        /// The unity interface.
+        /// </summary>
         private IUnityInterfaceWrapper unityInterface = new UnityInterfaceWrapper();
 
-        internal string TexturePath
+        /// <summary>
+        /// Gets or sets the path of the BDD Component image.
+        /// </summary>
+        /// <value>
+        /// The path of the BDD Component image.
+        /// </value>
+        internal string MainTexturePath
         {
             get
             {
@@ -38,16 +58,22 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Awakes this instance.
+        /// </summary>
         public void Awake()
         {
             BaseBDDComponent script = (BaseBDDComponent)target;
             script.Checking = true;
         }
 
+        /// <summary>
+        /// Implement this function to make a custom inspector.
+        /// </summary>
         public override void OnInspectorGUI()
         {
             BDDExtensionRunner bddExtensionRunner = ((Component)target).gameObject.GetComponent<BDDExtensionRunner>();
-            string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, this.TexturePath);
+            string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, this.MainTexturePath);
 
             BaseBDDComponent script = (BaseBDDComponent)target;
             if (EditorApplication.isCompiling)
@@ -64,11 +90,8 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 GUIContent label = new GUIContent(texture);
                 EditorGUILayout.LabelField(label, options);
                 this.unityInterface.EditorGUILayoutEndHorizontal();
-                //if (script.Checking == true)
-                //{
-                    ComponentsChecker checkForErrors = new ComponentsChecker();
-                    script.Errors = checkForErrors.Check(script);
-                //}
+                ComponentsChecker checkForErrors = new ComponentsChecker();
+                script.Errors = checkForErrors.Check(script);
 
                 if (script.Errors.Count > 0)
                 {

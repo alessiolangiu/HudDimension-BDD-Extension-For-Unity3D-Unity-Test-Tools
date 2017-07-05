@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This BDD Component is part of the example of how to use a Static Component for building a scenario.
+// </summary>
+//
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -13,21 +17,40 @@
 // <author>Alessio Langiu</author>
 // <email>alessio.langiu@huddimension.co.uk</email>
 //-----------------------------------------------------------------------
-using HudDimension.BDDExtensionForUnityTestTools;
 using System.Linq;
+using HudDimension.BDDExtensionForUnityTestTools;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This BDD Component is part of the example of how to use a Static Component for building a scenario.
+/// </summary>
 public class CreationOfGameObjectBDDStaticThirdScenario : StaticBDDComponent
 {
+    /// <summary>
+    /// The tag for the button "Create".
+    /// </summary>
     private const string ButtonCreateTag = "BUTTON CREATE";
 
+    /// <summary>
+    /// The tag for the cube.
+    /// </summary>
     private const string CubeTag = "CUBE";
 
+    /// <summary>
+    /// The name of the game object to create.
+    /// </summary>
     private const string CubeName = "object for test";
 
+    /// <summary>
+    /// This array is going to contain all the instances of objects with the CubeTag tag.
+    /// </summary>
     private GameObject[] listOfCubesInTheScene = null;
 
+    /// <summary>
+    /// This method checks when the software is waiting for input.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [GenericBDDMethod]
     public IAssertionResult StartedAndWaitingForInput()
     {
@@ -50,6 +73,10 @@ public class CreationOfGameObjectBDDStaticThirdScenario : StaticBDDComponent
         return result;
     }
 
+    /// <summary>
+    /// This method checks if an object named "object for test" is on the scene.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [GenericBDDMethod]
     public IAssertionResult TheNewObjectAppears()
     {
@@ -67,13 +94,21 @@ public class CreationOfGameObjectBDDStaticThirdScenario : StaticBDDComponent
         return result;
     }
 
+    /// <summary>
+    /// This method stores all the of cube objects in the scene.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [GenericBDDMethod]
     public IAssertionResult StoreTheListOfCubesInTheScene()
     {
         this.listOfCubesInTheScene = GameObject.FindGameObjectsWithTag(CubeTag);
-        return new AssertionResultSuccessful(); ;
+        return new AssertionResultSuccessful();
     }
 
+    /// <summary>
+    /// This method prepares the environment for the test and stores all the cubes present in the scene.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [Given(1, "there is a cube in the scene called \"object for test\"")]
     [CallBefore(1, "StartedAndWaitingForInput")]
     [CallBefore(2, "PressTheButtonCreate")]
@@ -84,6 +119,10 @@ public class CreationOfGameObjectBDDStaticThirdScenario : StaticBDDComponent
         return new AssertionResultSuccessful();
     }
 
+    /// <summary>
+    /// This method performs the press action of the "Create" button.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [When(1, "I press the button \"Create\"")]
     public IAssertionResult PressTheButtonCreate()
     {
@@ -94,6 +133,10 @@ public class CreationOfGameObjectBDDStaticThirdScenario : StaticBDDComponent
         return result;
     }
 
+    /// <summary>
+    /// This method checks if there is only one cube in the scene.
+    /// </summary>
+    /// <returns>One of the three <see cref="IAssertionResult"/> implementations: <see cref="AssertionResultSuccessful"/>, <see cref="AssertionResultFailed"/>, <see cref="AssertionResultRetry"/>.</returns>
     [Then(1, "nothing is going to change in the scene.", Delay = 1000)]
     public IAssertionResult OnlyACubeInTheScene()
     {

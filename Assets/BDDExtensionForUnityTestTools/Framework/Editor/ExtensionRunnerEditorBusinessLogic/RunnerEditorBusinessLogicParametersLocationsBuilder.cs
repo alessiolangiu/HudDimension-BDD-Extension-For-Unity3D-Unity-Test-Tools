@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the business logic for building the Parameters Locations.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -19,8 +23,15 @@ using System.Reflection;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the business logic for building the Parameters Locations.
+    /// </summary>
     public class RunnerEditorBusinessLogicParametersLocationsBuilder
     {
+        /// <summary>
+        /// Builds the parameters location.
+        /// </summary>
+        /// <param name="fullMethodsDescriptionsList">The full methods descriptions list.</param>
         internal void BuildParametersLocation(List<FullMethodDescription> fullMethodsDescriptionsList)
         {
             foreach (FullMethodDescription fullMethodDescription in fullMethodsDescriptionsList)
@@ -58,6 +69,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Rebuilds the parameters indexes arrays.
+        /// </summary>
+        /// <param name="fullMethodsDescriptionsList">The full methods descriptions list.</param>
+        /// <param name="methodsFullNamesList">The methods full names list.</param>
+        /// <returns>The array containing the parameters indexes.</returns>
         internal string[] RebuildParametersIndexesArrays(List<FullMethodDescription> fullMethodsDescriptionsList, string[] methodsFullNamesList)
         {
             int resultIndex = 0;
@@ -74,6 +91,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Adds the index of the parameters.
+        /// </summary>
+        /// <param name="fullMethodDescription">The full method description.</param>
+        /// <param name="parametersIndex">Index of the parameters.</param>
         private void AddParametersIndex(FullMethodDescription fullMethodDescription, string parametersIndex)
         {
             FullMethodDescription baseFullMethodDescription = fullMethodDescription;
@@ -85,6 +107,14 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             baseFullMethodDescription.ParametersIndex += parametersIndex;
         }
 
+        /// <summary>
+        /// Builds the index of the parameter.
+        /// </summary>
+        /// <param name="fullMethodDescription">The full method description.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="arrayFieldInfo">The array field information.</param>
+        /// <returns>A string containing the parameter index.</returns>
         private string BuildParameterIndex(FullMethodDescription fullMethodDescription, MethodParameter parameter, int index, FieldInfo arrayFieldInfo)
         {
             // ";string,BDDComponentForTest.GivenMethod.stringParam.fullId,stringsArrayStorage.Array.data[0];"

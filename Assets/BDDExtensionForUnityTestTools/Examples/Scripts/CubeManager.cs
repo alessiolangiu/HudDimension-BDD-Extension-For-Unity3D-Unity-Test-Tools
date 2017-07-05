@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// Scrip for managing a cube creation using a "Create" and a "Delete" button.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -21,7 +25,7 @@ using UnityEngine;
 public class CubeManager : MonoBehaviour
 {
     /// <summary>
-    /// The Unity Tag associated to a cube object 
+    /// The Unity Tag associated to a cube object.
     /// </summary>
     private const string CubeTag = "CUBE";
 
@@ -34,13 +38,13 @@ public class CubeManager : MonoBehaviour
     private const string WarningTag = "WARNING MESSAGE";
 
     /// <summary>
-    /// The cube prefab
+    /// The cube prefab.
     /// </summary>
     [SerializeField]
     private Transform cubePrefab;
 
     /// <summary>
-    /// The warning message
+    /// The warning message.
     /// </summary>
     [SerializeField]
     private GameObject warningMessage;
@@ -84,7 +88,7 @@ public class CubeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Called by the button "Create"
+    /// Called by the button "Create".
     /// </summary>
     public void OnCreate()
     {
@@ -99,7 +103,7 @@ public class CubeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Called by the button "Delete"
+    /// Called by the button "Delete".
     /// </summary>
     public void OnDelete()
     {
@@ -113,14 +117,14 @@ public class CubeManager : MonoBehaviour
     }
  
     /// <summary>
-    /// Use this for initialization
+    /// Use this for initialization.
     /// </summary>
     private void Start()
     {
     }
 
     /// <summary>
-    /// Update is called once per frame
+    /// Update is called once per frame.
     /// </summary>
     private void Update()
     {

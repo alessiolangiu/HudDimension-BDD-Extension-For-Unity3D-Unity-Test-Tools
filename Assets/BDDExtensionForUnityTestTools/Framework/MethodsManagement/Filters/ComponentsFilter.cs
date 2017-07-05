@@ -32,8 +32,8 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         /// <summary>
         /// Filters the specified components.
         /// </summary>
-        /// <param name="components">The components.</param>
-        /// <returns></returns>
+        /// <param name="components">The components to be filtered.</param>
+        /// <returns>The filtered components.</returns>
         public virtual Component[] Filter(Component[] components)
         {
             List<Component> bddComponentsList = Filter(typeof(StaticBDDComponent), components);
@@ -46,10 +46,15 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return bddComponentsList.ToArray();
         }
 
-        private static string GetClassList(List<Component> bddComponentsist)
+        /// <summary>
+        /// Gets a string containing the list of the components.
+        /// </summary>
+        /// <param name="bddComponentList">The BDD Components list.</param>
+        /// <returns>A string containing the list of the components.</returns>
+        private static string GetClassList(List<Component> bddComponentList)
         {
             string result = string.Empty;
-            foreach (Component component in bddComponentsist)
+            foreach (Component component in bddComponentList)
             {
                 if (!result.Equals(string.Empty))
                 {
@@ -62,6 +67,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Filters the components by the specified BDD Declaration.
+        /// </summary>
+        /// <param name="bddComponentDeclaration">The type of the BDD Declaration.</param>
+        /// <param name="components">The components.</param>
+        /// <returns>The  filtered components.</returns>
         private static List<Component> Filter(Type bddComponentDeclaration, Component[] components)
         {
             List<Component> bddComponentsList = new List<Component>();

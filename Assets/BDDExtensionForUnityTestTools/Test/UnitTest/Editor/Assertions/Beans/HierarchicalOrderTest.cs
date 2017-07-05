@@ -30,16 +30,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         [Description("CompareTo method should return 1 when the first Hierarchical Order is greater than the second one")]
         public void CompareTo_Should_ReturnOne_When_TheFirstGOIsGreaterThanTheSecondOne()
         {
-            // First HierarchicalOrder: Greter than the second
             HierarchicalOrder greaterHierarchicalOrder = new HierarchicalOrder(2);
 
-            // Second HierarchicalOrder: Lower than the first
             HierarchicalOrder lowerHierarchicalOrder = new HierarchicalOrder(1);
 
-            // Executing CompareTO
             int result = greaterHierarchicalOrder.CompareTo(lowerHierarchicalOrder);
 
-            // CompareTo should return 1
             Assert.AreEqual(1, result, "The comparison between the two HierarchicalOrder objects returns a wrong answer");
         }
 

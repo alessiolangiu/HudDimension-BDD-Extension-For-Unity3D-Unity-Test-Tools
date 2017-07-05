@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// A collection of utilities for manipulating the Parameters Values Storage fields.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -19,8 +23,17 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// A collection of utilities for manipulating the Parameters Values Storage fields.
+    /// </summary>
     public class ArrayStorageUtilities
     {
+        /// <summary>
+        /// Gets the <see cref="FieldInfo"/> of a Parameters Array Storage field given its type.
+        /// </summary>
+        /// <param name="dynamicBDDComponent">The dynamic BDD component.</param>
+        /// <param name="elementType">Type of the element.</param>
+        /// <returns>The <see cref="FieldInfo"/> of the Parameters Array Storage.</returns>
         public FieldInfo GetArrayStorageFieldInfoByType(object dynamicBDDComponent, Type elementType)
         {
             FieldInfo result = null;
@@ -41,6 +54,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Resets the array storage.
+        /// </summary>
+        /// <param name="fieldInfo">The field information.</param>
+        /// <param name="dynamicBDDComponent">The dynamic BDD component.</param>
         public void ResetArrayStorage(FieldInfo fieldInfo, object dynamicBDDComponent)
         {
             Type elementType = fieldInfo.FieldType.GetElementType();
@@ -48,6 +66,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             fieldInfo.SetValue(dynamicBDDComponent, array);
         }
 
+        /// <summary>
+        /// Resets all arrays storage.
+        /// </summary>
+        /// <param name="components">The components.</param>
         public void ResetAllArrayStorage(Component[] components)
         {
             foreach (object component in components)
@@ -65,6 +87,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets the <see cref="FieldInfo"/> of a Parameters Array Storage field given its name.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="arrayName">Name of the array.</param>
+        /// <returns>The <see cref="FieldInfo"/> of the Parameters Array Storage.</returns>
         public FieldInfo GetArrayStorageFieldInfoByName(object obj, string arrayName)
         {
             FieldInfo result = null;

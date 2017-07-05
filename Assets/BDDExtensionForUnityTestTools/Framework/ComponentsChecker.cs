@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the whole collection of the BDD Components errors check.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -21,8 +25,16 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the whole collection of the BDD Components errors check.
+    /// </summary>
     public class ComponentsChecker
     {
+        /// <summary>
+        /// Checks all the errors for the given components.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> Check(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -45,6 +57,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are more than one Static Components attached to the Integration Test.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckDuplicateStaticComponents(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -77,6 +94,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the specified component.
+        /// </summary>
+        /// <param name="component">The component to check.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> Check(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -86,7 +108,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             partialResult = this.CheckValuesParametersStorage(component);
             result.AddRange(partialResult);
 
-            partialResult = this.CheckStepMethodReturnValue(component);
+            partialResult = this.CheckBDDMethodReturnValue(component);
             result.AddRange(partialResult);
 
             partialResult = this.CheckCallBeforeMethods(component);
@@ -107,7 +129,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             partialResult = this.CheckStepMethodsExecutionOrders(component);
             result.AddRange(partialResult);
 
-            partialResult = this.CheckStepMethodsExistance(component);
+            partialResult = this.CheckStepMethodsExistence(component);
             result.AddRange(partialResult);
 
             partialResult = this.CheckStaticComponentsWithParameters(component);
@@ -115,6 +137,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are more than one methods with the same name inside a BDD Component.
+        /// </summary>
+        /// <param name="components">The components to check.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckDuplicateStepMethods(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -127,6 +154,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if a component is attached more than once to an Integration Test.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckDuplicateComponents(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -158,6 +190,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks errors on the Parameters Values Storage fields definitions.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckValuesParametersStorage(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -171,18 +208,28 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
-        public List<UnityTestBDDError> CheckStepMethodReturnValue(Component[] components)
+        /// <summary>
+        /// Checks the return value of a BDD Method.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
+        public List<UnityTestBDDError> CheckBDDMethodReturnValue(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
             foreach (Component component in components)
             {
-                List<UnityTestBDDError> partialResult = this.CheckStepMethodReturnValue(component);
+                List<UnityTestBDDError> partialResult = this.CheckBDDMethodReturnValue(component);
                 result.AddRange(partialResult);
             }
 
             return result;
         }
 
+        /// <summary>
+        /// Checks the methods declared inside the <see cref="CallBefore"/> attributes.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckCallBeforeMethods(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -196,6 +243,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if the method declared inside a <see cref="CallBefore"/> attribute is a BDD Method.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckCallBeforeOnStepDeclaration(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -209,6 +261,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the values of the ExecutionOrder parameters for a <see cref="CallBefore"/> chain.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckCallBeforeExecutionOrders(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -222,6 +279,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the values of the ExecutionOrder parameters for Static Components.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckStepMethodsExecutionOrders(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -238,19 +300,29 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
-        public List<UnityTestBDDError> CheckStepMethodsExistance(Component[] components)
+        /// <summary>
+        /// Checks if there is at least one BDD Method for each Step Method type.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
+        public List<UnityTestBDDError> CheckStepMethodsExistence(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
             foreach (Component component in components)
             {
-                List<UnityTestBDDError> partialResult = this.CheckStepMethodsExistance(component);
+                List<UnityTestBDDError> partialResult = this.CheckStepMethodsExistence(component);
                 result.AddRange(partialResult);
             }
 
             return result;
         }
 
-        public List<UnityTestBDDError> CheckStepMethodsExistance(Component component)
+        /// <summary>
+        /// Checks if there is at least one BDD Method for each Step Method type.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
+        public List<UnityTestBDDError> CheckStepMethodsExistence(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
             bool isGivenMethodFound = false;
@@ -332,6 +404,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are BDD Methods with parameters inside a Static Component.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckStaticComponentsWithParameters(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -344,6 +421,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are BDD Methods with parameters inside a Static Component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckStaticComponentsWithParameters(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -360,6 +442,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are BDD Methods with parameters inside a Static Component.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckStaticComponentsWithParameters(MethodInfo method)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -385,6 +472,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if the full names of the parameters are unique inside a Dynamic Component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckParametersUniqueness(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -414,6 +506,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if the full names of the parameters are unique inside a Dynamic Component.
+        /// </summary>
+        /// <param name="fullMethodDescriptionList">The full method description list.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckParametersUniqueness(List<FullMethodDescription> fullMethodDescriptionList)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -451,6 +548,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are recursive calls inside a <see cref="CallBefore"/> chain.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckRecursiveCalls(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -478,6 +580,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there is at least one BDD Component attached to the Integration Test.
+        /// </summary>
+        /// <param name="components">The components.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         public List<UnityTestBDDError> CheckEnoughAttachedComponents(Component[] components)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -500,21 +607,31 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
-        private List<UnityTestBDDError> CheckStepMethodReturnValue(Component component)
+        /// <summary>
+        /// Checks the return value of a BDD Method.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
+        private List<UnityTestBDDError> CheckBDDMethodReturnValue(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
 
             MethodInfo[] methodsInfo = component.GetType().GetMethods();
             foreach (MethodInfo methodInfo in methodsInfo)
             {
-                List<UnityTestBDDError> partialResult = this.CheckStepMethodReturnValue(methodInfo);
+                List<UnityTestBDDError> partialResult = this.CheckBDDMethodReturnValue(methodInfo);
                 result.AddRange(partialResult);
             }
 
             return result;
         }
 
-        private List<UnityTestBDDError> CheckStepMethodReturnValue(MethodInfo methodInfo)
+        /// <summary>
+        /// Checks the return value of a BDD Method.
+        /// </summary>
+        /// <param name="methodInfo">The method information.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
+        private List<UnityTestBDDError> CheckBDDMethodReturnValue(MethodInfo methodInfo)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
             if (!typeof(IAssertionResult).IsAssignableFrom(methodInfo.ReturnType))
@@ -540,6 +657,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the methods declared inside the <see cref="CallBefore"/> attributes.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckCallBeforeMethods(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -554,6 +676,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the methods declared inside the <see cref="CallBefore"/> attributes.
+        /// </summary>
+        /// <param name="methodInfo">The method information.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckCallBeforeMethods(MethodInfo methodInfo)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -583,6 +710,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if the method declared inside a <see cref="CallBefore"/> attribute is a BDD Method.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckCallBeforeOnStepDeclaration(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -597,6 +729,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if the method declared inside a <see cref="CallBefore"/> attribute is a BDD Method..
+        /// </summary>
+        /// <param name="methodInfo">The method information.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckCallBeforeOnStepDeclaration(MethodInfo methodInfo)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -625,6 +762,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        ///  Checks the values of the ExecutionOrder parameters for a <see cref="CallBefore"/> chain.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckCallBeforeExecutionOrders(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -639,6 +781,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the values of the ExecutionOrder parameters for Static Components.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckStepMethodsExecutionOrders(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -685,7 +832,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     if (givenDictionary.ContainsKey(givenAttibute.ExecutionOrder))
                     {
                         UnityTestBDDError error = new UnityTestBDDError();
-                        error.Message = "The Given declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value: "+ givenAttibute.ExecutionOrder+". Check the others Given methods.";
+                        error.Message = "The Given declaration for the method " + component.GetType().Name + "." + methodInfo.Name + " has a duplicate ExecutionOrder value: " + givenAttibute.ExecutionOrder + ". Check the others Given methods.";
                         error.Component = null;
                         error.MethodMethodInfo = methodInfo;
                         error.LockRunnerInspectorOnErrors = true;
@@ -859,6 +1006,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        ///  Checks the values of the ExecutionOrder parameters for a <see cref="CallBefore"/> chain.
+        /// </summary>
+        /// <param name="methodInfo">The method information.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckCallBeforeExecutionOrders(MethodInfo methodInfo)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -933,6 +1085,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are more than one methods with the same name inside a BDD Component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckDuplicateStepMethodsForASingleComponent(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -947,6 +1104,14 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks the type of the duplicate step methods for a single component and single BDD declaration.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="method">The method.</param>
+        /// <param name="stepType">Type of the step.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckDuplicateStepMethodsForASingleComponentAndSingleBDDDeclarationType(Component component, Dictionary<string, MethodInfo> dictionary, MethodInfo method, Type stepType)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -978,6 +1143,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks errors on the Parameters Values Storage fields definitions.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckValuesParametersStorage(Component component)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -1100,6 +1270,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Checks if there are recursive calls inside a <see cref="CallBefore"/> chain.
+        /// </summary>
+        /// <param name="methodToInspect">The method to inspect.</param>
+        /// <param name="callChain">The call chain.</param>
+        /// <returns>A list of <see cref="UnityTestBDDError"/> objects. Each element describes an error found. If the list is empty, there are no errors. The list cannot be null.</returns>
         private List<UnityTestBDDError> CheckRecursiveCalls(MethodInfo methodToInspect, CallChain callChain)
         {
             List<UnityTestBDDError> result = new List<UnityTestBDDError>();
@@ -1114,7 +1290,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     newCallChain.Method = methodToInspect;
                     newCallChain.CallBeforeDeclaration = callBefore;
                     newCallChain.CallingChain = callChain;
-                    if (callBeforeMethod.Equals(callChain.Top().Method))
+                    if (callBeforeMethod.Equals(callChain.Root().Method))
                     {
                         UnityTestBDDError error = new UnityTestBDDError();
                         error.Message = "The method " + callBeforeMethod.Name + " has a recursive call. Recursive calls are not allowed.\n Call chain:\n" + newCallChain.GetCallChainText();
@@ -1141,12 +1317,32 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// This class describes the chain of methods defined by the <see cref="CallBefore"/> attributes.
+        /// </summary>
         private class CallChain
         {
+            /// <summary>
+            /// The current method.
+            /// </summary>
             private MethodInfo method;
+
+            /// <summary>
+            /// The call before declaration for the current method.
+            /// </summary>
             private CallBefore callBeforeDeclaration;
+
+            /// <summary>
+            /// The CallChain object that precedes the current method.
+            /// </summary>
             private CallChain callingChain;
 
+            /// <summary>
+            /// Gets or sets CallChain object that precedes the current method.
+            /// </summary>
+            /// <value>
+            /// The CallChain object that precedes the current method.
+            /// </value>
             public CallChain CallingChain
             {
                 get
@@ -1160,6 +1356,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 }
             }
 
+            /// <summary>
+            /// Gets or sets the call before declaration for the current method.
+            /// </summary>
+            /// <value>
+            /// The call before declaration for the current method.
+            /// </value>
             public CallBefore CallBeforeDeclaration
             {
                 get
@@ -1173,6 +1375,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 }
             }
 
+            /// <summary>
+            /// Gets or sets the current method.
+            /// </summary>
+            /// <value>
+            /// The current method.
+            /// </value>
             public MethodInfo Method
             {
                 get
@@ -1186,11 +1394,15 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 }
             }
 
-            internal CallChain Top()
+            /// <summary>
+            /// This method return the root CallChain object.
+            /// </summary>
+            /// <returns>The root CallChain object.</returns>
+            internal CallChain Root()
             {
                 if (this.CallingChain != null)
                 {
-                    return this.CallingChain.Top();
+                    return this.CallingChain.Root();
                 }
                 else
                 {
@@ -1198,6 +1410,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 }
             }
 
+            /// <summary>
+            /// Gets the text describing the call chain.
+            /// </summary>
+            /// <returns>The text describing the call chain.</returns>
             internal string GetCallChainText()
             {
                 if (this.CallingChain == null)

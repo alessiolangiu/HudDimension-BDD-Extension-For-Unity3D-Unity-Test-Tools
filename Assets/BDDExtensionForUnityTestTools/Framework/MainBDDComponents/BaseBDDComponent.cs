@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This is the base class for <see cref="StaticBDDComponent"/> and <see cref="DynamicBDDComponent"/> components.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -21,10 +25,21 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This is the base class for <see cref="StaticBDDComponent"/> and <see cref="DynamicBDDComponent"/> components.
+    /// </summary>
+    /// <seealso cref="UnityEngine.MonoBehaviour" />
     public class BaseBDDComponent : MonoBehaviour
     {
+        /// <summary>
+        /// The list of the formal errors found in the BDD Component.
+        /// </summary>
         [HideInInspector]
         public List<UnityTestBDDError> Errors = new List<UnityTestBDDError>();
+
+        /// <summary>
+        /// This boolean field marks the component when the error checking operations are executing.
+        /// </summary>
         [HideInInspector]
         public bool Checking = true;
     }

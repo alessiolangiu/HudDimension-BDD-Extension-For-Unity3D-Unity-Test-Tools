@@ -222,7 +222,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             Component[] components = new Component[1] { component };
             ComponentsChecker checkForErrors = new ComponentsChecker();
 
-            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodReturnValue(components);
+            List<UnityTestBDDError> result = checkForErrors.CheckBDDMethodReturnValue(components);
             Assert.AreEqual(0, result.Count, "The method CheckStepMethodReturnValue doesn't check properly");
         }
 
@@ -243,7 +243,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
 
             ComponentsChecker checkForErrors = new ComponentsChecker();
-            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodReturnValue(components);
+            List<UnityTestBDDError> result = checkForErrors.CheckBDDMethodReturnValue(components);
             Assert.AreEqual(1, result.Count, "The method CheckValuesParametersStorage doesn't check properly");
             string expectedMessage = "The method ComponentsCheckerTestEighthDynamicComponent.WhenMethod does not return an IAssertionResult value.";
             Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodReturnValue doesn't resturn the right message");
@@ -708,13 +708,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             Component[] components = new Component[1] { component };
             ComponentsChecker checkForErrors = new ComponentsChecker();
 
-            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExistance(components);
+            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExistence(components);
 
-            Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExistance doesn't check properly");
+            Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExistence  doesn't check properly");
             string expectedMessage = "The component ComponentsCheckerTestEleventhStaticComponent has not Given components";
-            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodsExistance doesn't resturn the right message");
-            Assert.That(component.Equals(result[0].Component), "The method CheckStepMethodsExistance doesn't resturn the right Component");
-            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistance doesn't resturn the right MethodInfo");
+            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodsExistence  doesn't resturn the right message");
+            Assert.That(component.Equals(result[0].Component), "The method CheckStepMethodsExistence  doesn't resturn the right Component");
+            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistence  doesn't resturn the right MethodInfo");
         }
 
         [Test]
@@ -725,13 +725,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             Component[] components = new Component[1] { component };
             ComponentsChecker checkForErrors = new ComponentsChecker();
 
-            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExistance(components);
+            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExistence(components);
 
-            Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExistance doesn't check properly");
+            Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExistence  doesn't check properly");
             string expectedMessage = "The component ComponentsCheckerTestTwelvethStaticComponent has not When components";
-            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodsExistance doesn't resturn the right message");
-            Assert.That(component.Equals(result[0].Component), "The method CheckStepMethodsExistance doesn't resturn the right Component");
-            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistance doesn't resturn the right MethodInfo");
+            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodsExistence  doesn't resturn the right message");
+            Assert.That(component.Equals(result[0].Component), "The method CheckStepMethodsExistence  doesn't resturn the right Component");
+            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistence  doesn't resturn the right MethodInfo");
         }
 
         [Test]
@@ -742,13 +742,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             Component[] components = new Component[1] { component };
             ComponentsChecker checkForErrors = new ComponentsChecker();
 
-            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExistance(components);
+            List<UnityTestBDDError> result = checkForErrors.CheckStepMethodsExistence(components);
 
-            Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExistance doesn't check properly");
+            Assert.AreEqual(1, result.Count, "The method CheckStepMethodsExistence  doesn't check properly");
             string expectedMessage = "The component ComponentsCheckerTestThirteenthStaticComponent has not Then components";
-            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodsExistance doesn't resturn the right message");
-            Assert.That(component.Equals(result[0].Component), "The method CheckStepMethodsExistance doesn't resturn the right Component");
-            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistance doesn't resturn the right MethodInfo");
+            Assert.AreEqual(expectedMessage, result[0].Message, "The method CheckStepMethodsExistence  doesn't resturn the right message");
+            Assert.That(component.Equals(result[0].Component), "The method CheckStepMethodsExistence  doesn't resturn the right Component");
+            Assert.IsNull(result[0].MethodMethodInfo, "The method CheckStepMethodsExistence  doesn't resturn the right MethodInfo");
         }
 
         [Test]

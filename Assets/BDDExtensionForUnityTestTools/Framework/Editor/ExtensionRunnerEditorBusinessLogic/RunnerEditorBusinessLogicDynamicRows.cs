@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the business logic for drawing the rows inside the BDDExtensionRunner inspector for a Dynamic Scenario.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -15,13 +19,37 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the business logic for drawing the rows inside the BDDExtensionRunner inspector for a Dynamic Scenario.
+    /// </summary>
     public class RunnerEditorBusinessLogicDynamicRows
     {
+        /// <summary>
+        /// Draws the dynamic rows.
+        /// </summary>
+        /// <typeparam name="T">The type of the Step Methods.</typeparam>
+        /// <param name="unityInterface">The unity interface.</param>
+        /// <param name="methodsLoader">The methods loader.</param>
+        /// <param name="methodDescriptionBuilder">The method description builder.</param>
+        /// <param name="parametersLoader">The parameters loader.</param>
+        /// <param name="bddComponents">The BDD components.</param>
+        /// <param name="chosenMethods">The chosen methods.</param>
+        /// <param name="foldouts">The foldouts.</param>
+        /// <param name="serializedObjects">The serialized objects.</param>
+        /// <param name="target">The target.</param>
+        /// <param name="methodsUtilities">The methods utilities.</param>
+        /// <param name="dynamicRowsElements">The dynamic rows elements.</param>
+        /// <param name="lockParametersRows">If set to <c>true</c> [lock parameters rows].</param>
+        /// <param name="rebuild">If set to <c>true</c> [rebuild].</param>
+        /// <param name="updatedChosenMethodsList">The updated chosen methods list.</param>
+        /// <param name="updatedFoldouts">The updated foldouts.</param>
+        /// <param name="dirtyStatus">If set to <c>true</c> [dirty status].</param>
+        /// <param name="undoText">The undo text.</param>
+        /// <returns>True if a rebuild of the parameters index is requested.</returns>
         public bool DrawDynamicRows<T>(
             IUnityInterfaceWrapper unityInterface,
             MethodsLoader methodsLoader,
@@ -66,7 +94,6 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                 float textSize = (unityInterface.EditorGUIUtilityCurrentViewWidth() - RunnerEditorBusinessLogicData.LabelWidthAbsolute - RunnerEditorBusinessLogicData.ButtonsWidthAbsolute) * RunnerEditorBusinessLogicData.TextWidthPercent;
                 dynamicRowsElements.DrawDescription(unityInterface, chosenMethods.ChosenMethodsNames[index], methodDescription, textSize);
 
-                
                 string newChosenMethod = dynamicRowsElements.DrawComboBox(unityInterface, chosenMethods.ChosenMethodsNames[index], methodsNames);
                 rebuild = methodsUtilities.UpdateDataIfNewMethodIsChosen(newChosenMethod, updatedChosenMethodsList, updatedFoldouts, index, rebuild, out undoText);
                 dirtyStatus = dirtyStatus || dynamicRowsElements.DrawAddRowButton(unityInterface, index, updatedChosenMethodsList, target, undoText, out updatedChosenMethodsList, out undoText);
@@ -84,7 +111,5 @@ namespace HudDimension.BDDExtensionForUnityTestTools
 
             return rebuild;
         }
-
-
     }
 }

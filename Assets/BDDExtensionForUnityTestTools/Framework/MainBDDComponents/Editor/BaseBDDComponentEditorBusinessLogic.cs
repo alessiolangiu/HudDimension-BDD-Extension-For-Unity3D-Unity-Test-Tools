@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the business logic for drawing the BDD Component custom inspector.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -20,19 +24,41 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the business logic for drawing the BDD Component custom inspector.
+    /// </summary>
     public class BaseBDDComponentEditorBusinessLogic
     {
+        /// <summary>
+        /// The component.
+        /// </summary>
         private Component component;
 
+        /// <summary>
+        /// The filename of the texture for the openComponent button.
+        /// </summary>
         private string openComponentButtonTextureFileName = @"openComponentButton.png";
 
+        /// <summary>
+        /// The filename of the error texture.
+        /// </summary>
         private string errorTextureFileName = @"exclamation_red.png";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseBDDComponentEditorBusinessLogic"/> class.
+        /// </summary>
+        /// <param name="component">The component.</param>
         public BaseBDDComponentEditorBusinessLogic(Component component)
         {
             this.component = component;
         }
 
+        /// <summary>
+        /// Gets or sets the filename of the error texture.
+        /// </summary>
+        /// <value>
+        /// The filename of the error texture.
+        /// </value>
         public string ErrorTextureFileName
         {
             get
@@ -46,6 +72,12 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Gets or sets filename of the texture for the openComponent button.
+        /// </summary>
+        /// <value>
+        /// The filename of the texture for the openComponent button.
+        /// </value>
         public string OpenComponentButtonTextureFileName
         {
             get
@@ -59,12 +91,16 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Draws the given errors.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <param name="unityInterface">The unity interface.</param>
         public void Errors(List<UnityTestBDDError> errors, IUnityInterfaceWrapper unityInterface)
         {
-
             BDDExtensionRunner bddExtensionRunner = this.component.gameObject.GetComponent<BDDExtensionRunner>();
             string openComponentButtonTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, this.OpenComponentButtonTextureFileName);
-            string errorTextureFullPath= Utilities.GetAssetFullPath(bddExtensionRunner, this.ErrorTextureFileName);
+            string errorTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, this.ErrorTextureFileName);
             foreach (UnityTestBDDError error in errors)
             {
                 unityInterface.EditorGUILayoutBeginHorizontal();
@@ -91,7 +127,8 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     {
                         SourcesManagement.OpenSourceCode(error.Component, unityInterface);
                     }
-                    else{
+                    else
+                    {
                         MethodInfo[] methods = this.component.GetType().GetMethods();
                         foreach (MethodInfo method in methods)
                         {

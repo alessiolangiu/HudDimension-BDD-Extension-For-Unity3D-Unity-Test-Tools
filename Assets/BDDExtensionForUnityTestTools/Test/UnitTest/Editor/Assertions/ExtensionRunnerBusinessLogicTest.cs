@@ -133,7 +133,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             methodDescription.GetFullName().Returns<string>("component.method");
 
             ExtensionRunnerBusinessLogic mockedBusinessLogic = Substitute.For<ExtensionRunnerBusinessLogic>(gameObject);
-            mockedBusinessLogic.RunnerGameObject = gameObject;
+            mockedBusinessLogic.IntegrationTestGameObject = gameObject;
 
             List<FullMethodDescription> methodsDescription = new List<FullMethodDescription>();
             methodsDescription.Add(methodDescription);
@@ -172,7 +172,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             methodDescription.GetFullName().Returns<string>("component.method");
 
             ExtensionRunnerBusinessLogic mockedBusinessLogic = Substitute.For<ExtensionRunnerBusinessLogic>(gameObject);
-            mockedBusinessLogic.RunnerGameObject = gameObject;
+            mockedBusinessLogic.IntegrationTestGameObject = gameObject;
             List<FullMethodDescription> methodsDescription = new List<FullMethodDescription>();
             methodsDescription.Add(methodDescription);
             methodsDescription.Add(Substitute.For<FullMethodDescription>());
@@ -212,7 +212,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             businessLogic.RunCycle(mockedBusinessLogic, methodsDescription, indexToRun);
             Received.InOrder(() =>
             {
-                businessLogic.InvokeAssertionSuccess(gameObject);
+                businessLogic.InvokeAssertionSuccessful(gameObject);
             });
         }
 

@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class contains the business logic for drawing the rows for a Static scenario.
+// </summary>
+// 
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -20,8 +24,20 @@ using UnityEngine;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class contains the business logic for drawing the rows for a Static scenario.
+    /// </summary>
     public class RunnerEditorBusinessLogicStaticRows
     {
+        /// <summary>
+        /// Draws the static rows.
+        /// </summary>
+        /// <typeparam name="T">The Step Methods type.</typeparam>
+        /// <param name="unityInterface">The unity interface.</param>
+        /// <param name="stepMethodsLoader">The step methods loader.</param>
+        /// <param name="bddComponents">The BDD components.</param>
+        /// <param name="labelWidthAbsolute">The label width absolute.</param>
+        /// <param name="buttonsWidthAbsolute">The buttons width absolute.</param>
         public void DrawStaticRows<T>(IUnityInterfaceWrapper unityInterface, MethodsLoader stepMethodsLoader, Component[] bddComponents, float labelWidthAbsolute, float buttonsWidthAbsolute) where T : IGivenWhenThenDeclaration
         {
             List<BaseMethodDescription> methodsList = stepMethodsLoader.LoadStepMethods<T>(bddComponents);
@@ -46,6 +62,11 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             }
         }
 
+        /// <summary>
+        /// Draws the cog button.
+        /// </summary>
+        /// <param name="unityInterface">The unity interface.</param>
+        /// <param name="methodDescription">The method description.</param>
         internal void DrawCogButton(IUnityInterfaceWrapper unityInterface, BaseMethodDescription methodDescription)
         {
             string texture = @"Assets\UnityTestToolsBDDExtension\Resources\Sprites\cog.png";

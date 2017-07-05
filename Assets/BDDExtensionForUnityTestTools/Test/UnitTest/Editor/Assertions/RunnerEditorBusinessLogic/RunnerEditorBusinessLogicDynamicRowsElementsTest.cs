@@ -590,7 +590,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             GUILayoutOption layoutOption = GUILayout.Width(20);
             unityInterface.GUILayoutWidth(20).Returns(layoutOption);
             unityInterface.GUILayoutButton("+", EditorStyles.miniButton, layoutOption).Returns(false, false, false);
-            string undoText=string.Empty;
+            string undoText = string.Empty;
             for (int index = 0; index < chosenMethods.ChosenMethodsNames.Length; index++)
             {
                 dynamicRowsElements.DrawAddRowButton(unityInterface, index, currentChosenMethods, target, undoText, out newChosenMethods, out undoText);

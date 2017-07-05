@@ -4,6 +4,10 @@
 //     http://www.HudDimension.co.uk
 // </copyright>
 //
+// <summary>
+// This class creates the <see cref="MethodParameters"/> object, populating the values of the parameters using the parameters indexes.
+// 
+// </summary>
 // <disclaimer>
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
 // EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -19,8 +23,19 @@ using System.Reflection;
 
 namespace HudDimension.BDDExtensionForUnityTestTools
 {
+    /// <summary>
+    /// This class creates the <see cref="MethodParameters"/> object, populating the values of the parameters using the parameters indexes.
+    /// </summary>
     public class MethodParametersLoader
     {
+        /// <summary>
+        /// Creates the <see cref="MethodParameters"/> object, populating the values of the parameters using the parameters indexes.
+        /// </summary>
+        /// <param name="obj">The object containing the method.</param>
+        /// <param name="method">The method.</param>
+        /// <param name="id">The identifier of the parameters.</param>
+        /// <param name="parametersIndex">Index of the parameters.</param>
+        /// <returns>The <see cref="MethodParameters"/> object, populating the values of the parameters using the parameters indexes.</returns>
         public virtual MethodParameters LoadMethodParameters(object obj, MethodInfo method, string id, string parametersIndex)
         {
             List<MethodParameter> parametersList = new List<MethodParameter>();
@@ -39,6 +54,15 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Loads the parameter location.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="method">The method.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="id">The identifier.</param>
+        /// <param name="parametersIndex">Index of the parameters.</param>
+        /// <returns>The parameter location.</returns>
         private static ParameterLocation LoadParameterLocation(object obj, MethodInfo method, ParameterInfo parameter, string id, string parametersIndex)
         {
             // parametersIndex Format: ;paramtype,className.methodName.paramName.fullId,arrayName.Array.data[index];
@@ -74,6 +98,15 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Loads the parameter value.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="method">The method.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="id">The identifier.</param>
+        /// <param name="parametersIndexes">The parameters indexes.</param>
+        /// <returns>The parameter value.</returns>
         private static object LoadParameterValue(object obj, MethodInfo method, ParameterInfo parameter, string id, string parametersIndexes)
         {
             // parametersIndex Format: ;paramtype,className.methodName.paramName.fullId,arrayName.Array.data[index];
@@ -102,6 +135,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             return result;
         }
 
+        /// <summary>
+        /// Gets the value of the parameter from its ParametersValuesStorage field.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="arrayName">Name of the array.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of the parameter.</returns>
         private static object GetValue(object obj, string arrayName, int index)
         {
             object result = null;
@@ -115,9 +155,10 @@ namespace HudDimension.BDDExtensionForUnityTestTools
             Array array = field.GetValue(obj) as Array;
             if (array.Length > index)
             {
-                result= array.GetValue(index);
+                result = array.GetValue(index);
             }
-            return result; 
+
+            return result;
         }
     }
 }
