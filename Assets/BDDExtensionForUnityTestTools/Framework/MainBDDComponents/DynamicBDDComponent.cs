@@ -51,7 +51,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         /// <summary>
         /// The Parameter Value Storage for the type "sbyte".
         /// </summary>
-        /// [HideInInspector]
+        [HideInInspector]
         [ParametersValuesStorage]
         [SerializeField]
         protected sbyte[] sbytePVS;

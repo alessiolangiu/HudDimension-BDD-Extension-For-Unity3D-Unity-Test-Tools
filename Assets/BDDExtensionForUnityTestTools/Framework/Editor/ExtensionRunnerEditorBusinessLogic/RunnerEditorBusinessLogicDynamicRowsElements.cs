@@ -349,10 +349,13 @@ namespace HudDimension.BDDExtensionForUnityTestTools
         /// </summary>
         /// <param name="unityInterface">The unity interface.</param>
         /// <param name="methodDescription">The method description.</param>
-        internal void DrawCogButton(IUnityInterfaceWrapper unityInterface, MethodDescription methodDescription)
+        /// <param name="bddExtensionRunner">The BDD extension runner.</param>
+        internal void DrawCogButton(IUnityInterfaceWrapper unityInterface, MethodDescription methodDescription, BDDExtensionRunner bddExtensionRunner)
         {
-            string texture = @"Assets\UnityTestToolsBDDExtension\Resources\Sprites\cog.png";
-            Texture2D inputTexture = unityInterface.AssetDatabaseLoadAssetAtPath(texture, typeof(Texture2D));
+            string cogTexture = @"cog.png";
+            
+            string cogTextureFullPath = Utilities.GetAssetFullPath(bddExtensionRunner, cogTexture);
+            Texture2D inputTexture = unityInterface.AssetDatabaseLoadAssetAtPath(cogTextureFullPath, typeof(Texture2D));
             GUILayoutOption[] options = new GUILayoutOption[2] { unityInterface.GUILayoutWidth(16), unityInterface.GUILayoutHeight(16) };
 
             if (unityInterface.GUILayoutButton(inputTexture, EditorStyles.label, options))

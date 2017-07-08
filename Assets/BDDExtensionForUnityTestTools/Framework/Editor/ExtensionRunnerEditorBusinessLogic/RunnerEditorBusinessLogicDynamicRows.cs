@@ -103,7 +103,7 @@ namespace HudDimension.BDDExtensionForUnityTestTools
                     break;
                 }
 
-                dynamicRowsElements.DrawCogButton(unityInterface, methodDescription);
+                dynamicRowsElements.DrawCogButton(unityInterface, methodDescription, (BDDExtensionRunner) target);
                 unityInterface.EditorGUILayoutEndHorizontal();
 
                 dynamicRowsElements.DrawParametersRows(unityInterface, foldouts[index], fullMethodDescriptionsList, serializedObjects, lockParametersRows);
